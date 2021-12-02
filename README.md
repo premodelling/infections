@@ -17,18 +17,18 @@
 
 ## Focus & Options
 
-Dr. Jiang asked us consider a SARS-CoV-2 project in relation to either
+Dr. Jiang asked us to consider a SARS-CoV-2 project in relation to either
 
-* Prediction of measures, e.g., predicting expected hospitalisations
+* Predicting measures, e.g., predicting expected hospitalisations.
 * Patient prognosis
 
-A few options ...
+A few options below.  In general, what we can do depends on the type & range of data we eventually have access to. 
 
 <br>
 
 ### Triple Forecasts
 
-Predicting cases/hospitalisations/death.  A range of features might be available, sometimes disaggregated by geography, e.g.,
+Predicting cases/hospitalisations/death.  Possible features of interest, sometimes disaggregated by geography:
 
 * tests, cases, hospitalisations, deaths
 * vaccination rates
@@ -38,11 +38,14 @@ Predicting cases/hospitalisations/death.  A range of features might be available
 * built environment, residential housing quality, air quality
 * population density
 
-It might be quite tricky/difficult to use some variables effectively.  Some variables might be irrelevant, a modelling & analysis will address this. .
+It might be quite tricky/difficult to use some variables effectively.  Some variables might be irrelevant, a 
+modelling & analysis will address this. .
 
 <br>
 
 ### Predicting Hospitalisations Trend
+
+Possible features of interest, sometimes disaggregated by geography:
 
 * variant features<br>
   [EU Variants of Concern, of Interest, Under Monitoring, De-escalated](https://www.ecdc.europa.eu/en/covid-19/variants-concern)<br>
@@ -61,7 +64,7 @@ It might be quite tricky/difficult to use some variables effectively.  Some vari
 
 ### Prognostic Predictions
 
-Recovery prospects of a patient
+Recovery prospects of a patient.  Possible features of interest, sometimes disaggregated by geography:
 
 * electronic health records (EHR) data
 * hospitalisations & recoveries
