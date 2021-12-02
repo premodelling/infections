@@ -3,7 +3,7 @@
 
 **SCC460 Group Project: Infections**
 
-* [Focus](#focus--options)
+* [Focus & Options](#focus--options)
   * [Triple Forecasts](#triple-forecasts)
   * [Predicting Hospitalisation Trends](#predicting-hospitalisations-trend)
   * [Prognostic Predictions](#prognostic-predictions)
@@ -38,8 +38,8 @@ Predicting cases/hospitalisations/death.  Possible features of interest, sometim
 * built environment, residential housing quality, air quality
 * population density
 
-It might be quite tricky/difficult to use some variables effectively.  Some variables might be irrelevant, a 
-modelling & analysis will address this. .
+It might be quite tricky/difficult to use some variables effectively.  Some variables might be irrelevant, 
+modelling & analysis will address this.
 
 <br>
 
@@ -47,9 +47,9 @@ modelling & analysis will address this. .
 
 Possible features of interest, sometimes disaggregated by geography:
 
-* variant features<br>
-  [EU Variants of Concern, of Interest, Under Monitoring, De-escalated](https://www.ecdc.europa.eu/en/covid-19/variants-concern)<br>
-  [US CDC SARS-CoV-2 Variant Classifications and Definitions](https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-info.html)
+* variant features
+  * [EU Variants of Concern, of Interest, Under Monitoring, De-escalated](https://www.ecdc.europa.eu/en/covid-19/variants-concern)<br>
+  * [US CDC SARS-CoV-2 Variant Classifications and Definitions](https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-info.html)
 * transmission rates by variant
 * tests, cases, hospitalisations by variant
 * vaccination rates
