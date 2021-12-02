@@ -3,9 +3,19 @@
 
 **SCC460 Group Project: Infections**
 
+* [Focus](#focus--options)
+  * [Triple Forecasts](#triple-forecasts)
+  * [Predicting Hospitalisation Trends](#predicting-hospitalisations-trend)
+  * [Prognostic Predictions](#prognostic-predictions)
+* [Critical Considerations](#critical-considerations)
+* [Data Sources](#data-sources)
+* [Research](#research)
+  * [Modelling & Analysis](#modelling--analysis)
+  * [Ethics, Privacy, Confidentiality](#ethics-privacy-confidentiality)
+
 <br>
 
-## Focus
+## Focus & Options
 
 Dr. Jiang asked us consider a SARS-CoV-2 project in relation to either
 
@@ -16,9 +26,9 @@ A few options ...
 
 <br>
 
-### Triple Forecasts/Predictions of cases/hospitalisations/death
+### Triple Forecasts
 
-A range of features might be available, sometimes disaggregated by geography, e.g.,
+Predicting cases/hospitalisations/death.  A range of features might be available, sometimes disaggregated by geography, e.g.,
 
 * tests, cases, hospitalisations, deaths
 * vaccination rates
@@ -32,18 +42,24 @@ It might be quite tricky/difficult to use some variables effectively.  Some vari
 
 <br>
 
-### Expected Hospitalisations Trend
+### Predicting Hospitalisations Trend
 
 * variant features<br>
   [EU Variants of Concern, of Interest, Under Monitoring, De-escalated](https://www.ecdc.europa.eu/en/covid-19/variants-concern)<br>
   [US CDC SARS-CoV-2 Variant Classifications and Definitions](https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-info.html)
 * transmission rates by variant
-* hospitalisations by variant
-* etc.
+* tests, cases, hospitalisations by variant
+* vaccination rates
+* lock-down policies
+* incidence, prevalence
+* demographic, socioeconomic
+* built environment, residential housing quality, air quality
+* population density
+* etc
 
 <br>
 
-### Prognostic Forecasts/Predictions
+### Prognostic Predictions
 
 Recovery prospects of a patient
 
@@ -52,7 +68,6 @@ Recovery prospects of a patient
 * patients' residential area  ... possible proxy for quality of housing, built environment, and air
 * patient's occupation
 * etc.
-
 
 <br>
 <br>
@@ -65,19 +80,16 @@ Important considerations w.r.t. data collection, data handling, data representat
 * Privacy
 * Data Bias (Model Bias)
 * [General Data Protection Regulation (GDPR)](https://gdpr-info.eu)
-* Fair AI<br>
-  [Co-Designing Checklists to Understand Organizational Challenges and Opportunities around Fairness in AI](https://dl.acm.org/doi/10.1145/3313831.3376445)
-
-
+* Fair AI
 
 <br>
 <br>
 
 ## Data Sources
 
-For preliminary investigations whilst the team awaits the project data.  Either
+For preliminary investigations whilst the team awaits the project data.
 
-Official UK Data:
+Official UK Data
 * [data.gov.uk](https://coronavirus.data.gov.uk)
 * [dowload](https://coronavirus.data.gov.uk/details/download)
 * [API](https://coronavirus.data.gov.uk/details/developers-guide)
@@ -88,6 +100,9 @@ Unofficial Sources
 * [Worldometer](https://www.worldometers.info/coronavirus/country/uk/)
 
 
+<br>
+<br>
+
 ## Research
 
 ### Modelling & Analysis
@@ -95,7 +110,6 @@ Unofficial Sources
 Med-BERT
 * [Med-BERT: pretrained contextualized embeddings on large-scale structured electronic health records for disease prediction](https://www.nature.com/articles/s41746-021-00455-y)
 * [Predictive Modeling on Electronic Health Records(EHR) using Pytorch](https://github.com/ZhiGroup/pytorch_ehr)
-
 
 BERT: Bidirectional Encoder Representations from Transformers
 * [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
@@ -107,3 +121,6 @@ BERT: Bidirectional Encoder Representations from Transformers
 BERT & Clinical Data
 * [Does BERT Pretrained on Clinical Notes Reveal Sensitive Data?](https://aclanthology.org/2021.naacl-main.73.pdf)
 * [GitHub: Does BERT leak Patient Data ?](https://github.com/elehman16/exposing_patient_data_release)
+
+Fair AI
+* [Co-Designing Checklists to Understand Organizational Challenges and Opportunities around Fairness in AI](https://dl.acm.org/doi/10.1145/3313831.3376445)
