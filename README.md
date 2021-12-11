@@ -109,11 +109,15 @@ Focusing the **Windows Operating System & `cmd`**, within the prospective projec
 
 ```
 
+<br>
+
 will create a virtual environment.  Activate the environment via
 
 ```
 >> env\Scripts\activate.bat
 ```
+
+<br>
 
 This can be deactivated via the command `env\Scripts\deactivate.bat`.  Use the command
 
@@ -121,11 +125,15 @@ This can be deactivated via the command `env\Scripts\deactivate.bat`.  Use the c
 >> env\Scripts\pip list
 ```
 
+<br>
+
 to list the set of directly & indirectly installed packages.  Always remember to upgrade pip before populating the environment
 
 ```
 >> python -m pip install --upgrade pip==21.3.1
 ```
+
+<br>
 
 The [requirements](requirements.txt) document lists the directly installed packages and their versions; and a few
 indirectly installed pckages.  Thus far, the TensorFlow version used by this project is TensorFlow 2.7.0
