@@ -94,17 +94,22 @@ Unofficial Sources
 
 ## Development Environment
 
+<br>
+
 ### Virtual Environment
 
-**Windows Operating System & `cmd`**
+<br>
 
-Within the prospective project directory, and via[`venv`](https://docs.python.org/3/library/venv.html)
+Focusing the **Windows Operating System & `cmd`**, within the prospective project directory the command
 
 ```
+# Visit https://docs.python.org/3/library/venv.html for more details about venv
+
 >> python -m venv env
+
 ```
 
-Activate the environment via
+will create a virtual environment.  Activate the environment via
 
 ```
 >> env\Scripts\activate.bat
