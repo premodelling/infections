@@ -4,7 +4,6 @@
 **SCC460 Group Project: Infections**
 
 * [Project](#project)
-  * [Predicting Hospitalisation Trends](#predicting-hospitalisations-trend)
   * [Critical Considerations](#critical-considerations)
   * [Data Sources](#data-sources)
   * [References](#references)
@@ -17,21 +16,30 @@
 
 ## Project
 
-### Predicting Hospitalisations Trend
+Aim
+> Predicting localised hospitalisation trends
+
+<br>
+
+Objectives
+> * Understanding, determining, the range of predictors that influence SARS-CoV-2 hospital admissions per NHS Trust
+> 
+> * Forecasting N weeks ahead
+
+<br>
 
 Features of interest, sometimes disaggregated by geography:
 
 * variant features
   * [EU Variants of Concern, of Interest, Under Monitoring, De-escalated](https://www.ecdc.europa.eu/en/covid-19/variants-concern)<br>
   * [US CDC SARS-CoV-2 Variant Classifications and Definitions](https://www.cdc.gov/coronavirus/2019-ncov/variants/variant-info.html)
-* transmission rates by variant
-* tests, cases, hospitalisations by variant
+* transmission rate measures by variant
+* incidence & prevalence measures disaggregated by variant  
+* tests, cases, hospitalisations and deaths measures
 * vaccination rates
 * lock-down policies
-* incidence, prevalence
-* demographic, socioeconomic
-* built environment, residential housing quality, air quality
-* population density
+* demographic & socioeconomic variables; population density
+* environmental variables; built environment, residential housing quality, air quality, etc.
 * etc
 
 <br>
@@ -86,6 +94,8 @@ Unofficial Sources
 
 * Fair AI
   * [Co-Designing Checklists to Understand Organizational Challenges and Opportunities around Fairness in AI](https://dl.acm.org/doi/10.1145/3313831.3376445)
+  
+* [Rapid Coronavirus Tests](https://www.gov.uk/government/news/roll-out-of-2-new-rapid-coronavirus-tests-ahead-of-winter)
 
 
 <br>
@@ -141,6 +151,12 @@ indirectly installed pckages.  Thus far, the TensorFlow version used by this pro
 ```
 >> env\Scripts\pip install --upgrade tensorflow==2.7.0
 ```
+
+<br>
+<br>
+
+### Additional Libraries
+
 
 
 
