@@ -1,5 +1,6 @@
 import json
 import requests
+import logging
 
 
 class NestedField:
@@ -11,6 +12,12 @@ class NestedField:
         """
 
         self.field = field
+
+        # Logging
+        logging.basicConfig(level=logging.INFO,
+                            format='%(message)s\n%(asctime)s.%(msecs)03d',
+                            datefmt='%Y-%m-%d %H:%M:%S')
+        self.logger = logging.getLogger(__name__)
 
     @staticmethod
     def endpoint():
@@ -56,5 +63,7 @@ class NestedField:
         # status check
         if response.status_code > 204:
             raise RuntimeError(response.text)
-
-        return response.json()
+        elif response.status_code == 204:
+            return None
+        else:
+            return response.json()
