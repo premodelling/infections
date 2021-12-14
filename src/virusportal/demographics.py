@@ -31,6 +31,5 @@ class Demographics:
 
         # select the correct range of age group elements
         supplement = supplement.loc[supplement.age.isin(self._age_group), :]
-        print(supplement.head())
 
         return supplement.pivot(index='date', columns='age', values='cases')
