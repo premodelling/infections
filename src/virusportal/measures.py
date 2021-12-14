@@ -24,11 +24,11 @@ class Measures:
         return endpoint + '?filters={filters}&structure={structure}&format={format}'
 
     @staticmethod
-    def filters(area_code: str, area_type: str = 'ltla', area_name: str = None, date: str = None) -> str:
+    def filters(area_code: str, area_type: str, area_name: str, date: str) -> str:
         """
 
         :param area_code:
-        :param area_type: the default value is Lower-tier local authority
+        :param area_type:
         :param area_name:
         :param date:
         :return:
@@ -42,22 +42,25 @@ class Measures:
     def structure(self) -> str:
         """
 
-        :param fields:
         :return:
         """
 
         return json.dumps(obj=self.fields, separators=(',', ':'))
 
-    def exc(self, area_code) -> pd.DataFrame:
+    def exc(self, area_code: str, area_type: str = 'ltla', area_name: str = None, date: str = None) -> pd.DataFrame:
         """
 
         :param area_code:
+        :param area_type: the default value is Lower-tier local authority
+        :param area_name:
+        :param date:
         :return:
         """
 
-        url = self.url().format(filters=self.filters(area_code=area_code),
-                                structure=self.structure(),
-                                format='csv')
+        url = self.url().format(
+            filters=self.filters(area_code=area_code, area_type=area_type, area_name=area_name, date=date),
+            structure=self.structure(), format='csv'
+        )
 
         try:
             frame = pd.read_csv(filepath_or_buffer=url)
