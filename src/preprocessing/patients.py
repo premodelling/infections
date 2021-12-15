@@ -19,7 +19,7 @@ class Patients:
         self.sheet_name = 'All Admissions'
         self.usecols = ['CatchmentYear', 'msoa', 'TrustCode', 'patients', 'total_patients']
         self.rename = {'CatchmentYear': 'catchment_year', 'TrustCode': 'trust_code',
-                       'patients': 'patients_from_msoa', 'total_patients': 'total_patients_of_msoa'}
+                       'patients': 'patients_from_msoa_to_trust', 'total_patients': 'total_patients_of_msoa'}
 
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'patients')
         self.__path()
