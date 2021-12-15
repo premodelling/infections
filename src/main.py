@@ -4,38 +4,25 @@ import logging
 
 
 def main():
-    """
-    https://coronavirus.data.gov.uk/details/developers-guide/main-api#query-parameters
 
-
-    :return:
-    """
-
-    # for dask
+    # set-up parallel reading via dask; parallel by LTLA/LAD area code
     area_code = 'E06000022'
 
-    # Measures of interest
-    fields = {'date': 'date',
-              'dailyCases': 'newCasesBySpecimenDate',
-              'femaleDeaths28Days': 'femaleDeaths28Days',
-              'maleDeaths28Days': 'maleDeaths28Days',
-              'newDeaths28DaysByDeathDate': 'newDeaths28DaysByDeathDate',
-              'newDeathsByDeathDate': 'newDeathsByDeathDate',
-              'dailyONSDeathsByDeathDate': 'newDailyNsoDeathsByDeathDate',
-              'dailyFirstDoseByVaccinationDate': 'newPeopleVaccinatedFirstDoseByVaccinationDate',
-              'dailySecondDoseByVaccinationDate': 'newPeopleVaccinatedSecondDoseByVaccinationDate',
-              'dailyThirdInjectionByVaccinationDate': 'newPeopleVaccinatedThirdInjectionByVaccinationDate',
-              'VaccineRegisterPopulationByVaccinationDate': 'VaccineRegisterPopulationByVaccinationDate',
-              'newVirusTestsBySpecimenDate': 'newVirusTestsBySpecimenDate',
-              'newPCRTestsBySpecimenDate': 'newPCRTestsBySpecimenDate'}
+    # un-nested measures of interest are declared in the config.py file
+    fields = config.Config().fields
 
+    # reading-in the un-nested measures
     frame = src.virusportal.measures.Measures(fields=fields).exc(area_code=area_code)
     logger.info(frame.head())
 
-    # Nested demographic data
+    # reading-in the nested demographic data
     supplement = src.virusportal.demographics.Demographics(field='newCasesBySpecimenDateAgeDemographics')\
         .exc(area_code=area_code)
     logger.info(supplement.head())
+
+    # area codes for England
+    area_codes = src.ingest.areacodes.AreaCodes().exc()
+    logger.info(area_codes.head())
 
 
 if __name__ == '__main__':
@@ -44,10 +31,16 @@ if __name__ == '__main__':
     sys.path.append(os.path.join(root, 'src'))
 
     # Logging
-    logging.basicConfig(level=logging.INFO, format='%(message)s\n%(asctime)s.%(msecs)03d', datefmt='%Y-%m-%d %H:%M:%S')
+    logging.basicConfig(level=logging.INFO,
+                        format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
+                        datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
 
+    # libraries
+    import config
     import src.virusportal.measures
     import src.virusportal.demographics
+
+    import src.ingest.areacodes
 
     main()
