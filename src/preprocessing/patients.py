@@ -18,8 +18,10 @@ class Patients:
         self.uri = 'data/catchment/2020 Trust Catchment Populations_Supplementary MSOA Analysis.xlsx'
         self.sheet_name = 'All Admissions'
         self.usecols = ['CatchmentYear', 'msoa', 'TrustCode', 'patients', 'total_patients']
+        self.rename = {'CatchmentYear': 'catchment_year', 'TrustCode': 'trust_code',
+                       'patients': 'patients_from_msoa', 'total_patients': 'total_patients_of_msoa'}
 
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'admissions')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'patients')
         self.__path()
 
         self.patients = self.__read()
@@ -47,6 +49,8 @@ class Patients:
         except RuntimeError as err:
             raise Exception(err)
 
+        patients.rename(columns=self.rename, inplace=True)
+
         return patients
 
     @dask.delayed
@@ -58,7 +62,7 @@ class Patients:
         :return:
         """
         
-        return self.patients.copy()[self.patients['CatchmentYear'] == year, :]
+        return self.patients.copy().loc[self.patients['catchment_year'] == year, :]
         
     @dask.delayed
     def __write(self, frame: pd.DataFrame, year: int) -> str:
@@ -81,12 +85,12 @@ class Patients:
         :return:
         """
 
-        years = self.patients['CatchmentYear'].unique()
+        years = self.patients['catchment_year'].unique()
 
         computations = []
         for year in years:
             frame = self.__select(year=year)
-            message = self.__write(frame=frame)
+            message = self.__write(frame=frame, year=year)
             computations.append(message)
 
         dask.visualize(computations, filename='patients', format='pdf')
