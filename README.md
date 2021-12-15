@@ -8,8 +8,9 @@
   * [Data Sources](#data-sources)
   * [References](#references)
   
-* [Development Environment](#development-environment)
-  * [Virtual Environment](#virtual-environment)
+* [Development Notes](development/README.md#development-notes)
+  * [Virtual Development Environment](development/README.md#virtual-development-environment)
+  * [Code Snippets](development/README.md#code-snippets)
 
 
 <br>
@@ -99,68 +100,6 @@ Of import
   * [Co-Designing Checklists to Understand Organizational Challenges and Opportunities around Fairness in AI](https://dl.acm.org/doi/10.1145/3313831.3376445)
   
 * [Rapid Coronavirus Tests](https://www.gov.uk/government/news/roll-out-of-2-new-rapid-coronavirus-tests-ahead-of-winter)
-
-
-<br>
-<br>
-<br>
-
-## Development Environment
-
-<br>
-
-### Virtual Environment
-
-<br>
-
-Focusing the **Windows Operating System & `cmd`**, within the prospective project directory the command
-
-```
-# Visit https://docs.python.org/3/library/venv.html for more details about venv
-
->> python -m venv env
-
-```
-
-<br>
-
-will create a virtual environment.  Activate the environment via
-
-```
->> env\Scripts\activate.bat
-```
-
-<br>
-
-This can be deactivated via the command `env\Scripts\deactivate.bat`.  Use the command
-
-```
->> env\Scripts\pip list
-```
-
-<br>
-
-to list the set of directly & indirectly installed packages.  Always remember to upgrade pip before populating the environment
-
-```
->> python -m pip install --upgrade pip==21.3.1
-```
-
-<br>
-
-The [requirements](requirements.txt) document lists the directly installed packages and their versions; and a few
-indirectly installed pckages.  Thus far, the TensorFlow version used by this project is TensorFlow 2.7.0
-
-```
->> env\Scripts\pip install --upgrade tensorflow==2.7.0
-```
-
-<br>
-<br>
-
-### Additional Libraries
-
-
 
 
 <br>
