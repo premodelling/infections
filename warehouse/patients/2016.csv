@@ -1,4 +1,4 @@
-catchment_year,msoa,trust_code,patients_from_msoa,total_patients_of_msoa
+catchment_year,msoa,trust_code,patients_from_msoa_to_trust,total_patients_of_msoa
 2016,E02000001,R1H,883,2309
 2016,E02000001,RRV,747,2309
 2016,E02000001,RP6,116,2309
