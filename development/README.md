@@ -30,6 +30,10 @@ Hence
     conda install -c anaconda seaborn # installs: matplotlib, scipy, etc. 
     conda install -c anaconda pytest coverage pytest-cov pylint flake8
     conda install -c anaconda nodejs pywin32 jupyterlab # installs: requests, urllib3, etc.
+    conda install -c anaconda python-graphviz
+    
+    # distributed computing
+    conda install -c anaconda dask
     
     # For Excel
     conda install -c anaconda xlrd
