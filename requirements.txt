@@ -8,6 +8,7 @@ pylint==2.6.0
 flake8==3.8.4
 jupyterlab==3.2.1
 xlrd==1.2.0
+dask==2021.10.0
 ## The following requirements were added by pip freeze, are installed by the preceding packages:
 numpy==1.21.4
 matplotlib==3.2.2
