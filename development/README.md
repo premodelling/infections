@@ -3,6 +3,9 @@
 # Development Notes
 
 * [Virtual Development Environment](#virtual-development-environment)
+  * [Anaconda, Conda](#anaconda-conda)
+  * [venv](#venv)
+  
 * [Code Snippets](#code-snippets)
   * [data.gov.uk SARS-CoV-2 API](#sars-cov-2-api)
     
