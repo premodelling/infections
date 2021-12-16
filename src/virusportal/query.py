@@ -9,16 +9,15 @@ import logging
 
 def main():
 
-    # fields of interest
+    # Fields of interest
     fields = {'date': 'date', 'newAdmissions': 'newAdmissions',
               'covidOccupiedMVBeds': 'covidOccupiedMVBeds',
               'hospitalCases': 'hospitalCases',
               'femaleDeaths28Days': 'femaleDeaths28Days'}
 
-    # demarcation of interest
-    # Data?
-    #   * area_code='RT5', area_type='nhsTrust': yes
-    example = src.virusportal.measures.Measures(fields=fields).exc(area_code='RT5', area_type='nhsTrust')
+    # Demarcation of interest
+    # Alas, NHS Trust data is incomplete, hence we have to rely on LTLA/LAD data
+    example = src.virusportal.measures.Measures(fields=fields).exc(area_code='RBT', area_type='nhsTrust')
 
     # previews
     logger.info(example)
