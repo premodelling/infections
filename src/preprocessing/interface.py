@@ -5,9 +5,11 @@ import logging
 
 def main():
 
-    details = src.preprocessing.patients.Patients().exc()
-    logger.info(type(details))
-    logger.info(details)
+    # patients = src.preprocessing.patients.Patients().exc()
+    # logger.info(patients)
+    
+    populations = src.preprocessing.populations.Populations().exc()
+    logger.info(populations)
 
 
 if __name__ == '__main__':
@@ -25,5 +27,6 @@ if __name__ == '__main__':
 
     # libraries
     import src.preprocessing.patients
+    import src.preprocessing.populations
 
     main()
