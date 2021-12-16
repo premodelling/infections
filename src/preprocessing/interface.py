@@ -1,6 +1,10 @@
 import os
 import sys
 import logging
+import glob
+import os
+import pandas as pd
+import numpy as np
 
 
 def main():
@@ -8,9 +12,12 @@ def main():
     # patients = src.preprocessing.patients.Patients().exc()
     # logger.info(patients)
     
-    populations = src.preprocessing.populations.Populations().exc()
-    logger.info(populations)
+    # populations = src.preprocessing.populations.Populations().exc()
+    # logger.info(populations)
 
+    agegroups = src.preprocessing.agegroups.AgeGroups().exc()
+    logger.info(agegroups)
+    
 
 if __name__ == '__main__':
 
@@ -28,5 +35,9 @@ if __name__ == '__main__':
     # libraries
     import src.preprocessing.patients
     import src.preprocessing.populations
+    import src.preprocessing.agegroups
+
+
+
 
     main()
