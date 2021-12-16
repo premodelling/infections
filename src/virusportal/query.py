@@ -10,7 +10,10 @@ import logging
 def main():
 
     # fields of interest
-    fields = {'date': 'date', 'newAdmissions': 'newAdmissions'}
+    fields = {'date': 'date', 'newAdmissions': 'newAdmissions',
+              'covidOccupiedMVBeds': 'covidOccupiedMVBeds',
+              'hospitalCases': 'hospitalCases',
+              'femaleDeaths28Days': 'femaleDeaths28Days'}
 
     # demarcation of interest
     # Data?
@@ -20,7 +23,6 @@ def main():
     # previews
     logger.info(example)
     logger.info('Latest record: %s', example.date.max())
-    logger.info(example.date.unique())
 
 
 if __name__ == '__main__':
