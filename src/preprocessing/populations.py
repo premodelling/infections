@@ -28,7 +28,7 @@ class Populations:
 
     def __path(self):
         """
-        Ascertains the existence of warehouse/admissions/
+        Ascertains the existence of warehouse/populations/single
 
         :return:
         """
@@ -38,8 +38,7 @@ class Populations:
 
     def __read(self, detail) -> pd.DataFrame:
         """
-        Reads the patients per Middle Super Output Area (MSOA) data from the
-        large Excel file
+        Reads population files
 
         :param detail:
         :return:
@@ -68,7 +67,6 @@ class Populations:
 
     def __write(self, frame: pd.DataFrame, year: int) -> str:
         """
-        Save each year's admissions data to a warehouse directory
 
         :param frame:
         :param year:
