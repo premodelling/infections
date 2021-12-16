@@ -1,26 +1,23 @@
+import logging
 import os
 import sys
-import logging
-import glob
-import os
-import pandas as pd
-import numpy as np
 
 
 def main():
-
     # patients = src.preprocessing.patients.Patients().exc()
     # logger.info(patients)
-    
+
     # populations = src.preprocessing.populations.Populations().exc()
     # logger.info(populations)
 
-    agegroups = src.preprocessing.agegroups.AgeGroups().exc()
-    logger.info(agegroups)
-    
+    # agegroups = src.preprocessing.agegroups.AgeGroups().exc()
+    # logger.info(agegroups)
+
+    exceptions = src.preprocessing.exceptions.Exceptions().exc()
+    logger.info(exceptions)
+
 
 if __name__ == '__main__':
-
     # paths
     root = os.getcwd()
     sys.path.append(root)
@@ -36,8 +33,6 @@ if __name__ == '__main__':
     import src.preprocessing.patients
     import src.preprocessing.populations
     import src.preprocessing.agegroups
-
-
-
+    import src.preprocessing.exceptions
 
     main()
