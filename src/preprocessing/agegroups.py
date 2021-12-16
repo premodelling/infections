@@ -63,6 +63,11 @@ class AgeGroups:
 
     @dask.delayed
     def __calculate(self, frame: pd.DataFrame) -> pd.DataFrame:
+        """
+
+        :param frame:
+        :return:
+        """
 
         groups = pd.DataFrame(data=frame[self.ages[:-1]].groupby(by=self.groupings, axis=1).sum())
         groups.set_axis(labels=self.age_groups[0:-1], axis=1, inplace=True)
@@ -74,7 +79,6 @@ class AgeGroups:
     @dask.delayed
     def __write(self, frame: pd.DataFrame, filename: str) -> str:
         """
-        Save each year's admissions data to a warehouse directory
 
         :param frame:
         :param filename:
