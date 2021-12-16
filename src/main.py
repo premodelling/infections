@@ -5,7 +5,7 @@ import logging
 
 def main():
 
-    # set-up parallel reading via dask; parallel by NHS Trust or LTLA/LAD area code
+    # set-up parallel reading via dask; parallel by LTLA/LAD area code
     area_code = 'E06000022'
 
     # un-nested measures of interest are declared in the config.py file
