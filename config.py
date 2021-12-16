@@ -54,7 +54,7 @@ class Config:
                                   2019, ['female', 'male'], ['Mid-2019 Females', 'Mid-2019 Males'], 4, 'A:CT',
                                   ['MSOA Code'], None)),
                    Details._make(('sape23dt4mid2020msoasyoaestimatesunformatted.xlsx',
-                                  2020, ['female', 'male'], ['Mid-2019 Females', 'Mid-2019 Males'], 4, 'A:CT',
+                                  2020, ['female', 'male'], ['Mid-2020 Females', 'Mid-2020 Males'], 4, 'A:CT',
                                   ['MSOA Code'], None))]
 
         return details, ages
