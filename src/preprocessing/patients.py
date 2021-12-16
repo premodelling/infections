@@ -21,9 +21,11 @@ class Patients:
         self.rename = {'CatchmentYear': 'catchment_year', 'TrustCode': 'trust_code',
                        'patients': 'patients_from_msoa_to_trust', 'total_patients': 'total_patients_of_msoa'}
 
+        # storage
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'patients')
         self.__path()
 
+        # read the patients counts data
         self.patients = self.__read()
 
     def __path(self):
@@ -94,6 +96,6 @@ class Patients:
             computations.append(message)
 
         dask.visualize(computations, filename='patients', format='pdf')
-        details = dask.compute(computations, scheduler='processes')[0]
+        messages = dask.compute(computations, scheduler='processes')[0]
 
-        return details
+        return messages
