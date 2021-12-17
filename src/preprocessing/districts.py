@@ -6,7 +6,7 @@ import requests
 import logging
 
 
-class GeographicCodes:
+class Districts:
 
     def __init__(self):
         """
