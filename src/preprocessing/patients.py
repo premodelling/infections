@@ -15,7 +15,7 @@ class Patients:
 
         """
 
-        self.uri = 'data/catchment/2020 Trust Catchment Populations_Supplementary MSOA Analysis.xlsx'
+        self.uri = 'data/catchment/2021 Trust Catchment Populations_Supplementary MSOA Analysis.xlsx'
         self.sheet_name = 'All Admissions'
         self.usecols = ['CatchmentYear', 'msoa', 'TrustCode', 'patients', 'total_patients']
         self.rename = {'CatchmentYear': 'catchment_year', 'TrustCode': 'trust_code',
