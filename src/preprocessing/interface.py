@@ -5,8 +5,8 @@ import requests
 
 
 def main():
-    # patients = src.preprocessing.patients.Patients().exc()
-    # logger.info(patients)
+    patients = src.preprocessing.patients.Patients().exc()
+    logger.info(patients)
 
     # populations = src.preprocessing.populations.Populations().exc()
     # logger.info(populations)
@@ -16,21 +16,6 @@ def main():
 
     # exceptions = src.preprocessing.exceptions.Exceptions().exc()
     # logger.info(exceptions)
-
-    url = 'https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/OA11_LSOA11_MSOA11_LAD11_EW_LUv2/' \
-          'FeatureServer/0/query?where=1%3D1&outFields=MSOA11CD,MSOA11NM,LAD11CD,LAD11NM&outSR=4326&f=json'
-
-    url = 'https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/MSOA11_WD18_LAD18_EW_LUv2/' \
-          'FeatureServer/0/query?where=1%3D1&outFields=MSOA11CD,MSOA11NM,LAD18CD,LAD18NM&outSR=4326&f=json'
-
-    try:
-        response = requests.get(url = url)
-        response.raise_for_status()
-    except requests.RequestException as err:
-        raise err.strerror
-
-    extract = response.json()
-    logger.info(extract)
 
 
 if __name__ == '__main__':
