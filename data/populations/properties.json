@@ -5,7 +5,7 @@
     "sheets": ["Mid-2012 Females", "Mid-2012 Males"], 
     "header":  4, 
     "cells":  "A:CQ", 
-    "keys":  "Area Codes", 
+    "keys":  ["Area Codes"],
     "overflow":  "Area Names"},
 
   {"filename": "SAPE20DT3-mid-2013-msoa-syoa-estimates-formatted.XLS",
@@ -14,7 +14,7 @@
     "sheets": ["Mid-2013 Females", "Mid-2013 Males"],
     "header":  4,
     "cells":  "A:CQ",
-    "keys":  "Area Codes",
+    "keys":  ["Area Codes"],
     "overflow":  "Area Names"},
 
   {"filename": "SAPE20DT3-mid-2014-msoa-syoa-estimates-formatted.XLS",
@@ -23,7 +23,7 @@
     "sheets": ["Mid-2014 Females", "Mid-2014 Males"],
     "header":  4,
     "cells":  "A:CQ",
-    "keys":  "Area Codes",
+    "keys":  ["Area Codes"],
     "overflow":  "Area Names"},
 
   {"filename": "SAPE20DT3-mid-2015-msoa-syoa-estimates-formatted.XLS",
@@ -32,7 +32,7 @@
     "sheets": ["Mid-2015 Females", "Mid-2015 Males"],
     "header":  4,
     "cells":  "A:CQ",
-    "keys":  "Area Codes",
+    "keys":  ["Area Codes"],
     "overflow":  "Area Names"},
 
   {"filename": "SAPE20DT3-mid-2016-msoa-syoa-estimates-formatted.XLS",
@@ -41,7 +41,7 @@
     "sheets": ["Mid-2016 Females", "Mid-2016 Males"],
     "header":  4,
     "cells":  "A:CQ",
-    "keys":  "Area Codes",
+    "keys":  ["Area Codes"],
     "overflow":  "Area Names"},
 
   {"filename": "SAPE20DT3-mid-2017-msoa-syoa-estimates-formatted.XLS",
@@ -50,7 +50,7 @@
     "sheets": ["Mid-2017 Females", "Mid-2017 Males"],
     "header":  4,
     "cells":  "A:CQ",
-    "keys":  "Area Codes",
+    "keys":  ["Area Codes"],
     "overflow":  "Area Names"},
 
   {"filename": "SAPE21DT3a-mid-2018-msoa-on-2019-LA-syoa-estimates-formatted.xlsx",
@@ -59,7 +59,7 @@
     "sheets": ["Mid-2018 Females", "Mid-2018 Males"],
     "header":  4,
     "cells":  "A:CQ",
-    "keys":  "Area Codes",
+    "keys":  ["Area Codes"],
     "overflow":  "LA (2019 boundaries)"},
 
   {"filename": "SAPE22DT4-mid-2019-msoa-syoa-estimates-unformatted.xlsx",
@@ -68,8 +68,8 @@
     "sheets": ["Mid-2019 Females", "Mid-2019 Males"],
     "header":  4,
     "cells":  "A:CT",
-    "keys":  "MSOA Code",
-    "overflow":  "Area Names"},
+    "keys":  ["MSOA Code"],
+    "overflow":  ""},
 
   {"filename": "sape23dt4mid2020msoasyoaestimatesunformatted.xlsx",
     "year": 2020,
@@ -77,6 +77,6 @@
     "sheets": ["Mid-2020 Females", "Mid-2020 Males"],
     "header":  4,
     "cells":  "A:CT",
-    "keys":  "MSOA Code",
-    "overflow":  "Area Names"}
+    "keys":  ["MSOA Code"],
+    "overflow":  ""}
 ]
