@@ -1,4 +1,6 @@
 import os
+import collections
+import json
 import logging
 import pandas as pd
 import numpy as np
@@ -13,12 +15,17 @@ class Populations:
         Constructor
         """
 
-        self.details, self.ages = config.Config().population()
-        self.source = os.path.join(os.getcwd(), 'data', 'populations')
+        # the expected age fields
+        self.ages = config.Config().ages
 
         # storage
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'single')
         self.__path()
+
+        # sources
+        self.source = os.path.join(os.getcwd(), 'data', 'populations')
+        with open(file=os.path.join(os.getcwd(), 'data', 'populations', 'properties.json'), mode='r') as blob:
+            self.sources = json.load(blob)
 
         # logging
         logging.basicConfig(level=logging.INFO,
@@ -48,10 +55,12 @@ class Populations:
         for index in np.arange(len(detail.sheets)):
 
             try:
+                # read
                 frame = pd.read_excel(io=os.path.join(self.source, detail.filename),
                                       sheet_name=detail.sheets[index], header=detail.header,
                                       usecols=detail.cells)
-                if detail.overflow is not None:
+                # exclude extraneous data, if any, associated with field detail.overflow
+                if detail.overflow and detail.overflow.strip():
                     frame = frame.copy().loc[~frame[detail.overflow].notna(), :]
             except RuntimeError as err:
                 raise Exception(err)
@@ -86,8 +95,13 @@ class Populations:
         :return:
         """
 
+        # metadata of each of the source records
+        field_names = ['filename', 'year', 'sex', 'sheets', 'header', 'cells', 'keys', 'overflow']
+        Detail = collections.namedtuple(typename='Detail', field_names=field_names)
+
         messages = []
-        for detail in self.details:
+        for source in self.sources:
+            detail = Detail(**source)
 
             estimates = self.__read(detail=detail)
             message = self.__write(frame=estimates, year=detail.year)
