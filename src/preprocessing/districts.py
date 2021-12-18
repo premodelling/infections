@@ -1,26 +1,55 @@
 """
-In progress
+In progress:
+
+Reads the lower tier local authority (LTLA), i.e., local area districts (LAD), data
+mapped to its middle super output area children.  The data is read via the Open
+Geographic Portal API (https://geoportal.statistics.gov.uk)
 
 """
 import requests
+import collections
+import os
 import logging
+import pandas as pd
+import dask
+import json
 
 
 class Districts:
 
     def __init__(self):
         """
-
+        Constructor
         """
+
+        # logging
         logging.basicConfig(level=logging.INFO,
                             format='\n\n%(message)s\n%(asctime)s.%(msecs)03d')
-        self.logger = logging.getLevelName(__name__)
+        self.logger = logging.getLogger(__name__)
 
-    @staticmethod
-    def __read(url):
+        # storage
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'geography', 'districts')
+        self.__path()
+
+        # sources
+        with open(file='data/gis/districts/properties.json', mode='r') as blob:
+            self.sources = json.load(blob)
+
+    def __path(self):
+        """
+
+        :return:
+        """
+
+        if not os.path.exists(self.storage):
+            os.makedirs(self.storage)
+
+    @dask.delayed
+    def __read(self, url: str, segment: str):
         """
 
         :param url:
+        :param segment:
         :return:
         """
 
@@ -30,7 +59,27 @@ class Districts:
         except requests.RequestException as err:
             raise err.strerror
 
-        return response.json()
+        dictionary = response.json()
+        readings = pd.json_normalize(data=dictionary[segment])
+        readings.rename(mapper=lambda x: x.split('.')[1], axis=1, inplace=True)
+
+        return readings
+
+    @dask.delayed
+    def __write(self, frame: pd.DataFrame, year: int) -> str:
+        """
+
+        :param frame:
+        :param year:
+        :return:
+        """
+
+        try:
+            frame.to_csv(path_or_buf=os.path.join(self.storage, '{}.csv'.format(year)),
+                         index=False, header=True, encoding='utf-8')
+            return '{}: succeeded'.format(year)
+        except RuntimeError as err:
+            raise Exception(err)
 
     def exc(self):
         """
@@ -38,10 +87,17 @@ class Districts:
         :return:
         """
 
-        locators = ['https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/MSOA11_WD20_LAD20_EW_LU/'
-                    'FeatureServer/0/query?where=1%3D1&outFields=MSOA11CD,MSOA11NM,LAD20CD,LAD20NM&outSR=4326&f=json',
-                    'https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/MSOA11_WD19_LAD19_EW_LU/'
-                    'FeatureServer/0/query?where=1%3D1&outFields=MSOA11CD,MSOA11NM,LAD19CD,LAD19NM&outSR=4326&f=json']
+        # the details of the metadata of each of the source records
+        Detail = collections.namedtuple(typename='Detail', field_names=['year', 'api', 'segment'])
 
-        for locator in locators:
-            self.logger.info(self.__read(url=locator))
+        computations = []
+        for source in self.sources:
+            detail = Detail(**source)
+            readings = self.__read(url=detail.api, segment=detail.segment)
+            message = self.__write(frame=readings, year=detail.year)
+            computations.append(message)
+
+        dask.visualize(computations, filename='districts', format='pdf')
+        messages = dask.compute(computations, scheduler='processes')[0]
+
+        return messages
