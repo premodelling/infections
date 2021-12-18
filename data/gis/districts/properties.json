@@ -1,0 +1,17 @@
+[
+  {"year": 2020,
+    "api":  "Middle_Layer_Super_Output_Area__2011__to_Ward_to_LAD__December_2020__Lookup_in_England_and_Wales_V2.csv",
+    "use":  ["MSOA11CD", "MSOA11NM", "LAD20CD", "LAD20NM"]},
+  {"year": 2019,
+    "api":  "Middle_Layer_Super_Output_Area_(2011)_to_Ward_to_LAD_(December_2019)_Lookup_in_England_and_Wales.csv",
+    "use":  ["MSOA11CD", "MSOA11NM", "LAD19CD", "LAD19NM"]},
+  {"year": 2018,
+    "api":  "Middle_Layer_Super_Output_Area_(2011)_to_Ward_to_LAD_(December_2018)_Lookup_in_England_and_Wales.csv",
+    "use":  ["MSOA11CD", "MSOA11NM", "LAD18CD", "LAD18NM"]},
+  {"year": 2017,
+    "api":  "Middle_Layer_Super_Output_Area_(2011)_to_Ward_(2017)_Lookup_in_England_and_Wales.csv",
+    "use":  ["MSOA11CD", "MSOA11NM", "LAD17CD", "LAD17NM"]},
+  {"year": 2016,
+    "api":  "Middle_Layer_Super_Output_Area_(2011)_to_Ward_(2016)_Lookup_in_England_and_Wales.csv",
+    "use":  ["MSOA11CD", "MSOA11NM", "LAD16CD", "LAD16NM"]}
+]
