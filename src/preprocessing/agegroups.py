@@ -32,8 +32,8 @@ class AgeGroups:
         self.groupings = [index // age_group_length for index in np.arange(0, len(self.ages) - 1)]
 
         # The data source & storage paths
-        self.source = os.path.join(os.getcwd(), 'warehouse', 'populations', 'single')
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'group')
+        self.source = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'single')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'group')
         self.__path()
 
     def __path(self):
@@ -104,6 +104,7 @@ class AgeGroups:
         # read & process the data sets in parallel
         computations = []
         for filepath in filepaths:
+
             readings = self.__read(filepath=filepath)
             calculations = self.__calculate(frame=readings)
             message = self.__write(frame=calculations, filename=os.path.basename(filepath))
