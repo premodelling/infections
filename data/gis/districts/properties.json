@@ -13,5 +13,8 @@
     "fields":  ["MSOA11CD", "MSOA11NM", "LAD17CD", "LAD17NM"]},
   {"year": 2016,
     "filename":  "Middle_Layer_Super_Output_Area_(2011)_to_Ward_(2016)_Lookup_in_England_and_Wales.csv",
-    "fields":  ["MSOA11CD", "MSOA11NM", "LAD16CD", "LAD16NM"]}
+    "fields":  ["MSOA11CD", "MSOA11NM", "LAD16CD", "LAD16NM"]},
+  {"year": 2015,
+    "filename":  "Middle_Layer_Super_Output_Area_(2011)_to_Ward_(2015)_Lookup_in_England_and_Wales.csv",
+    "fields":  ["MSOA11CD", "MSOA11NM", "LAD15CD", "LAD15NM"]}
 ]
