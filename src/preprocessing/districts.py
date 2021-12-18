@@ -2,17 +2,16 @@
 In progress:
 
 Reads the lower tier local authority (LTLA), i.e., local area districts (LAD), data
-mapped to its middle super output area children.  The data is read via the Open
-Geographic Portal API (https://geoportal.statistics.gov.uk)
+mapped to its middle super output area children.  Refer to data/gis/districts/README.md
 
 """
-import requests
 import collections
-import os
-import logging
-import pandas as pd
-import dask
 import json
+import logging
+import os
+
+import dask
+import pandas as pd
 
 
 class Districts:
@@ -32,6 +31,7 @@ class Districts:
         self.__path()
 
         # sources
+        self.sourcepath = os.path.join(os.getcwd(), 'data', 'gis', 'districts')
         with open(file='data/gis/districts/properties.json', mode='r') as blob:
             self.sources = json.load(blob)
 
@@ -45,23 +45,20 @@ class Districts:
             os.makedirs(self.storage)
 
     @dask.delayed
-    def __read(self, url: str, segment: str):
+    def __read(self, detail):
         """
-
-        :param url:
-        :param segment:
-        :return:
+        
+        :param detail: a named tuple of features w.r.t. a file to be read
+        :return: 
         """
 
         try:
-            response = requests.get(url=url)
-            response.raise_for_status()
-        except requests.RequestException as err:
-            raise err.strerror
+            readings = pd.read_csv(filepath_or_buffer=os.path.join(self.sourcepath, detail.filename),
+                                   header=0, usecols=detail.fields, encoding='utf8')
+        except RuntimeError as err:
+            raise Exception(err)
 
-        dictionary = response.json()
-        readings = pd.json_normalize(data=dictionary[segment])
-        readings.rename(mapper=lambda x: x.split('.')[1], axis=1, inplace=True)
+        readings.drop_duplicates(inplace=True)
 
         return readings
 
@@ -88,12 +85,12 @@ class Districts:
         """
 
         # the details of the metadata of each of the source records
-        Detail = collections.namedtuple(typename='Detail', field_names=['year', 'api', 'segment'])
+        Detail = collections.namedtuple(typename='Detail', field_names=['year', 'filename', 'fields'])
 
         computations = []
         for source in self.sources:
             detail = Detail(**source)
-            readings = self.__read(url=detail.api, segment=detail.segment)
+            readings = self.__read(detail=detail)
             message = self.__write(frame=readings, year=detail.year)
             computations.append(message)
 
