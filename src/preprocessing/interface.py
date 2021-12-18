@@ -1,12 +1,11 @@
 import logging
 import os
 import sys
-import requests
 
 
 def main():
-    patients = src.preprocessing.patients.Patients().exc()
-    logger.info(patients)
+    # patients = src.preprocessing.patients.Patients().exc()
+    # logger.info(patients)
 
     # populations = src.preprocessing.populations.Populations().exc()
     # logger.info(populations)
@@ -16,6 +15,9 @@ def main():
 
     # exceptions = src.preprocessing.exceptions.Exceptions().exc()
     # logger.info(exceptions)
+
+    districts = src.preprocessing.districts.Districts().exc()
+    logger.info(districts)
 
 
 if __name__ == '__main__':
@@ -35,5 +37,6 @@ if __name__ == '__main__':
     import src.preprocessing.populations
     import src.preprocessing.agegroups
     import src.preprocessing.exceptions
+    import src.preprocessing.districts
 
     main()
