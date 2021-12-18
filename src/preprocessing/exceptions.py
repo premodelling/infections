@@ -32,7 +32,7 @@ class Exceptions:
 
         # The data source & storage paths
         self.source = os.path.join(os.getcwd(), 'data', 'populations')
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'group')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'group')
         self.__path()
 
     def __path(self):
