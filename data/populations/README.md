@@ -14,7 +14,7 @@ Release Date: 16 September 2021
 
 ### Notes
 
-The ``properties.json`` file is a project creation; it would facilitate systematic data processing. 
+The ``properties.json`` file is a project creation; it facilitates systematic data processing. 
 
 <br>
 <br>
