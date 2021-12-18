@@ -84,7 +84,7 @@ class Districts:
         :return:
         """
 
-        # the details of the metadata of each of the source records
+        # metadata of each of the source records
         Detail = collections.namedtuple(typename='Detail', field_names=['year', 'filename', 'fields'])
 
         computations = []
