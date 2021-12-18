@@ -1,9 +1,9 @@
-import os
 import collections
 import json
-import logging
-import pandas as pd
+import os
+
 import numpy as np
+import pandas as pd
 
 import config
 
@@ -26,12 +26,6 @@ class Populations:
         self.source = os.path.join(os.getcwd(), 'data', 'populations')
         with open(file=os.path.join(os.getcwd(), 'data', 'populations', 'properties.json'), mode='r') as blob:
             self.sources = json.load(blob)
-
-        # logging
-        logging.basicConfig(level=logging.INFO,
-                            format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
-                            datefmt='%Y-%m-%d %H-%M-%S')
-        self.logger = logging.getLogger(__name__)
 
     def __path(self):
         """
