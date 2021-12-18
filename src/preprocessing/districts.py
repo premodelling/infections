@@ -59,6 +59,7 @@ class Districts:
             raise Exception(err)
 
         readings.drop_duplicates(inplace=True)
+        readings = readings.copy().loc[readings['MSOA11CD'].str.startswith('E'), :]
 
         return readings
 
