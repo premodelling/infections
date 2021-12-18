@@ -27,7 +27,7 @@ class AgeGroups:
         # available ages, (4) grouping the ages, excluding 90+, into groups of length 5 each
         self.age_groups = configurations.age_groups
         age_group_length = configurations.age_group_length
-        _, ages = configurations.population()
+        ages = configurations.ages
         self.ages = [str(age) for age in ages]
         self.groupings = [index // age_group_length for index in np.arange(0, len(self.ages) - 1)]
 
