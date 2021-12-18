@@ -16,8 +16,14 @@ def main():
     # exceptions = src.preprocessing.exceptions.Exceptions().exc()
     # logger.info(exceptions)
 
-    districts = src.preprocessing.districts.Districts().exc()
-    logger.info(districts)
+    # districts = src.preprocessing.districts.Districts().exc()
+    # logger.info(districts)
+
+    # populationsltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
+    # logger.info(populationsltla)
+
+    agegroupsltla = src.preprocessing.agegroupsltla.AgeGroupsLTLA().exc()
+    logger.info(agegroupsltla)
 
 
 if __name__ == '__main__':
@@ -38,5 +44,7 @@ if __name__ == '__main__':
     import src.preprocessing.agegroups
     import src.preprocessing.exceptions
     import src.preprocessing.districts
+    import src.preprocessing.populationsltla
+    import src.preprocessing.agegroupsltla
 
     main()
