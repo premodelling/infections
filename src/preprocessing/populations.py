@@ -19,7 +19,7 @@ class Populations:
         self.ages = config.Config().ages
 
         # storage
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'single')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'single')
         self.__path()
 
         # sources
