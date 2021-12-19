@@ -22,7 +22,11 @@ class Exceptions:
         Constructor
         """
 
+        # the expected age groups fields
         self.age_groups = config.Config().age_groups
+
+        # LTLA <--> MSOA
+        self.districts = config.Config().districts()
 
         # focus
         field_names = ['filename', 'year', 'sex', 'sheets', 'header', 'cells', 'keys', 'overflow']
@@ -68,11 +72,20 @@ class Exceptions:
             frame = frame.copy().loc[frame['msoa'].str.startswith('E'), :]
             frame.loc[:, 'sex'] = self.detail.sex[index]
             frame = frame.copy()[['msoa', 'sex'] + self.age_groups]
-            print(frame.head())
-            
             readings.append(frame)
 
         return pd.concat(readings, axis=0, ignore_index=True)
+
+    def __merge(self, population: pd.DataFrame):
+        """
+
+        :param population:
+        :return:
+        """
+
+        merged = population.merge(self.districts, how='left', on='msoa')
+
+        return merged[['msoa', 'ltla', 'sex'] + self.age_groups]
 
     def __write(self, frame: pd.DataFrame, year: int) -> str:
         """
@@ -91,7 +104,8 @@ class Exceptions:
         
     def exc(self):
         
-        readings = self.__read()
-        message = self.__write(frame=readings, year=self.detail.year)
+        population = self.__read()
+        merged = self.__merge(population=population)
+        message = self.__write(frame=merged, year=self.detail.year)
 
         return message
