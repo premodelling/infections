@@ -83,7 +83,7 @@ class Populations:
 
         merged = population.merge(self.districts, how='left', on='msoa')
 
-        return merged
+        return merged[['msoa', 'ltla', 'sex'] + self.ages]
 
     @dask.delayed
     def __write(self, frame: pd.DataFrame, year: int) -> str:
