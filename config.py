@@ -1,4 +1,6 @@
 import collections
+import os
+import pandas as pd
 
 import numpy as np
 
@@ -34,3 +36,21 @@ class Config:
         ages = list(np.arange(start=0, stop=90))
         self.ages = ages + ['90+']
         self.ages_length = len(ages)
+
+    @staticmethod
+    def districts() -> pd.DataFrame:
+        """
+
+        :return:
+        """
+
+        datafile = os.path.join(os.getcwd(), 'warehouse', 'geography', 'districts', '2020.csv')
+
+        try:
+            frame = pd.read_csv(filepath_or_buffer=datafile, header=0,
+                                    encoding='utf-8', usecols=['MSOA11CD', 'LAD20CD'])
+        except RuntimeError as err:
+            raise Exception(err)
+        frame.rename({'MSOA11CD': 'msoa', 'LAD20CD': 'ltla'}, axis=1, inplace=True)
+
+        return frame
