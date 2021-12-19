@@ -2,6 +2,7 @@ import collections
 import json
 import os
 
+import dask
 import numpy as np
 import pandas as pd
 
@@ -18,18 +19,20 @@ class Populations:
         # the expected age fields
         self.ages = config.Config().ages
 
+        # LTLA <--> MSOA
+        self.districts = config.Config().districts()
+
+        # sources
+        self.sources_path = os.path.join(os.getcwd(), 'data', 'populations')
+        with open(file=os.path.join(os.getcwd(), 'data', 'populations', 'properties.json'), mode='r') as blob:
+            self.sources = json.load(blob)
+
         # storage
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'single')
         self.__path()
 
-        # sources
-        self.source = os.path.join(os.getcwd(), 'data', 'populations')
-        with open(file=os.path.join(os.getcwd(), 'data', 'populations', 'properties.json'), mode='r') as blob:
-            self.sources = json.load(blob)
-
     def __path(self):
         """
-        Ascertains the existence of warehouse/populations/single
 
         :return:
         """
@@ -37,9 +40,10 @@ class Populations:
         if not os.path.exists(self.storage):
             os.makedirs(self.storage)
 
+    @dask.delayed
     def __read(self, detail) -> pd.DataFrame:
         """
-        Reads population files
+        Reads population files, # exclude extraneous data, if any, associated with field detail.overflow
 
         :param detail:
         :return:
@@ -49,11 +53,9 @@ class Populations:
         for index in np.arange(len(detail.sheets)):
 
             try:
-                # read
-                frame = pd.read_excel(io=os.path.join(self.source, detail.filename),
-                                      sheet_name=detail.sheets[index], header=detail.header,
-                                      usecols=detail.cells)
-                # exclude extraneous data, if any, associated with field detail.overflow
+                frame = pd.read_excel(io=os.path.join(self.sources_path, detail.filename),
+                                      sheet_name=detail.sheets[index],
+                                      header=detail.header, usecols=detail.cells)
                 if detail.overflow and detail.overflow.strip():
                     frame = frame.copy().loc[~frame[detail.overflow].notna(), :]
             except RuntimeError as err:
@@ -63,11 +65,23 @@ class Populations:
             frame = frame.copy().loc[frame['msoa'].str.startswith('E'), :]
             frame = frame.copy()[['msoa'] + self.ages]
             frame.loc[:, 'sex'] = detail.sex[index]
-
             readings.append(frame)
 
         return pd.concat(readings, axis=0, ignore_index=True)
 
+    @dask.delayed
+    def __merge(self, population: pd.DataFrame):
+        """
+        
+        :param population: 
+        :return: 
+        """
+
+        merged = population.merge(self.districts, how='left', on='msoa')
+
+        return merged
+
+    @dask.delayed
     def __write(self, frame: pd.DataFrame, year: int) -> str:
         """
 
@@ -93,12 +107,16 @@ class Populations:
         field_names = ['filename', 'year', 'sex', 'sheets', 'header', 'cells', 'keys', 'overflow']
         Detail = collections.namedtuple(typename='Detail', field_names=field_names)
 
-        messages = []
+        computations = []
         for source in self.sources:
             detail = Detail(**source)
 
-            estimates = self.__read(detail=detail)
-            message = self.__write(frame=estimates, year=detail.year)
-            messages.append(message)
+            population = self.__read(detail=detail)
+            merged = self.__merge(population=population)
+            message = self.__write(frame=merged, year=detail.year)
+            computations.append(message)
+
+        dask.visualize(computations, filename='populations', format='pdf')
+        messages = dask.compute(computations, scheduler='processes')[0]
 
         return messages
