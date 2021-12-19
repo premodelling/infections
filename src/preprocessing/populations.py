@@ -1,3 +1,7 @@
+"""
+Reads the data.gov.uk population files, structures, and maps MSOA & LTLA/LAD codes
+"""
+
 import collections
 import json
 import os
@@ -97,7 +101,7 @@ class Populations:
         except RuntimeError as err:
             raise Exception(err)
 
-    def exc(self):
+    def exc(self) -> list:
         """
 
         :return:
@@ -107,13 +111,16 @@ class Populations:
         field_names = ['filename', 'year', 'sex', 'sheets', 'header', 'cells', 'keys', 'overflow']
         Detail = collections.namedtuple(typename='Detail', field_names=field_names)
 
+        # read & process the data sets in parallel
         computations = []
         for source in self.sources:
+
             detail = Detail(**source)
 
             population = self.__read(detail=detail)
             merged = self.__merge(population=population)
             message = self.__write(frame=merged, year=detail.year)
+
             computations.append(message)
 
         dask.visualize(computations, filename='populations', format='pdf')
