@@ -12,10 +12,6 @@ class AgeGroupsLTLA:
         Constructor
         """
 
-        # the latest districts data
-        self.districts_file = os.path.join(os.getcwd(), 'warehouse', 'geography', 'districts', '2020.csv')
-        self.districts = self.__districts()
-
         # population data set
         sources_path = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'group')
         self.sources = glob.glob(pathname=os.path.join(sources_path, '*.csv'))
@@ -33,22 +29,6 @@ class AgeGroupsLTLA:
 
         if not os.path.exists(self.storage):
             os.makedirs(self.storage)
-
-    def __districts(self) -> pd.DataFrame:
-        """
-
-        :return:
-        """
-
-        try:
-            districts = pd.read_csv(filepath_or_buffer=self.districts_file, header=0,
-                                    encoding='utf-8', usecols=['MSOA11CD', 'LAD20CD'])
-        except RuntimeError as err:
-            raise Exception(err)
-
-        districts.rename({'MSOA11CD': 'msoa', 'LAD20CD': 'ltla'}, axis=1, inplace=True)
-
-        return districts
 
     @dask.delayed
     def __population(self, source: str) -> pd.DataFrame:
@@ -73,8 +53,7 @@ class AgeGroupsLTLA:
         :return:
         """
 
-        frame = population.merge(self.districts, how='left', on='msoa')
-        aggregates = frame.drop(columns='msoa').groupby(by=['ltla', 'sex']).agg('sum')
+        aggregates = population.drop(columns='msoa').groupby(by=['ltla', 'sex']).agg('sum')
         aggregates.reset_index(drop=False, inplace=True)
 
         return aggregates
@@ -101,8 +80,10 @@ class AgeGroupsLTLA:
         :return:
         """
 
+        # read & process the data sets in parallel
         computations = []
         for source in self.sources:
+
             population = self.__population(source=source)
             aggregates = self.__aggregates(population=population)
             message = self.__write(frame=aggregates, filename=os.path.basename(source))
