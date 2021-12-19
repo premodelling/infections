@@ -4,8 +4,14 @@ import sys
 
 
 def main():
+
+    logger.info('preprocessing ...')
+
     # patients = src.preprocessing.patients.Patients().exc()
     # logger.info(patients)
+
+    # districts = src.preprocessing.districts.Districts().exc()
+    # logger.info(districts)
 
     # populations = src.preprocessing.populations.Populations().exc()
     # logger.info(populations)
@@ -16,14 +22,11 @@ def main():
     # exceptions = src.preprocessing.exceptions.Exceptions().exc()
     # logger.info(exceptions)
 
-    # districts = src.preprocessing.districts.Districts().exc()
-    # logger.info(districts)
-
     # populationsltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
     # logger.info(populationsltla)
 
-    agegroupsltla = src.preprocessing.agegroupsltla.AgeGroupsLTLA().exc()
-    logger.info(agegroupsltla)
+    # agegroupsltla = src.preprocessing.agegroupsltla.AgeGroupsLTLA().exc()
+    # logger.info(agegroupsltla)
 
 
 if __name__ == '__main__':
@@ -40,10 +43,10 @@ if __name__ == '__main__':
 
     # libraries
     import src.preprocessing.patients
+    import src.preprocessing.districts
     import src.preprocessing.populations
     import src.preprocessing.agegroups
     import src.preprocessing.exceptions
-    import src.preprocessing.districts
     import src.preprocessing.populationsltla
     import src.preprocessing.agegroupsltla
 
