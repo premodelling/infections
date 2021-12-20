@@ -16,6 +16,10 @@ def main():
             .read(filename='{}.csv'.format(year))
         logger.info(patients.head())
 
+        populations = src.catchments.populations.Populations(source_path=path_populations)\
+            .exc(filename='{}.csv'.format(year))
+        logger.info(populations.head())
+
 
 if __name__ == '__main__':
 
@@ -36,6 +40,7 @@ if __name__ == '__main__':
 
     # libraries
     import src.catchments.patients
+    import src.catchments.populations
 
 
 
