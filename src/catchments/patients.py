@@ -15,7 +15,7 @@ class Patients:
 
     def read(self, filename) -> pd.DataFrame:
         """
-        
+
         :param filename:
         :return:
         """
