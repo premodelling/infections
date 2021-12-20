@@ -8,11 +8,17 @@ class Patients:
     def __init__(self, source_path):
         """
 
+        :param source_path:
         """
 
         self.source_path = source_path
 
     def read(self, filename) -> pd.DataFrame:
+        """
+        
+        :param filename:
+        :return:
+        """
 
         try:
             frame = pd.read_csv(filepath_or_buffer=os.path.join(self.source_path, filename), header=0, encoding='utf-8')
