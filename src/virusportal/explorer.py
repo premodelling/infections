@@ -1,5 +1,6 @@
 """
-For exploring the query parameters of ...
+For exploring https://coronavirus.data.gov.uk/details/developers-guide/main-api, i.e., the UK government's API
+for SARS-CoV-2 related data.
 """
 
 import os
@@ -8,6 +9,25 @@ import logging
 
 
 def main():
+    """
+    Use this small program to explore the variates/measures available via the aforementioned API.  Note
+    that data is available for the area types
+
+        overview: Overview data for the United Kingdom
+        nation: Nation data (England, Northern Ireland, Scotland, and Wales)
+        region: Region data
+        nhsRegion: NHS Region data
+        utla: Upper-tier local authority data
+        ltla: Lower-tier local authority data
+
+    only.  Additionally, each area type is associated with a different range of variates/measures;
+    each variate/measure is not available for all area type.
+
+    There is a hidden option - NHS Trust: nhsTrust - but the data is incomplete, hence we have to rely
+    on other area types; specifically LTLA, i.e., LAD, data
+
+    :return:
+    """
 
     # Fields of interest
     fields = {'date': 'date',
@@ -25,11 +45,8 @@ def main():
 
     # Demarcations of interest
     #
-    # Examples
-    #   Case NHS Trust: area_code='RBT', area_type='nhsTrust'
+    # Example
     #   Case LTLA: area_code = 'E06000022'
-    #
-    # Alas, NHS Trust data is incomplete, hence we have to rely on LTLA/LAD data
     #
     example = src.virusportal.measures.Measures(fields=fields).exc(area_code='E06000022')
 
