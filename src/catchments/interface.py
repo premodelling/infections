@@ -20,7 +20,8 @@ def main():
             .exc(filename='{}.csv'.format(year))
         logger.info(populations.head())
 
-        src.catchments.msoa.MSOA(year=year).exc(patients=patients, populations=populations)
+        msoa = src.catchments.msoa.MSOA(year=year).exc(patients=patients, populations=populations)
+        logger.info(msoa)
 
 
 if __name__ == '__main__':
@@ -44,8 +45,6 @@ if __name__ == '__main__':
     import src.catchments.patients
     import src.catchments.populations
     import src.catchments.msoa
-
-
 
     # years
     years = [int(pathlib.Path(filepath).stem)
