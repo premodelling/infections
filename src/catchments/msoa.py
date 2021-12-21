@@ -33,7 +33,7 @@ class MSOA:
     @staticmethod
     def __path(path: str):
         """
-        
+
         :param path:
         :return:
         """
@@ -83,7 +83,7 @@ class MSOA:
         :param frame: a frame of calculations & numbers for a trust
         :param trust: the NHS Trust in focus
 
-        :return: Status message > Did the calculation & writing of trust patient fractions,
+        :return: Status message.  Did the calculation & writing of trust patient fractions,
                  estimated trust catchments, etc., succeed?
         """
 
@@ -103,7 +103,7 @@ class MSOA:
         :param patients: The data frame of MSOA/NHS Trust patients for the year self.year
         :param populations: The populations of the year self.year
 
-        :return: Processing status messages > Did the calculation & writing of trust patient fractions,
+        :return: Processing status messages.  Did the calculation & writing of trust patient fractions,
                  estimated trust catchments, etc., per trust succeed?
         """
 
