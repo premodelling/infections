@@ -32,6 +32,11 @@ class MSOA:
 
     @staticmethod
     def __path(path: str):
+        """
+        
+        :param path:
+        :return:
+        """
 
         if not os.path.exists(path):
             os.makedirs(path)
@@ -52,12 +57,13 @@ class MSOA:
         return frame
 
     @dask.delayed
-    def __segment(self, trust: str, reference) -> pd.DataFrame:
+    def __segment(self, trust: str, reference: pd.DataFrame) -> pd.DataFrame:
         """
 
         :param trust: the NHS Trust in focus
-        :param reference:
-        :return:
+        :param reference: the data frame from whence the trust's data is extracted
+
+        :return: melted trust data, with age group level calculations
         """
 
         frame = reference.copy().loc[reference.trust_code == trust, :]
