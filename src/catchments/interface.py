@@ -8,7 +8,7 @@ import glob
 def main():
 
     # Do not use dask here.  Instead, use dask for the MSOA & LTLA steps.
-    for year in years:
+    for year in years[:1]:
 
         logger.info(year)
 
@@ -18,13 +18,15 @@ def main():
         populations = src.catchments.populations.Populations(source_path=path_populations)\
             .exc(filename='{}.csv'.format(year))
 
-        # msoa = src.catchments.msoa.MSOA(year=year).exc(patients=patients, populations=populations)
-        # logger.info(msoa)
-
-        aggregates_ltla = src.catchments.aggregatesltla.AggregatesLTLA(patients=patients, populations=populations)\
+        aggregates_msoa = src.catchments.aggregatesmsoa.AggregatesMSOA(patients=patients, populations=populations)\
             .exc()
-        ltla = src.catchments.ltla.LTLA(reference=aggregates_ltla, year=year).exc()
-        logger.info(ltla)
+        msoa = src.catchments.msoa.MSOA(reference=aggregates_msoa, year=year).exc()
+        logger.info(msoa)
+
+        # aggregates_ltla = src.catchments.aggregatesltla.AggregatesLTLA(patients=patients, populations=populations)\
+        #     .exc()
+        # ltla = src.catchments.ltla.LTLA(reference=aggregates_ltla, year=year).exc()
+        # logger.info(ltla)
 
 
 if __name__ == '__main__':
@@ -47,6 +49,7 @@ if __name__ == '__main__':
     # libraries
     import src.catchments.patients
     import src.catchments.populations
+    import src.catchments.aggregatesmsoa
     import src.catchments.msoa
     import src.catchments.aggregatesltla
     import src.catchments.ltla
