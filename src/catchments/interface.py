@@ -8,20 +8,22 @@ import glob
 def main():
 
     # Do not use dask here.  Instead, use dask for the MSOA & LTLA steps.
-    for year in years[:1]:
+    for year in years:
 
         logger.info(year)
 
         patients = src.catchments.patients.Patients(source_path=path_patients)\
             .read(filename='{}.csv'.format(year))
+        logger.info(patients.head())
 
         populations = src.catchments.populations.Populations(source_path=path_populations)\
             .exc(filename='{}.csv'.format(year))
+        logger.info(populations.head())
 
-        aggregates_msoa = src.catchments.aggregatesmsoa.AggregatesMSOA(patients=patients, populations=populations)\
-            .exc()
-        msoa = src.catchments.msoa.MSOA(reference=aggregates_msoa, year=year).exc()
-        logger.info(msoa)
+        # aggregates_msoa = src.catchments.aggregatesmsoa.AggregatesMSOA(patients=patients, populations=populations)\
+        #     .exc()
+        # msoa = src.catchments.msoa.MSOA(reference=aggregates_msoa, year=year).exc()
+        # logger.info(msoa)
 
         # aggregates_ltla = src.catchments.aggregatesltla.AggregatesLTLA(patients=patients, populations=populations)\
         #     .exc()
