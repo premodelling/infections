@@ -1,17 +1,18 @@
 import os
 
-import pandas as pd
-import numpy as np
 import dask
+import numpy as np
+import pandas as pd
 
 import config
 
 
 class LTLA:
 
-    def __init__(self, reference, year):
+    def __init__(self, reference: pd.DataFrame, year: int):
         """
 
+        :param reference:
         :param year:
         """
 
@@ -22,6 +23,8 @@ class LTLA:
         # the expected age groups
         self.age_groups = config.Config().age_groups
 
+        # the variables that will be part of the melted data frame that provides
+        # a record per age group
         self.id_vars = ['ltla', 'ppln_ltla', 'patients_from_ltla_to_trust', 'total_patients_of_ltla',
                         'tfp_ltla', 'etc_ltla', 'sex']
 
@@ -77,6 +80,11 @@ class LTLA:
             raise Exception(err)
 
     def exc(self):
+        """
+
+        :return: Status messages.  Did the calculation & writing of trust patient fractions,
+                 estimated trust catchments, etc., succeed?
+        """
 
         trusts = self.reference.trust_code.unique()
 
