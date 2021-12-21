@@ -10,14 +10,28 @@ import logging
 def main():
 
     # Fields of interest
-    fields = {'date': 'date', 'newAdmissions': 'newAdmissions',
+    fields = {'date': 'date',
+              'dailyCases': 'newCasesBySpecimenDate',
+              'dailyAdmissions': 'newAdmissions',
               'covidOccupiedMVBeds': 'covidOccupiedMVBeds',
               'hospitalCases': 'hospitalCases',
-              'femaleDeaths28Days': 'femaleDeaths28Days'}
+              'dailyONSDeathsByDeathDate': 'newDailyNsoDeathsByDeathDate',
+              'dailyFirstDoseByVaccinationDate': 'newPeopleVaccinatedFirstDoseByVaccinationDate',
+              'dailySecondDoseByVaccinationDate': 'newPeopleVaccinatedSecondDoseByVaccinationDate',
+              'dailyThirdInjectionByVaccinationDate': 'newPeopleVaccinatedThirdInjectionByVaccinationDate',
+              'VaccineRegisterPopulationByVaccinationDate': 'VaccineRegisterPopulationByVaccinationDate',
+              'newVirusTestsBySpecimenDate': 'newVirusTestsBySpecimenDate',
+              'newPCRTestsBySpecimenDate': 'newPCRTestsBySpecimenDate'}
 
-    # Demarcation of interest
+    # Demarcations of interest
+    #
+    # Examples
+    #   Case NHS Trust: area_code='RBT', area_type='nhsTrust'
+    #   Case LTLA: area_code = 'E06000022'
+    #
     # Alas, NHS Trust data is incomplete, hence we have to rely on LTLA/LAD data
-    example = src.virusportal.measures.Measures(fields=fields).exc(area_code='RBT', area_type='nhsTrust')
+    #
+    example = src.virusportal.measures.Measures(fields=fields).exc(area_code='E06000022')
 
     # previews
     logger.info(example)
@@ -30,7 +44,9 @@ if __name__ == '__main__':
     sys.path.append(os.path.join(root, 'src'))
 
     # Logging
-    logging.basicConfig(level=logging.INFO, format='\n\n%(message)s\n%(asctime)s.%(msecs)03d', datefmt='%Y-%m-%d %H:%M:%S')
+    logging.basicConfig(level=logging.INFO,
+                        format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
+                        datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
 
     # libraries
