@@ -9,13 +9,15 @@ import config
 
 class MSOA:
 
-    def __init__(self, year: int):
+    def __init__(self, reference: pd.DataFrame, year: int):
         """
 
+        :param reference:
         :param year:
         """
 
-        # the year in focus
+        # the data & year in focus
+        self.reference = reference
         self.year = year
 
         # the expected age groups
@@ -27,7 +29,7 @@ class MSOA:
                         'total_patients_of_msoa', 'tfp_msoa', 'etc_msoa', 'sex']
 
         # storage path
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'segments', 'msoa', 'trusts')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'segments', 'msoa', str(self.year))
         self.__path(self.storage)
 
     @staticmethod
@@ -41,32 +43,15 @@ class MSOA:
         if not os.path.exists(path):
             os.makedirs(path)
 
-    @staticmethod
-    def __trust(frame: pd.DataFrame):
-        """
-        * trust fraction of patients (tfp) w.r.t. a MSOA
-        * estimated trust catchment (etc) w.r.t. a MSOA
-
-        :param frame:
-        :return:
-        """
-
-        frame.loc[:, 'tfp_msoa'] = np.true_divide(frame.patients_from_msoa_to_trust, frame.total_patients_of_msoa)
-        frame.loc[:, 'etc_msoa'] = np.multiply(frame.tfp_msoa, frame.ppln_msoa)
-
-        return frame
-
     @dask.delayed
-    def __segment(self, trust: str, reference: pd.DataFrame) -> pd.DataFrame:
+    def __segment(self, trust: str) -> pd.DataFrame:
         """
 
         :param trust: the NHS Trust in focus
-        :param reference: the data frame from whence the trust's data is extracted
-
         :return: melted trust data, with age group level calculations
         """
 
-        frame = reference.copy().loc[reference.trust_code == trust, :]
+        frame = self.reference.copy().loc[self.reference.trust_code == trust, :]
         frame.drop(columns='trust_code', inplace=True)
         segment = frame.copy().melt(id_vars=self.id_vars, var_name='ag', value_name='ag_ppln_msoa')
 
@@ -87,33 +72,25 @@ class MSOA:
                  estimated trust catchments, etc., succeed?
         """
 
-        path = os.path.join(self.storage, trust)
-        self.__path(path=os.path.join(self.storage, trust))
-
         try:
-            frame.to_csv(path_or_buf=os.path.join(path, '{}.csv'.format(self.year)),
+            frame.to_csv(path_or_buf=os.path.join(self.storage, '{}.csv'.format(trust)),
                          index=False, header=True, encoding='utf-8')
             return '{year}: {trust} succeeded'.format(trust=trust, year=self.year)
         except RuntimeError as err:
             raise Exception(err)
 
-    def exc(self, patients: pd.DataFrame, populations: pd.DataFrame):
+    def exc(self) -> list:
         """
 
-        :param patients: The data frame of MSOA/NHS Trust patients for the year self.year
-        :param populations: The populations of the year self.year
-
-        :return: Processing status messages.  Did the calculation & writing of trust patient fractions,
-                 estimated trust catchments, etc., per trust succeed?
+        :return: Status messages.  Did the calculation & writing of trust patient fractions,
+                 estimated trust catchments, etc., succeed?
         """
 
-        reference = populations.merge(patients.drop(columns='catchment_year'), how='right', on='msoa')
-        reference = self.__trust(frame=reference.copy())
-        trusts = reference.trust_code.unique()
+        trusts = self.reference.trust_code.unique()
 
         computations = []
         for trust in trusts:
-            segment = self.__segment(trust=trust, reference=reference)
+            segment = self.__segment(trust=trust)
             message = self.__write(frame=segment, trust=trust)
             computations.append(message)
 
