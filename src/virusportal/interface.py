@@ -11,26 +11,26 @@ def main():
     :return:
     """
 
-    # API filter parameters
-    FilterParameters = collections.namedtuple(
-        typename='FilterParameters', field_names=['area_code', 'area_type', 'area_name', 'date'], defaults=None)
-    parameters_ = [FilterParameters(area_code=code, area_type='ltla', area_name=None, date=None) for code in codes]
-
-    # measures
-    measures = src.virusportal.measures.Measures(fields=fields).exc(parameters_=parameters_)
+    # lower tier local authority level measures
+    parameters_ = [FilterParameters(area_code=code, area_type='ltla', area_name=None, date=None)
+                   for code in codes_ltla]
+    measures = src.virusportal.measures.Measures(fields=fields_ltla, path=os.path.join('ltla', 'measures'))\
+        .exc(parameters_=parameters_)
     logger.info(measures)
 
-    # At Trust level; ref. explorer.py
-    # newAdmissions, covidOccupiedMVBeds, hospitalCases (maybe)
+    # trust level measures
+    parameters_ = [FilterParameters(area_code=code, area_type='nhsTrust', area_name=None, date=None)
+                   for code in codes_trusts]
+    measures = src.virusportal.measures.Measures(fields=fields_trusts, path=os.path.join('trusts', 'measures'))\
+        .exc(parameters_=parameters_)
+    logger.info(measures)
 
     # demographic data
-
-    # merge
 
 
 if __name__ == '__main__':
 
-    # paths
+    # Paths
     root = os.getcwd()
     sys.path.append(root)
     sys.path.append(os.path.join(root, 'src'))
@@ -41,15 +41,23 @@ if __name__ == '__main__':
                         datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
 
+    # API filter parameters
+    FilterParameters = collections.namedtuple(
+        typename='FilterParameters', field_names=['area_code', 'area_type', 'area_name', 'date'], defaults=None)
+
     # libraries
     import config
     import src.virusportal.measures
 
-    # API fields of interest
-    fields = config.Config().fields
+    # Setting-up
+    configurations = config.Config()
 
-    # geographic codes
-    districts = config.Config().districts()
-    codes = districts.ltla.unique()
+    fields_ltla = configurations.fields_ltla
+    districts = configurations.districts()
+    codes_ltla = districts.ltla.unique()
+
+    fields_trusts = configurations.fields_trust
+    trusts = configurations.trusts()
+    codes_trusts = trusts.trust_code.unique()
 
     main()
