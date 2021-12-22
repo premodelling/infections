@@ -27,7 +27,7 @@ def main():
     each variate/measure is not available for all area type.
 
     There is a hidden option - NHS Trust: nhsTrust - but the data is incomplete, hence we have to rely
-    on other area types; specifically LTLA, i.e., LAD, data.
+    on other area types also; specifically LTLA, i.e., LAD, data.
 
     The areaType is one of 4 authorised filters for acquiring data via the API.  In brief, the filters are
 
@@ -40,25 +40,17 @@ def main():
     """
 
     # filters
-    area_type = 'ltla'
-    area_code='E06000022'
+    area_type = 'nhsTrust'
+    area_code='RCF'
     dictionary = {'areaType': area_type, 'areaCode': area_code, 'areaName': None, 'date': None}
     dictionary = ['{}={}'.format(key, value) for key, value in dictionary.items() if value is not None]
     filters = str.join(';', dictionary)
 
     # fields of interest
     fields = {'date': 'date',
-              'dailyCases': 'newCasesBySpecimenDate',
               'dailyAdmissions': 'newAdmissions',
               'covidOccupiedMVBeds': 'covidOccupiedMVBeds',
-              'hospitalCases': 'hospitalCases',
-              'dailyONSDeathsByDeathDate': 'newDailyNsoDeathsByDeathDate',
-              'dailyFirstDoseByVaccinationDate': 'newPeopleVaccinatedFirstDoseByVaccinationDate',
-              'dailySecondDoseByVaccinationDate': 'newPeopleVaccinatedSecondDoseByVaccinationDate',
-              'dailyThirdInjectionByVaccinationDate': 'newPeopleVaccinatedThirdInjectionByVaccinationDate',
-              'VaccineRegisterPopulationByVaccinationDate': 'VaccineRegisterPopulationByVaccinationDate',
-              'newVirusTestsBySpecimenDate': 'newVirusTestsBySpecimenDate',
-              'newPCRTestsBySpecimenDate': 'newPCRTestsBySpecimenDate'}
+              'hospitalCases': 'hospitalCases'}
     structure = json.dumps(obj=fields, separators=(',', ':'))
 
     # url
@@ -72,6 +64,7 @@ def main():
         raise Exception(err)
 
     # previews
+    logger.info(url)
     logger.info(frame)
     logger.info('Latest record: %s', frame.date.max())
 
