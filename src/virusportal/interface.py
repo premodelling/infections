@@ -20,6 +20,9 @@ def main():
     measures = src.virusportal.measures.Measures(fields=fields).exc(parameters_=parameters_)
     logger.info(measures)
 
+    # At Trust level; ref. explorer.py
+    # newAdmissions, covidOccupiedMVBeds
+
     # demographic data
 
     # merge
