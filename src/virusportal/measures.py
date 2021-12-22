@@ -10,7 +10,7 @@ import pandas as pd
 
 class Measures:
 
-    def __init__(self, fields):
+    def __init__(self, fields: dict, path: str):
         """
 
         :param fields:
@@ -23,7 +23,7 @@ class Measures:
         self.structure = json.dumps(obj=fields, separators=(',', ':'))
 
         # storage
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'virus', 'ltla')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'virus', path)
         self.__path()
 
     def __path(self):
