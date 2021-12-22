@@ -76,6 +76,12 @@ in focus thus far.  A few points
   
 <br>
 
+The variables can be explored via the extracted data sets
+* [LTLA](./warehouse/virus/ltla/measures): Each file has the data of a single LTLA; the file name is the LTLA code.
+* [NHS Trust](./warehouse/virus/trusts/measures): A single trust's data per file; the file name is the NHS Trust code. 
+
+<br>
+
 variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/virus/trusts/measures) | Possible<br>Outcome
  :--- | :--- | :--- | :---
 ``date`` | &#10004; | &#10004; |
