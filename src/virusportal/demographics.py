@@ -1,7 +1,8 @@
-import pandas as pd
-import os
 import collections
+import os
+
 import dask
+import pandas as pd
 
 import src.virusportal.nestedfield
 
@@ -24,6 +25,12 @@ class Demographics:
         self._age_group = ['00_04', '05_09', '10_14', '15_19', '20_24', '25_29', '30_34', '35_39',
                            '40_44', '45_49', '50_54', '55_59', '60_64', '65_69', '70_74', '75_79',
                            '80_84', '85_89', '90+', 'unassigned']
+
+        self.rename = {'00_04': '0-4', '05_09': '5-9', '10_14': '10-14', '15_19': '15-19', '20_24': '20-24',
+                       '25_29': '25-29', '30_34': '30-34', '35_39': '35-39', '40_44': '40-44',
+                       '45_49': '45-49', '50_54': '50-54', '55_59': '55-59', '60_64': '60-64', '65_69': '65-69',
+                       '70_74': '70-74', '75_79': '75-79', '80_84': '80-84', '85_89': '85-89'}
+
         # storage
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'virus', path)
         self.__path()
@@ -58,6 +65,8 @@ class Demographics:
         else:
             frame = pd.DataFrame()
 
+        frame.rename(columns=self.rename, inplace=True)
+
         return frame
 
     @dask.delayed
@@ -83,7 +92,7 @@ class Demographics:
     def exc(self, parameters_: list):
 
         computations = []
-        for parameters in parameters_[:1]:
+        for parameters in parameters_:
 
             blob = self.__read(parameters=parameters)
             frame = self.__structure(blob=blob)
