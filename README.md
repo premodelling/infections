@@ -98,7 +98,7 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 #### Addressing Multi-Granularity
 
 The differing granularity of the variables can be addressed via estimated flow/mapping factors.  More notes, and graphs, upcoming.  Visit 
-[](./warehouse/trusts/segments/ltla) for the calculated factors per NHS Trust, from a LTLA, per year  
+[warehouse/trusts/segments/ltla](./warehouse/trusts/segments/ltla) for the calculated factors per NHS Trust, from a LTLA, per year  
 
 
 <br>
