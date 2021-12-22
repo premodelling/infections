@@ -97,7 +97,7 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 ``covidOccupiedMVBeds`` | | &#10004; |
 ``estimatedNewAdmissions`` | | &#10004; | &#10004;
 
-<sup>1</sup> [daily cases disaggregated by age per LTLA](./warehouse/virus/ltla/demographic/cases) 
+<sup>1</sup> [daily cases disaggregated by age, per LTLA, are also available](./warehouse/virus/ltla/demographic/cases) 
 
 <br>
 <br>
