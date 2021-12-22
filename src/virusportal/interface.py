@@ -14,16 +14,19 @@ def main():
     # lower tier local authority level measures
     parameters_ = [FilterParameters(area_code=code, area_type='ltla', area_name=None, date=None)
                    for code in codes_ltla]
-    measures = src.virusportal.measures.Measures(fields=fields_ltla, path=os.path.join('ltla', 'measures'))\
+    # measures = src.virusportal.measures.Measures(fields=fields_ltla, path=os.path.join('ltla', 'measures'))\
+    #     .exc(parameters_=parameters_)
+    # logger.info(measures)
+    measures = src.virusportal.demographics.Demographics(field='newCasesBySpecimenDateAgeDemographics', path=os.path.join('ltla', 'demographic', 'cases'))\
         .exc(parameters_=parameters_)
     logger.info(measures)
 
     # trust level measures
-    parameters_ = [FilterParameters(area_code=code, area_type='nhsTrust', area_name=None, date=None)
-                   for code in codes_trusts]
-    measures = src.virusportal.measures.Measures(fields=fields_trusts, path=os.path.join('trusts', 'measures'))\
-        .exc(parameters_=parameters_)
-    logger.info(measures)
+    # parameters_ = [FilterParameters(area_code=code, area_type='nhsTrust', area_name=None, date=None)
+    #                for code in codes_trusts]
+    # measures = src.virusportal.measures.Measures(fields=fields_trusts, path=os.path.join('trusts', 'measures'))\
+    #     .exc(parameters_=parameters_)
+    # logger.info(measures)
 
     # demographic data
 
@@ -48,6 +51,7 @@ if __name__ == '__main__':
     # libraries
     import config
     import src.virusportal.measures
+    import src.virusportal.demographics
 
     # Setting-up
     configurations = config.Config()
