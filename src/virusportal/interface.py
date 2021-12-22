@@ -21,7 +21,7 @@ def main():
     logger.info(measures)
 
     # At Trust level; ref. explorer.py
-    # newAdmissions, covidOccupiedMVBeds
+    # newAdmissions, covidOccupiedMVBeds, hospitalCases (maybe)
 
     # demographic data
 
