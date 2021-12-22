@@ -1,17 +1,10 @@
+import logging
 import os
 import sys
-import logging
 
 
 def main():
-
-    # a LTLA/LAD area code
-    area_code = 'E06000022'
-
-    # reading-in the nested demographic data
-    supplement = src.virusportal.demographics.Demographics(field='newCasesBySpecimenDateAgeDemographics')\
-        .exc(area_code=area_code)
-    logger.info(supplement.head())
+    logger.info('infections')
 
 
 if __name__ == '__main__':
@@ -24,8 +17,5 @@ if __name__ == '__main__':
                         format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                         datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
-
-    # libraries
-    import src.virusportal.demographics
 
     main()
