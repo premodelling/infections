@@ -85,7 +85,7 @@ The variables can be explored via the extracted data sets
 variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/virus/trusts/measures) | Possible<br>Outcome
  :--- | :--- | :--- | :---
 ``date`` | &#10004; | &#10004; |
-``dailyCases`` | &#10004; | |
+``dailyCases`` <sup>1</sup> | &#10004; | |
 ``newDeaths28DaysByDeathDate`` | &#10004; | |
 ``dailyFirstDoseByVaccinationDate`` | &#10004; | |
 ``dailySecondDoseByVaccinationDate`` | &#10004; | |
@@ -97,6 +97,7 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 ``covidOccupiedMVBeds`` | | &#10004; |
 ``estimatedNewAdmissions`` | | &#10004; | &#10004;
 
+<sup>1</sup> [daily cases disaggregated by age per LTLA](./warehouse/virus/ltla/demographic/cases) 
 
 <br>
 <br>
