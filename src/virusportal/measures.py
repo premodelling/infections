@@ -1,5 +1,6 @@
 import collections
 import json
+import requests
 import os.path
 
 import dask
@@ -62,8 +63,13 @@ class Measures:
         :return:
         """
 
+        response = requests.get(url=url, timeout=10)
+
         try:
-            frame = pd.read_csv(filepath_or_buffer=url)
+            if response.status_code == 200:
+                frame = pd.read_csv(filepath_or_buffer=url)
+            else:
+                frame = pd.DataFrame()
         except RuntimeError as err:
             raise Exception(err)
 
@@ -79,9 +85,13 @@ class Measures:
         """
 
         try:
-            frame.to_csv(path_or_buf=os.path.join(self.storage, '{}.csv'.format(parameters.area_code)),
-                         index=False, header=True, encoding='utf-8')
-            return '{}: succeeded'.format(parameters.area_code)
+            if not frame.empty:
+                frame.to_csv(path_or_buf=os.path.join(self.storage, '{}.csv'.format(parameters.area_code)),
+                             index=False, header=True, encoding='utf-8')
+                return '{}: succeeded'.format(parameters.area_code)
+            else:
+                return '{}: no data'.format(parameters.area_code)
+
         except RuntimeError as err:
             raise Exception(err)
 
