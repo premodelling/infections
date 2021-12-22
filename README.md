@@ -82,7 +82,7 @@ The variables can be explored via the extracted data sets
 
 <br>
 
-variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/virus/trusts/measures) | Possible<br>Outcome
+variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/virus/trusts/measures) | Prospective<br>Outcome<br>Variable
  :--- | :--- | :--- | :---
 ``date`` | &#10004; | &#10004; |
 ``dailyCases`` <sup>1</sup> | &#10004; | |
@@ -93,7 +93,7 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 ``VaccineRegisterPopulationByVaccinationDate`` | &#10004; | |
 ``newVirusTestsBySpecimenDate`` | &#10004; | |
 ``newPCRTestsBySpecimenDate`` | &#10004; | |
-``covidOccupiedBeds`` | | &#10004; | &#10004;
+``covidOccupiedBeds`` | | &#10004; | 
 ``covidOccupiedMVBeds`` | | &#10004; |
 ``estimatedNewAdmissions`` | | &#10004; | &#10004;
 
