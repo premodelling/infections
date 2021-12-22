@@ -24,7 +24,7 @@
 ## Project
 
 **Aim**
-> Predicting localised hospitalisation trends
+> Predicting hospitalisation trends of NHS Trusts
 
 <br>
 
