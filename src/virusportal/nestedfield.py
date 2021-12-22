@@ -1,6 +1,8 @@
+import collections
 import json
-import requests
 import logging
+
+import requests
 
 
 class NestedField:
@@ -25,17 +27,15 @@ class NestedField:
         return 'https://api.coronavirus.data.gov.uk/v1/data'
 
     @staticmethod
-    def filters(area_code: str, area_type: str = 'ltla', area_name: str = None, date: str = None) -> str:
+    def filters(parameters: collections.namedtuple) -> str:
         """
 
-        :param area_code:
-        :param area_type: the default value is Lower-tier local authority
-        :param area_name:
-        :param date:
+        :param parameters:
         :return:
         """
 
-        dictionary = {'areaType': area_type, 'areaCode': area_code, 'areaName': area_name, 'date': date}
+        dictionary = {'areaType': parameters.area_type, 'areaCode': parameters.area_code,
+                      'areaName': parameters.area_name, 'date': parameters.date}
         dictionary = ['{}={}'.format(key, value) for key, value in dictionary.items() if value is not None]
 
         return str.join(';', dictionary)
@@ -50,9 +50,7 @@ class NestedField:
 
         return json.dumps(obj=fields, separators=(',', ':'))
 
-    def exc(self, area_code: str):
-
-        params = {'filters': self.filters(area_code=area_code), 'structure': self.structure()}
+    def __request(self, params: dict):
 
         try:
             response = requests.get(url=self.endpoint(), params=params)
@@ -67,3 +65,9 @@ class NestedField:
             return None
         else:
             return response.json()
+
+    def exc(self, parameters: collections.namedtuple):
+
+        params = {'filters': self.filters(parameters=parameters), 'structure': self.structure()}
+
+        return self.__request(params=params)
