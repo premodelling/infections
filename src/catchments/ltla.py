@@ -18,6 +18,7 @@ class LTLA:
 
         # the data & year in focus
         self.reference = reference
+        self.reference.loc[:, 'year'] = year
         self.year = year
 
         # the expected age groups
@@ -25,7 +26,7 @@ class LTLA:
 
         # the variables that will be part of the melted data frame that provides
         # a record per age group
-        self.id_vars = ['ltla', 'ppln_ltla', 'patients_from_ltla_to_trust', 'total_patients_of_ltla',
+        self.id_vars = ['year', 'ltla', 'ppln_ltla', 'patients_from_ltla_to_trust', 'total_patients_of_ltla',
                         'tfp_ltla', 'etc_ltla', 'sex']
 
         # storage path
