@@ -25,7 +25,7 @@ class MSOA:
 
         # the variables that will be part of the melted data frame that provides
         # a record per age group
-        self.id_vars = ['msoa', 'ltla', 'ppln_msoa', 'patients_from_msoa_to_trust',
+        self.id_vars = ['year', 'msoa', 'ltla', 'ppln_msoa', 'patients_from_msoa_to_trust',
                         'total_patients_of_msoa', 'tfp_msoa', 'etc_msoa', 'sex']
 
         # storage path
