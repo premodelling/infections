@@ -11,7 +11,7 @@ class AggregatesMSOA:
         :param populations: The populations of the year self.year
         """
 
-        self.patients = patients.drop(columns='catchment_year')
+        self.patients = patients.rename(columns={'catchment_year': 'year'})
         self.populations = populations.drop(columns='ppln_ltla')
 
     def exc(self):
