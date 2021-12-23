@@ -47,7 +47,7 @@ if __name__ == '__main__':
     files = glob.glob(os.path.join(source, '*', '*.csv'), recursive=True)
 
     # storage
-    storage = os.path.join('warehouse', 'trusts', 'series', 'ltla')
+    storage = os.path.join('warehouse', 'trusts', 'weights', 'series', 'ltla')
     if not os.path.exists(storage):
         os.makedirs(storage)
 
