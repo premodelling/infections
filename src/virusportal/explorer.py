@@ -1,6 +1,7 @@
 """
 For exploring https://coronavirus.data.gov.uk/details/developers-guide/main-api, i.e., the UK government's API
 for SARS-CoV-2 related data.
+
 """
 
 import os
@@ -48,9 +49,9 @@ def main():
 
     # fields of interest
     fields = {'date': 'date',
-              'dailyAdmissions': 'newAdmissions',
+              'dailyEstimatedNewAdmissions': 'newAdmissions',
               'covidOccupiedMVBeds': 'covidOccupiedMVBeds',
-              'hospitalCases': 'hospitalCases'}
+              'covidOccupiedBeds': 'hospitalCases'}
     structure = json.dumps(obj=fields, separators=(',', ':'))
 
     # url
