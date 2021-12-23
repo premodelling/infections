@@ -9,7 +9,7 @@
 * [Code Snippets](#code-snippets)
   * [data.gov.uk SARS-CoV-2 API](#sars-cov-2-api)
   
-* [Refereces](#references)
+* [References](#references)
     
 <br>
 <br>
