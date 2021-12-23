@@ -42,7 +42,7 @@ def main():
 
     # filters
     area_type = 'nhsTrust'
-    area_code='RCF'
+    area_code = 'RCF'
     dictionary = {'areaType': area_type, 'areaCode': area_code, 'areaName': None, 'date': None}
     dictionary = ['{}={}'.format(key, value) for key, value in dictionary.items() if value is not None]
     filters = str.join(';', dictionary)
