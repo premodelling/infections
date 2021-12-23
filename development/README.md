@@ -8,6 +8,8 @@
   
 * [Code Snippets](#code-snippets)
   * [data.gov.uk SARS-CoV-2 API](#sars-cov-2-api)
+  
+* [Refereces](#references)
     
 <br>
 <br>
@@ -133,6 +135,16 @@ if response.status_code > 204:
 logger.info(response.json())
 
 ```
+
+<br>
+<br>
+
+## References
+
+**dask**
+* [dask.dataframe.read_csv](https://docs.dask.org/en/stable/generated/dask.dataframe.read_csv.html)
+* [dask.dataframe.to_csv](https://docs.dask.org/en/stable/generated/dask.dataframe.to_csv.html)
+* [DataFrame API](https://docs.dask.org/en/stable/dataframe-api.html)
 
 <br>
 <br>
