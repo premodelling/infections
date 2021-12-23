@@ -84,18 +84,18 @@ The variables can be explored via the extracted data sets
 
 variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/virus/trusts/measures) | Prospective<br>Outcome<br>Variable
  :--- | :--- | :--- | :---
-``date`` | &#10004; | &#10004; |
-``dailyCases`` <sup>1</sup> | &#10004; | |
-``newDeaths28DaysByDeathDate`` | &#10004; | |
-``dailyFirstDoseByVaccinationDate`` | &#10004; | |
-``dailySecondDoseByVaccinationDate`` | &#10004; | |
-``dailyThirdInjectionByVaccinationDate`` | &#10004; | |
-``VaccineRegisterPopulationByVaccinationDate`` | &#10004; | |
-``newVirusTestsBySpecimenDate`` | &#10004; | |
-``newPCRTestsBySpecimenDate`` | &#10004; | |
-``covidOccupiedBeds`` | | &#10004; | 
-``covidOccupiedMVBeds`` | | &#10004; |
-``estimatedNewAdmissions`` | | &#10004; | &#10003;
+``date`` | &#10003; | &#10003; |
+``dailyCases`` <sup>1</sup> | &#10003; | |
+``newDeaths28DaysByDeathDate`` | &#10003; | |
+``dailyFirstDoseByVaccinationDate`` | &#10003; | |
+``dailySecondDoseByVaccinationDate`` | &#10003; | |
+``dailyThirdInjectionByVaccinationDate`` | &#10003; | |
+``VaccineRegisterPopulationByVaccinationDate`` | &#10003; | |
+``newVirusTestsBySpecimenDate`` | &#10003; | |
+``newPCRTestsBySpecimenDate`` | &#10003; | |
+``covidOccupiedBeds`` | | &#10003; | 
+``covidOccupiedMVBeds`` | | &#10003; |
+``estimatedNewAdmissions`` | | &#10003; | &#10003;
 
 <sup>1</sup> [daily cases disaggregated by age, per LTLA, are also available](./warehouse/virus/ltla/demographic/cases) 
 
