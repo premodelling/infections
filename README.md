@@ -105,7 +105,11 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 #### Addressing Multi-Granularity
 
 The differing granularity of the variables can be addressed via estimated flow/mapping factors.  More notes, and graphs, upcoming.  Visit 
-[warehouse/trusts/weights/series/ltla](./warehouse/trusts/weights/series/ltla) for the calculated factors per NHS Trust, from a LTLA.  
+[warehouse/trusts/weights/series/ltla](./warehouse/trusts/weights/series/ltla) for the calculated factors per NHS Trust, from a LTLA.
+
+* Do some LTLA regions have a higher proportion of SARS-CoV-2 susceptible people relative to others?  If yes, 
+  consider extra weighting.
+  * Inspect the weight distributions of susceptible age groups.
 
 
 <br>
