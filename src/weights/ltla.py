@@ -43,7 +43,7 @@ if __name__ == '__main__':
     sys.path.append(os.path.join(root, 'src'))
 
     # the source files
-    source = os.path.join(root, 'warehouse', 'trusts', 'segments', 'ltla')
+    source = os.path.join(root, 'warehouse', 'trusts', 'weights', 'segments', 'ltla')
     files = glob.glob(os.path.join(source, '*', '*.csv'), recursive=True)
 
     # storage
