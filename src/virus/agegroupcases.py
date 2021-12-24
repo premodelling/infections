@@ -7,7 +7,7 @@ import pandas as pd
 import src.virus.nestedfield
 
 
-class CasesDemographic:
+class AgeGroupCases:
 
     def __init__(self, field, path: str):
         """
