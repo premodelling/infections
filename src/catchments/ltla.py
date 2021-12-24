@@ -26,11 +26,11 @@ class LTLA:
 
         # the variables that will be part of the melted data frame that provides
         # a record per age group
-        self.id_vars = ['year', 'ltla', 'ppln_ltla', 'patients_from_ltla_to_trust', 'total_patients_of_ltla',
-                        'tfp_ltla', 'etc_ltla', 'sex']
+        self.id_vars = ['year', 'ltla', 'ppln_ltla', 'total_trust_patients', 'patients_from_ltla_to_trust',
+                        'total_patients_of_ltla', 'tfp_ltla', 'etc_ltla', 'sex']
 
         # storage path
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'segments', 'ltla', str(self.year))
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'weights', 'segments', 'ltla', str(self.year))
         self.__path(self.storage)
 
     @staticmethod
@@ -59,6 +59,10 @@ class LTLA:
         # age group fraction of LTLA population, age group [nhs] trust factor
         segment.loc[:, 'agf_ppln_ltla'] = np.true_divide(segment.ag_ppln_ltla, segment.ppln_ltla)
         segment.loc[:, 'ag_trust_factor'] = np.multiply(segment.tfp_ltla, segment.agf_ppln_ltla)
+
+        # LTLA fraction of total trust patients
+        segment.loc[:, 'ltla_frac_tp'] = np.true_divide(segment.patients_from_ltla_to_trust, segment.total_trust_patients)
+        segment.loc[:, 'ag_ltla_frac_tp'] = np.multiply(segment.ltla_frac_tp, segment.agf_ppln_ltla)
 
         return segment
 
