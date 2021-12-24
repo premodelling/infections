@@ -25,11 +25,11 @@ class MSOA:
 
         # the variables that will be part of the melted data frame that provides
         # a record per age group
-        self.id_vars = ['year', 'msoa', 'ltla', 'ppln_msoa', 'patients_from_msoa_to_trust',
+        self.id_vars = ['year', 'msoa', 'ltla', 'ppln_msoa', 'total_trust_patients', 'patients_from_msoa_to_trust',
                         'total_patients_of_msoa', 'tfp_msoa', 'etc_msoa', 'sex']
 
         # storage path
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'segments', 'msoa', str(self.year))
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'weights', 'segments', 'msoa', str(self.year))
         self.__path(self.storage)
 
     @staticmethod
@@ -58,6 +58,10 @@ class MSOA:
         # age group fraction of MSOA population, age group [nhs] trust factor
         segment.loc[:, 'agf_ppln_msoa'] = np.true_divide(segment.ag_ppln_msoa, segment.ppln_msoa)
         segment.loc[:, 'ag_trust_factor'] = np.multiply(segment.tfp_msoa, segment.agf_ppln_msoa)
+
+        # MSOA fraction of total trust patients
+        segment.loc[:, 'msoa_frac_tp'] = np.true_divide(segment.patients_from_msoa_to_trust, segment.total_trust_patients)
+        segment.loc[:, 'ag_msoa_frac_tp'] = np.multiply(segment.msoa_frac_tp, segment.agf_ppln_msoa)
 
         return segment
 
