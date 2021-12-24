@@ -51,6 +51,17 @@ class AggregatesLTLA:
 
         return values
 
+    def __total_trust_patients(self, blob):
+
+        # thus far, how many patients has a trust received per year?
+        frame = blob.copy()[['trust_code', 'ltla', 'patients_from_ltla_to_trust']].drop_duplicates()
+        reduced = frame.groupby(by='trust_code').agg(total_trust_patients=('patients_from_ltla_to_trust', sum))
+
+        # re-structure
+        reduced.reset_index(drop=False, inplace=True)
+
+        return blob.copy().merge(reduced, how='left', on='trust_code')
+
     def __age_groups(self):
         """
 
@@ -79,5 +90,8 @@ class AggregatesLTLA:
 
         # estimated [nhs] trust catchment w.r.t. LTLA
         aggregates.loc[:, 'etc_ltla'] = np.multiply(aggregates.tfp_ltla, aggregates.ppln_ltla)
+
+        # append total trust patients per trust
+        aggregates = self.__total_trust_patients(blob=aggregates)
 
         return aggregates
