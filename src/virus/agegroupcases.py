@@ -9,14 +9,13 @@ import src.virus.nestedfield
 
 class AgeGroupCases:
 
-    def __init__(self, field, path: str):
+    def __init__(self):
         """
 
-        :param field: the nested demographic field
-        :param path:
         """
 
-        self._field = field
+        # the age group cases field
+        self._field = 'newCasesBySpecimenDateAgeDemographics'
 
         # initialise the nested field reading function
         self.nested = src.virus.nestedfield.NestedField(field=self._field)
@@ -32,7 +31,7 @@ class AgeGroupCases:
                        '70_74': '70-74', '75_79': '75-79', '80_84': '80-84', '85_89': '85-89'}
 
         # storage
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'virus', path)
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'virus', 'ltla', 'demographic', 'cases')
         self.__path()
 
     def __path(self):
@@ -89,7 +88,13 @@ class AgeGroupCases:
         except RuntimeError as err:
             raise Exception(err)
 
-    def exc(self, parameters_: list):
+    def exc(self, area_codes: list, area_type: str):
+
+        # API filter parameters
+        FilterParameters = collections.namedtuple(
+            typename='FilterParameters', field_names=['area_code', 'area_type', 'area_name', 'date'], defaults=None)
+        parameters_ = [FilterParameters(area_code=area_code, area_type=area_type, area_name=None, date=None)
+                       for area_code in area_codes]
 
         computations = []
         for parameters in parameters_:
