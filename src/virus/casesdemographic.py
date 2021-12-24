@@ -4,7 +4,7 @@ import os
 import dask
 import pandas as pd
 
-import src.virusportal.nestedfield
+import src.virus.nestedfield
 
 
 class CasesDemographic:
@@ -19,7 +19,7 @@ class CasesDemographic:
         self._field = field
 
         # initialise the nested field reading function
-        self.nested = src.virusportal.nestedfield.NestedField(field=self._field)
+        self.nested = src.virus.nestedfield.NestedField(field=self._field)
 
         # the age groups
         self._age_group = ['00_04', '05_09', '10_14', '15_19', '20_24', '25_29', '30_34', '35_39',
