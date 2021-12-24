@@ -1,5 +1,6 @@
 """
 Systematically reads UK SARS-CoV-2 data from coronavirus.data.gov.uk via its API
+
 """
 
 import collections
@@ -11,25 +12,23 @@ import sys
 def main():
 
     # Lower Tier Local Authority Level Measures
-    parameters_ = [FilterParameters(area_code=code, area_type='ltla', area_name=None, date=None)
-                   for code in codes_ltla]
-    measures = src.virus.measures.Measures(fields=fields_ltla, path=os.path.join('ltla', 'measures'))\
-        .exc(parameters_=parameters_)
+    measures = src.virus.measures.Measures(fields=fields_ltla, path=os.path.join('ltla', 'measures')) \
+        .exc(area_codes=codes_ltla, area_type='ltla')
     logger.info(measures)
 
-    # Trust Level Measures
-    parameters_ = [FilterParameters(area_code=code, area_type='nhsTrust', area_name=None, date=None)
-                   for code in codes_trusts]
-    measures = src.virus.measures.Measures(fields=fields_trusts, path=os.path.join('trusts', 'measures'))\
-        .exc(parameters_=parameters_)
+    # trust Level measures
+    measures = src.virus.measures.Measures(fields=fields_trusts, path=os.path.join('trusts', 'measures')) \
+        .exc(area_codes=codes_trusts, area_type='nhsTrust')
     logger.info(measures)
 
-    # lower tier local authority level measures: Disaggregated by Age Group
-    parameters_ = [FilterParameters(area_code=code, area_type='ltla', area_name=None, date=None)
-                   for code in codes_ltla]
-    measures = src.virus.agegroupcases.AgeGroupCases(
-        field='newCasesBySpecimenDateAgeDemographics', path=os.path.join('ltla', 'demographic', 'cases')
-    ).exc(parameters_=parameters_)
+    # lower tier local authority level measures: Cases disaggregated by Age Group
+    measures = src.virus.agegroupcases.AgeGroupCases().exc(area_codes=codes_ltla, area_type='ltla')
+    logger.info(measures)
+
+    # lower tier local authority level measures: Vaccinations disaggregated by Age Group
+    # a few areas do not have any data, albeit their request response status is 200
+    area_codes = list(set(codes_ltla) - {'E06000053', 'E09000001', 'E06000060'})
+    measures = src.virus.agegroupvaccinations.AgeGroupVaccinations().exc(area_codes=area_codes, area_type='ltla')
     logger.info(measures)
 
 
@@ -54,6 +53,7 @@ if __name__ == '__main__':
     import config
     import src.virus.measures
     import src.virus.agegroupcases
+    import src.virus.agegroupvaccinations
 
     # Setting-up
     configurations = config.Config()
