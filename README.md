@@ -90,14 +90,15 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 ``dailyFirstDoseByVaccinationDate`` | &#10003; | |
 ``dailySecondDoseByVaccinationDate`` | &#10003; | |
 ``dailyThirdInjectionByVaccinationDate`` | &#10003; | |
-``VaccineRegisterPopulationByVaccinationDate`` | &#10003; | |
+``VaccineRegisterPopulationByVaccinationDate`` <sup>2</sup> | &#10003; | |
 ``newVirusTestsBySpecimenDate`` | &#10003; | |
 ``newPCRTestsBySpecimenDate`` | &#10003; | |
 ``covidOccupiedBeds`` | | &#10003; | 
 ``covidOccupiedMVBeds`` | | &#10003; |
 ``estimatedNewAdmissions`` | | &#10003; | &#10003;
 
-<sup>1</sup> [daily cases disaggregated by age, per LTLA, are also available](./warehouse/virus/ltla/demographic/cases) 
+<sup>1</sup> [daily cases disaggregated by age, per LTLA, are available](./warehouse/virus/ltla/demographic/cases)
+<sup>2</sup> [age disaggregated vaccinations series, per LTLA, are available](./warehouse/virus/ltla/demographic/vaccinations)
 
 <br>
 <br>
@@ -111,6 +112,7 @@ The differing granularity of the variables can be addressed via estimated flow/m
 * [warehouse/trusts/weights/series/ltla/aggregated](./warehouse/trusts/weights/series/ltla/aggregated)
 
 
+<br>
 <br>
 <br>
 
