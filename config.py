@@ -70,3 +70,19 @@ class Config:
 
         return frame
 
+    @staticmethod
+    def vaccinations():
+
+        rename = {'12_15': '12-15', '16_17': '16-17', '18_24': '18-24', '25_29': '25-29', '30_34': '30-34',
+                  '35_39': '35-39', '40_44': '40-44', '45_49': '45-49', '50_54': '50-54', '55_59': '55-59',
+                  '60_64': '60-64', '65_69': '65-69', '70_74': '70-74', '75_79': '75-79', '80_84': '80-84',
+                  '85_89': '85-89', '90+': '90+'}
+
+        metric = 'vaccinationsAgeDemographics'
+
+        variables = ['date', 'age', 'newPeopleVaccinatedCompleteByVaccinationDate',
+                     'newPeopleVaccinatedFirstDoseByVaccinationDate',
+                     'newPeopleVaccinatedSecondDoseByVaccinationDate',
+                     'newPeopleVaccinatedThirdInjectionByVaccinationDate']
+
+        return metric, variables, rename
