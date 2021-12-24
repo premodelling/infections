@@ -24,14 +24,6 @@ class Measures:
 
         # storage
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'virus', path)
-        self.__path()
-
-    def __path(self):
-        """
-
-        :return:
-        """
-
         if not os.path.exists(self.storage):
             os.makedirs(self.storage)
 
@@ -43,10 +35,8 @@ class Measures:
         :return:
         """
 
-        dictionary = {'areaType': parameters.area_type,
-                      'areaCode': parameters.area_code,
-                      'areaName': parameters.area_name,
-                      'date': parameters.date}
+        dictionary = {'areaType': parameters.area_type, 'areaCode': parameters.area_code,
+                      'areaName': parameters.area_name, 'date': parameters.date}
         dictionary = ['{}={}'.format(key, value) for key, value in dictionary.items() if value is not None]
         filters = str.join(';', dictionary)
 
@@ -95,12 +85,19 @@ class Measures:
         except RuntimeError as err:
             raise Exception(err)
 
-    def exc(self, parameters_: list):
+    def exc(self, area_codes: list, area_type: str):
         """
 
-        :param parameters_:
+        :param area_codes:
+        :param area_type:
         :return:
         """
+
+        # API filter parameters
+        FilterParameters = collections.namedtuple(
+            typename='FilterParameters', field_names=['area_code', 'area_type', 'area_name', 'date'], defaults=None)
+        parameters_ = [FilterParameters(area_code=area_code, area_type=area_type, area_name=None, date=None)
+                       for area_code in area_codes]
 
         computations = []
         for parameters in parameters_:
