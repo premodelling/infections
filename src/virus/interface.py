@@ -27,7 +27,7 @@ def main():
     # lower tier local authority level measures: Disaggregated by Age Group
     parameters_ = [FilterParameters(area_code=code, area_type='ltla', area_name=None, date=None)
                    for code in codes_ltla]
-    measures = src.virus.casesdemographic.CasesDemographic(
+    measures = src.virus.agegroupcases.AgeGroupCases(
         field='newCasesBySpecimenDateAgeDemographics', path=os.path.join('ltla', 'demographic', 'cases')
     ).exc(parameters_=parameters_)
     logger.info(measures)
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     # libraries
     import config
     import src.virus.measures
-    import src.virus.casesdemographic
+    import src.virus.agegroupcases
 
     # Setting-up
     configurations = config.Config()
