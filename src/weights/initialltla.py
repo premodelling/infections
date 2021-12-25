@@ -11,7 +11,7 @@ class InitialLTLA:
 
     def __init__(self):
         """
-        
+        Constructor
         """
 
         self.variables_aggregated = ['year', 'ltla', 'ppln_ltla', 'patients_from_ltla_to_trust',
@@ -38,8 +38,10 @@ class InitialLTLA:
     def __path(paths: list):
         """
 
+        :param paths:
         :return:
         """
+
         for path in paths:
             if not os.path.exists(path):
                 os.makedirs(path)
