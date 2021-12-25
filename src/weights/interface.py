@@ -4,9 +4,10 @@ import sys
 
 
 def main():
-    logger.info('weights')
 
-    src.weights.ltla.LTLA().exc()
+    # extract weights by trust
+    messages = src.weights.initialltla.InitialLTLA().exc()
+    logger.info(messages)
 
 
 if __name__ == '__main__':
@@ -21,6 +22,6 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     # libraries
-    import src.weights.ltla
+    import src.weights.initialltla
 
     main()
