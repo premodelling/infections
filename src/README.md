@@ -1,10 +1,11 @@
 
+<br>
 
 ## preprocessing
 
 ### districts
 
-the [districts](./preprocessing/districts.py) program [creates data files](../warehouse/geography/districts) of 
+The [districts](./preprocessing/districts.py) program [creates data files](../warehouse/geography/districts) of 
 geographic mappings between middle super output area (MSOA) codes & lower tier local authority (LTLA) codes consists of
 
 variable | description
@@ -21,7 +22,7 @@ The lower tier local authority (LTLA) is also known as local authority district 
 
 ### patients
 
-the [patients](./preprocessing/patients.py) program creates each 
+The [patients](./preprocessing/patients.py) program creates each 
 year's [*patients flow from MSOA to trust*](../warehouse/patients) data file
 
 variable | description
