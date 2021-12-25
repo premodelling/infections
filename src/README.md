@@ -14,8 +14,8 @@ variable | description
  :--- | :---
 ``MSOA11CD`` | middle super output area code
 ``MSOA11NM`` | middle super output area name
-``LAD{}CD`` | local area district code, { } &rarr; double-digit year
-``LAD{}NM`` | local area district name, { } &rarr; double-digit year
+``LAD{}CD`` | local area district code, { } is a year placeholder, e.g., LAD19CD, LAD20CD, etc.
+``LAD{}NM`` | local area district name, { } is a year placeholder, e.g., LAD13NM, LAD19NM, etc.
 
 The lower tier local authority (LTLA) is also known as local authority district (LAD).
 
