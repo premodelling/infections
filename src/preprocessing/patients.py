@@ -6,6 +6,8 @@ import os
 import pandas as pd
 import dask
 
+import config
+
 
 class Patients:
 
@@ -14,6 +16,8 @@ class Patients:
         Constructor
 
         """
+
+        self.districts = config.Config().districts()
 
         self.uri = 'data/catchment/2021 Trust Catchment Populations_Supplementary MSOA Analysis.xlsx'
         self.sheet_name = 'All Admissions'
@@ -65,6 +69,11 @@ class Patients:
         """
         
         return self.patients.copy().loc[self.patients['catchment_year'] == year, :]
+
+    @dask.delayed
+    def __ltla(self, frame: pd.DataFrame):
+
+        return frame.copy().merge(self.districts, how='left', on='msoa')
         
     @dask.delayed
     def __write(self, frame: pd.DataFrame, year: int) -> str:
@@ -92,6 +101,7 @@ class Patients:
         computations = []
         for year in years:
             frame = self.__select(year=year)
+            frame = self.__ltla(frame=frame)
             message = self.__write(frame=frame, year=year)
             computations.append(message)
 
