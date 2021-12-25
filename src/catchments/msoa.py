@@ -57,7 +57,7 @@ class MSOA:
 
         # age group fraction of MSOA population, age group [nhs] trust factor
         segment.loc[:, 'agf_ppln_msoa'] = np.true_divide(segment.ag_ppln_msoa, segment.ppln_msoa)
-        segment.loc[:, 'ag_trust_factor'] = np.multiply(segment.tfp_msoa, segment.agf_ppln_msoa)
+        segment.loc[:, 'tfp_msoa_ag'] = np.multiply(segment.tfp_msoa, segment.agf_ppln_msoa)
 
         # MSOA fraction of total trust patients
         segment.loc[:, 'msoa_frac_tp'] = np.true_divide(segment.patients_from_msoa_to_trust, segment.total_trust_patients)
