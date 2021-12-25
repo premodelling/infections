@@ -23,8 +23,8 @@ class InitialLTLA:
         self.source_files = glob.glob(os.path.join(self.source_path, '*', '*.csv'), recursive=True)
 
         # storage
-        path = os.path.join(os.getcwd(), 'warehouse', 'weights', 'series', 'ltla')
-        self.path_disaggregated = os.path.join(path, 'baseline')
+        path = os.path.join(os.getcwd(), 'warehouse', 'weights', 'series', 'ltla', 'baseline')
+        self.path_disaggregated = os.path.join(path, 'disaggregated')
         self.path_aggregated = os.path.join(path, 'aggregated')
         self.__path(paths=[self.path_aggregated, self.path_disaggregated])
 
