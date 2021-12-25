@@ -29,7 +29,7 @@ class MSOA:
                         'total_patients_of_msoa', 'tfp_msoa', 'etc_msoa', 'sex']
 
         # storage path
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'weights', 'segments', 'msoa', str(self.year))
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'weights', 'segments', 'msoa', str(self.year))
         self.__path(self.storage)
 
     @staticmethod
