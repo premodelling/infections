@@ -7,8 +7,8 @@ class AggregatesMSOA:
     def __init__(self, patients: pd.DataFrame, populations: pd.DataFrame):
         """
 
-        :param patients: The data frame of MSOA/NHS Trust patients for the year self.year
-        :param populations: The populations of the year self.year
+        :param patients: The data frame of MSOA/NHS Trust patients for the year in focus
+        :param populations: The populations of the year in focus
         """
 
         self.patients = patients.rename(columns={'catchment_year': 'year'})
@@ -27,7 +27,7 @@ class AggregatesMSOA:
 
     def exc(self):
 
-        aggregates = self.populations.merge(self.patients, how='right', on='msoa')
+        aggregates = self.populations.merge(self.patients, how='right', on=['msoa', 'ltla'])
 
         # trust fraction of patients (tfp) w.r.t. a MSOA
         aggregates.loc[:, 'tfp_msoa'] = np.true_divide(aggregates.patients_from_msoa_to_trust, aggregates.total_patients_of_msoa)
