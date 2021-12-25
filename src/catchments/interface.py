@@ -1,24 +1,23 @@
-import os
-import sys
-import pathlib
-import logging
 import glob
+import logging
+import os
+import pathlib
+import sys
 
 
 def main():
 
     # Dask is used for LTLA steps.
     for year in years:
-
         logger.info(year)
 
-        patients = src.catchments.patients.Patients(source_path=path_patients)\
+        patients = src.catchments.patients.Patients(source_path=path_patients) \
             .read(filename='{}.csv'.format(year))
 
-        populations = src.catchments.populations.Populations(source_path=path_populations)\
+        populations = src.catchments.populations.Populations(source_path=path_populations) \
             .exc(filename='{}.csv'.format(year))
 
-        aggregates_ltla = src.catchments.aggregatesltla.AggregatesLTLA(patients=patients, populations=populations)\
+        aggregates_ltla = src.catchments.aggregatesltla.AggregatesLTLA(patients=patients, populations=populations) \
             .exc()
         ltla = src.catchments.ltla.LTLA(reference=aggregates_ltla, year=year).exc()
         logger.info(ltla)
@@ -44,8 +43,6 @@ if __name__ == '__main__':
     # libraries
     import src.catchments.patients
     import src.catchments.populations
-    import src.catchments.aggregatesmsoa
-    import src.catchments.msoa
     import src.catchments.aggregatesltla
     import src.catchments.ltla
 
