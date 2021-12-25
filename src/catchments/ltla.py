@@ -30,7 +30,7 @@ class LTLA:
                         'total_patients_of_ltla', 'tfp_ltla', 'etc_ltla', 'sex']
 
         # storage path
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'weights', 'segments', 'ltla', str(self.year))
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'weights', 'segments', 'ltla', str(self.year))
         self.__path(self.storage)
 
     @staticmethod
@@ -58,7 +58,7 @@ class LTLA:
 
         # age group fraction of LTLA population, age group [nhs] trust factor
         segment.loc[:, 'agf_ppln_ltla'] = np.true_divide(segment.ag_ppln_ltla, segment.ppln_ltla)
-        segment.loc[:, 'ag_trust_factor'] = np.multiply(segment.tfp_ltla, segment.agf_ppln_ltla)
+        segment.loc[:, 'tfp_ltla_ag'] = np.multiply(segment.tfp_ltla, segment.agf_ppln_ltla)
 
         # LTLA fraction of total trust patients
         segment.loc[:, 'ltla_frac_tp'] = np.true_divide(segment.patients_from_ltla_to_trust, segment.total_trust_patients)
