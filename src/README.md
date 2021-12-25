@@ -62,7 +62,7 @@ The LTLA [populations](./preprocessing/populationsltla.py) & [age groups](./prep
 data sets, and create [data sets](../warehouse/populations/ltla) with headers
 
 <ul>
-    <li><div style='font-size: x-small'>ltla,sex,0-4,5-9,10-14,15-19,20-24,25-29,30-34,35-39,40-44,45-49,50-54,55-59,60-64,65-69,70-74,<br>
+    <li><div style='font-size: smaller'>ltla,sex,0-4,5-9,10-14,15-19,20-24,25-29,30-34,35-39,40-44,45-49,50-54,55-59,60-64,65-69,70-74,<br>
         75-79,80-84,85-89,90+</div></li>
     <li><div style='font-size: x-small'>ltla,sex,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,<br>
         33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,<br>
