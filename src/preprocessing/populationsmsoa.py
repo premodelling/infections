@@ -13,7 +13,7 @@ import pandas as pd
 import config
 
 
-class Populations:
+class PopulationsMSOA:
 
     def __init__(self):
         """
