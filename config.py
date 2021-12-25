@@ -1,4 +1,5 @@
 import os
+import datetime
 
 import numpy as np
 import pandas as pd
@@ -86,3 +87,15 @@ class Config:
                      'newPeopleVaccinatedThirdInjectionByVaccinationDate']
 
         return metric, variables, rename
+
+    @staticmethod
+    def dates():
+
+        pattern = '%Y-%m-%d'
+        starting: str = '2020-03-01'
+        ending: str = (datetime.datetime.today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d')
+
+        values = pd.DataFrame(pd.date_range(start=starting, end=ending, freq='D'), columns=['datetimeobject'])
+        values.loc[:, 'date'] = values.datetimeobject.apply(lambda x: x.strftime(pattern))
+
+        return values
