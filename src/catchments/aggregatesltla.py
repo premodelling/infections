@@ -24,9 +24,9 @@ class AggregatesLTLA:
         :return: data frame of {trust_code, ltla, patients_from_ltla_to_trust}
         """
 
-        left = self.patients.copy()[['trust_code', 'msoa', 'patients_from_msoa_to_trust']]
+        left = self.patients.copy()[['trust_code', 'msoa', 'ltla', 'patients_from_msoa_to_trust']]
         right = self.populations.copy()[['msoa', 'ltla', 'ppln_ltla']]
-        reference = left.merge(right, how='left', on='msoa')
+        reference = left.merge(right, how='left', on=['msoa', 'ltla'])
         reference.drop_duplicates(inplace=True)
 
         values = reference.groupby(by=['trust_code', 'ltla', 'ppln_ltla']).agg(
@@ -82,6 +82,7 @@ class AggregatesLTLA:
         :return:
         """
 
+        # patients from LTLA to Trust based on MSOA patient numbers, age groups
         aggregates = self.__patients_to_trust().merge(self.__patients(), how='left', on='ltla')
         aggregates = aggregates.merge(self.__age_groups(), how='left', on='ltla')
 
