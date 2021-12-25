@@ -7,7 +7,7 @@ import dask.dataframe
 import numpy as np
 
 
-class LTLA:
+class InitialLTLA:
 
     def __init__(self):
         """
@@ -19,14 +19,14 @@ class LTLA:
                                      'ltla_frac_tp']
 
         # the source files
-        self.source_path = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'weights', 'segments', 'ltla')
+        self.source_path = os.path.join(os.getcwd(), 'warehouse', 'weights', 'segments', 'ltla')
         self.source_files = glob.glob(os.path.join(self.source_path, '*', '*.csv'), recursive=True)
 
         # storage
-        path = os.path.join(os.getcwd(), 'warehouse', 'trusts', 'weights', 'series', 'ltla')
-        self.path_disaggregated = os.path.join(path, 'disaggregated')
+        path = os.path.join(os.getcwd(), 'warehouse', 'weights', 'series', 'ltla')
+        self.path_disaggregated = os.path.join(path, 'baseline')
         self.path_aggregated = os.path.join(path, 'aggregated')
-        self.__path(paths = [self.path_aggregated, self.path_disaggregated])
+        self.__path(paths=[self.path_aggregated, self.path_disaggregated])
 
         # Logging
         logging.basicConfig(level=logging.INFO,
@@ -34,7 +34,8 @@ class LTLA:
                             datefmt='%Y-%m-%d %H:%M:%S')
         self.logger = logging.getLogger(__name__)
 
-    def __path(self, paths: list):
+    @staticmethod
+    def __path(paths: list):
         """
 
         :return:
@@ -61,6 +62,7 @@ class LTLA:
 
         # per trust, this snippet will search for the trust's files across all years, merge
         # the data, then save
+        computations = []
         for source_name in source_names:
 
             # source name
@@ -78,3 +80,7 @@ class LTLA:
             dask.dataframe.to_csv(df=reduced,
                                   filename=os.path.join(self.path_aggregated, '{}.csv'.format(source_name)),
                                   single_file=True, index=False)
+
+            computations.append('{}: succeeded'.format(source_name))
+
+        return computations
