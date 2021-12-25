@@ -7,7 +7,7 @@ import glob
 
 def main():
 
-    # Dask is used for the MSOA & LTLA steps.
+    # Dask is used for LTLA steps.
     for year in years:
 
         logger.info(year)
@@ -17,11 +17,6 @@ def main():
 
         populations = src.catchments.populations.Populations(source_path=path_populations)\
             .exc(filename='{}.csv'.format(year))
-
-        aggregates_msoa = src.catchments.aggregatesmsoa.AggregatesMSOA(patients=patients, populations=populations)\
-            .exc()
-        msoa = src.catchments.msoa.MSOA(reference=aggregates_msoa, year=year).exc()
-        logger.info(msoa)
 
         aggregates_ltla = src.catchments.aggregatesltla.AggregatesLTLA(patients=patients, populations=populations)\
             .exc()
