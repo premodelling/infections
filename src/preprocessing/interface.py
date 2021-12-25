@@ -7,26 +7,26 @@ def main():
 
     logger.info('preprocessing ...')
 
-    # patients = src.preprocessing.patients.Patients().exc()
-    # logger.info(patients)
+    districts = src.preprocessing.districts.Districts().exc()
+    logger.info(districts)
 
-    # districts = src.preprocessing.districts.Districts().exc()
-    # logger.info(districts)
+    patients = src.preprocessing.patients.Patients().exc()
+    logger.info(patients)
 
-    # populations = src.preprocessing.populations.Populations().exc()
-    # logger.info(populations)
+    populationsmsoa = src.preprocessing.populationsmsoa.PopulationsMSOA().exc()
+    logger.info(populationsmsoa)
 
-    # agegroups = src.preprocessing.agegroups.AgeGroups().exc()
-    # logger.info(agegroups)
+    agegroupsmsoa = src.preprocessing.agegroupsmsoa.AgeGroupsMSOA().exc()
+    logger.info(agegroupsmsoa)
 
-    # exceptions = src.preprocessing.exceptions.Exceptions().exc()
-    # logger.info(exceptions)
+    exceptions = src.preprocessing.exceptions.Exceptions().exc()
+    logger.info(exceptions)
 
-    # populationsltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
-    # logger.info(populationsltla)
+    populationsltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
+    logger.info(populationsltla)
 
-    # agegroupsltla = src.preprocessing.agegroupsltla.AgeGroupsLTLA().exc()
-    # logger.info(agegroupsltla)
+    agegroupsltla = src.preprocessing.agegroupsltla.AgeGroupsLTLA().exc()
+    logger.info(agegroupsltla)
 
 
 if __name__ == '__main__':
@@ -44,8 +44,8 @@ if __name__ == '__main__':
     # libraries
     import src.preprocessing.patients
     import src.preprocessing.districts
-    import src.preprocessing.populations
-    import src.preprocessing.agegroups
+    import src.preprocessing.populationsmsoa
+    import src.preprocessing.agegroupsmsoa
     import src.preprocessing.exceptions
     import src.preprocessing.populationsltla
     import src.preprocessing.agegroupsltla
