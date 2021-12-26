@@ -8,7 +8,7 @@ import pandas as pd
 def main():
 
     # the source of each trust's LTLA properties data file
-    endpoint = os.path.join('warehouse', 'trusts', 'weights', 'series', 'ltla', 'disaggregated')
+    endpoint = os.path.join('warehouse', 'weights', 'series', 'ltla', 'baseline', 'disaggregated')
 
     # per trust
     trust_codes = trusts.trust_code.unique()
@@ -22,7 +22,7 @@ def main():
         data = data.loc[data.year == latest, :]
 
         # eliminate sex disaggregates
-        keys = ['year', 'ltla', 'sex', 'ag', 'ag_ppln_ltla', 'agf_ppln_ltla', 'ag_trust_factor', 'ag_ltla_frac_tp']
+        keys = ['year', 'ltla', 'sex', 'ag', 'ag_ppln_ltla', 'agf_ppln_ltla', 'tfp_ltla_ag', 'ag_ltla_frac_tp']
         aggregates = data[keys].drop(columns='sex').groupby(by=['year', 'ltla', 'ag']).agg('sum')
         aggregates.reset_index(drop=False, inplace=True)
 
@@ -33,10 +33,11 @@ def main():
         reference = reference.merge(aggregates, how='left', on=['year', 'ltla'])
 
         # the weights
-        weights = reference[['ltla', 'ag', 'ag_trust_factor']]
+        # weights = reference[['ltla', 'ag', 'tfp_ltla_ag']]
+        # src.design.disaggregatedCases.DisaggregatedCases().exc(weights=weights)
 
-        # cases
-        src.design.disaggregatedCases.DisaggregatedCases().exc(weights=weights)
+        parent = reference[['ltla', 'tfp_ltla']].drop_duplicates()
+        src.design.aggregatedCases.AggregatedCases().exc(parent=parent)
 
 
 if __name__ == '__main__':
@@ -53,6 +54,7 @@ if __name__ == '__main__':
     # libraries
     import config
     import src.design.disaggregatedCases
+    import src.design.aggregatedCases
 
     # configurations
     configurations= config.Config()
