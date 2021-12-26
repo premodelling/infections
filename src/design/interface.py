@@ -8,36 +8,30 @@ import pandas as pd
 def main():
 
     # the source of each trust's LTLA properties data file
-    endpoint = os.path.join('warehouse', 'weights', 'series', 'ltla', 'baseline', 'disaggregated')
+    endpoint = os.path.join('warehouse', 'weights', 'series', 'ltla', 'focus', 'child')
 
     # per trust
     trust_codes = trusts.trust_code.unique()
     for trust_code in trust_codes[2:4]:
 
-        # foremost, a trust's flow properties data that outlines associated LTLA entities
-        data = pd.read_csv(filepath_or_buffer=os.path.join(endpoint, '{}.csv'.format(trust_code)))
+        # pending: dates check, fill NaN
+        data = src.design.trustdata.TrustData().exc(trust_code=trust_code)
+        logger.info(data.tail())
 
-        # focus on the latest year
-        latest = data.year.max()
-        data = data.loc[data.year == latest, :]
+        # pending: move into disaggregated
+        # a trust's age group flow/weights properties data that outlines associated LTLA entities
+        weights = pd.read_csv(filepath_or_buffer=os.path.join(endpoint, '{}.csv'.format(trust_code)))
 
-        # eliminate sex disaggregates
-        keys = ['year', 'ltla', 'sex', 'ag', 'ag_ppln_ltla', 'agf_ppln_ltla', 'tfp_ltla_ag', 'ag_ltla_frac_tp']
-        aggregates = data[keys].drop(columns='sex').groupby(by=['year', 'ltla', 'ag']).agg('sum')
-        aggregates.reset_index(drop=False, inplace=True)
+        # trust cases per age group determined via weights& LTLA cases
+        disaggregated = src.design.disaggregatedCases.DisaggregatedCases(weights=weights).exc()
+        logger.info(disaggregated.tail())
 
-        # re-structure
-        reference = data[['year', 'ltla', 'ppln_ltla', 'total_trust_patients', 'patients_from_ltla_to_trust',
-                          'ltla_frac_tp', 'total_patients_of_ltla', 'tfp_ltla', 'etc_ltla']]
-        reference = reference.drop_duplicates()
-        reference = reference.merge(aggregates, how='left', on=['year', 'ltla'])
+        # weighted aggregated cases
+        # src.design.aggregatedCases.AggregatedCases().exc(...)
 
-        # the weights
-        # weights = reference[['ltla', 'ag', 'tfp_ltla_ag']]
-        # src.design.disaggregatedCases.DisaggregatedCases().exc(weights=weights)
+        # weighted vaccination numbers
 
-        parent = reference[['ltla', 'tfp_ltla']].drop_duplicates()
-        src.design.aggregatedCases.AggregatedCases().exc(parent=parent)
+        # finally, the design matrix for the ML/forecasting algorithms
 
 
 if __name__ == '__main__':
@@ -55,6 +49,7 @@ if __name__ == '__main__':
     import config
     import src.design.disaggregatedCases
     import src.design.aggregatedCases
+    import src.design.trustdata
 
     # configurations
     configurations= config.Config()
