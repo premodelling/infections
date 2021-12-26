@@ -49,7 +49,7 @@ class Config:
 
         try:
             frame = pd.read_csv(filepath_or_buffer=datafile, header=0,
-                                    encoding='utf-8', usecols=['MSOA11CD', 'LAD20CD'])
+                                encoding='utf-8', usecols=['MSOA11CD', 'LAD20CD'])
         except RuntimeError as err:
             raise Exception(err)
         frame.rename({'MSOA11CD': 'msoa', 'LAD20CD': 'ltla'}, axis=1, inplace=True)
