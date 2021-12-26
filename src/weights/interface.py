@@ -6,10 +6,10 @@ import sys
 def main():
 
     # extract weights by trust
-    # messages = src.weights.baseline.Baseline().exc()
-    # logger.info(messages)
+    messages = src.weights.baseline.Baseline().exc()
+    logger.info(messages)
 
-    # focus on weights of interest
+    # due to time limitations, instead of predicting future weights, the latest weights will be used
     messages = src.weights.focus.Focus(year=2019).exc()
     logger.info(messages)
 
