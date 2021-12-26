@@ -1,4 +1,5 @@
 import os
+
 import dask
 import pandas as pd
 
@@ -16,14 +17,14 @@ class Focus:
         self.year = year
 
         # configurations
-        configurations= config.Config()
+        configurations = config.Config()
         self.trusts = configurations.trusts()
 
         # source
         self.source_path = os.path.join('warehouse', 'weights', 'series', 'ltla', 'baseline', 'disaggregated')
 
         # storage
-        path = os.path.join('warehouse', 'weights', 'series', 'ltla', 'temporary')
+        path = os.path.join('warehouse', 'weights', 'series', 'ltla', 'focus')
         self.child = os.path.join(path, 'child')
         self.parent = os.path.join(path, 'parent')
         self.__path([self.child, self.parent])
@@ -53,7 +54,7 @@ class Focus:
             frame = pd.read_csv(filepath_or_buffer=os.path.join(self.source_path, '{}.csv'.format(trust_code)))
         except RuntimeError as err:
             raise Exception(err)
-        print(frame.info())
+
         frame = frame.loc[frame['year'] == self.year, :]
 
         return frame
@@ -67,7 +68,7 @@ class Focus:
         :return:
         """
 
-        fields = ['year', 'ltla', 'ppln_ltla',  'patients_from_ltla_to_trust', 'total_patients_of_ltla',
+        fields = ['year', 'ltla', 'ppln_ltla', 'patients_from_ltla_to_trust', 'total_patients_of_ltla',
                   'tfp_ltla', 'etc_ltla', 'total_trust_patients', 'ltla_frac_tp']
 
         frame = blob.copy()[fields].drop_duplicates()
@@ -107,8 +108,7 @@ class Focus:
         trust_codes = self.trusts.trust_code.unique()
 
         computations = []
-        for trust_code in trust_codes[:4]:
-
+        for trust_code in trust_codes:
             print(trust_code)
 
             data = self.__read(trust_code=trust_code)
