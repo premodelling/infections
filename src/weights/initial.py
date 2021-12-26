@@ -7,7 +7,7 @@ import dask.dataframe
 import numpy as np
 
 
-class InitialLTLA:
+class Initial:
 
     def __init__(self):
         """
