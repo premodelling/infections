@@ -2,6 +2,8 @@ import logging
 import os
 import sys
 
+import pandas as pd
+
 
 def main():
 
@@ -9,20 +11,28 @@ def main():
     trust_codes = trusts.trust_code.unique()
     for trust_code in trust_codes[2:4]:
 
+        logger.info(trust_code)
+
         # trust data
         data = src.design.trustdata.TrustData().exc(trust_code=trust_code)
-        logger.info(data.tail())
 
         # trust cases per age group determined via weights& LTLA cases
         disaggregated = src.design.disaggregatedCases.DisaggregatedCases(trust_code=trust_code).exc()
-        logger.info(disaggregated.tail())
 
         # weighted aggregated cases
-        # src.design.aggregatedCases.AggregatedCases(trust_code=trust_code).exc()
+        cases = src.design.aggregatedCases.AggregatedCases().exc(trust_code=trust_code, field='dailyCases')
 
         # weighted vaccination numbers
+        first = src.design.aggregatedCases.AggregatedCases()\
+            .exc(trust_code=trust_code, field='dailyFirstDoseByVaccinationDate')
+
+        second = src.design.aggregatedCases.AggregatedCases()\
+            .exc(trust_code=trust_code, field='dailySecondDoseByVaccinationDate')
 
         # finally, the design matrix for the ML/forecasting algorithms
+        frame = pd.concat((data, disaggregated, cases, first, second), axis=1, ignore_index=False)
+        logger.info(frame.info())
+        logger.info(frame.head())
 
 
 if __name__ == '__main__':
