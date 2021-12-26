@@ -6,7 +6,11 @@ import sys
 def main():
 
     # extract weights by trust
-    messages = src.weights.initialltla.InitialLTLA().exc()
+    # messages = src.weights.baseline.Baseline().exc()
+    # logger.info(messages)
+
+    # focus on weights of interest
+    messages = src.weights.focus.Focus(year=2019).exc()
     logger.info(messages)
 
 
@@ -22,6 +26,7 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     # libraries
-    import src.weights.initialltla
+    import src.weights.baseline
+    import src.weights.focus
 
     main()
