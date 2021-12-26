@@ -7,11 +7,7 @@ import config
 
 class DisaggregatedCases:
 
-    def __init__(self, trust_code):
-        """
-        
-        :param trust_code: 
-        """
+    def __init__(self):
 
         configurations = config.Config()
         self.age_groups = configurations.age_groups
@@ -20,12 +16,12 @@ class DisaggregatedCases:
         self.source_path = os.path.join('warehouse', 'virus', 'ltla', 'demographic', 'cases')
         self.weights_path = os.path.join('warehouse', 'weights', 'series', 'ltla', 'focus', 'child')
 
-        self.weights = self.__weights(trust_code=trust_code)
-        self.ltla_codes = self.weights.ltla.unique()
-        
     def __weights(self, trust_code):
 
-        return pd.read_csv(filepath_or_buffer=os.path.join(self.weights_path, '{}.csv'.format(trust_code)))
+        try:
+            return pd.read_csv(filepath_or_buffer=os.path.join(self.weights_path, '{}.csv'.format(trust_code)))
+        except RuntimeError as err:
+            raise Exception(err)
 
     def __read(self, ltla_code: str):
         """
@@ -42,14 +38,14 @@ class DisaggregatedCases:
 
         return frame[['date'] + self.age_groups]
 
-    def __constants(self, ltla_code: str):
+    def __constants(self, ltla_code: str, weights: pd.DataFrame):
         """
 
         :param ltla_code: a LTLA code
         :return:
         """
 
-        factors = self.weights.loc[self.weights.ltla == ltla_code, ['ltla', 'ag', 'tfp_ltla_ag']]
+        factors = weights.loc[weights.ltla == ltla_code, ['ltla', 'ag', 'tfp_ltla_ag']]
         factors = factors.pivot(index='ltla', columns='ag', values='tfp_ltla_ag')
         factors.reset_index(drop=True, inplace=True)
         constants = factors[self.age_groups]
@@ -94,30 +90,35 @@ class DisaggregatedCases:
 
         return restructured
 
-    def exc(self):
+    def exc(self, trust_code):
         """
 
         :return:
         """
 
+        weights = self.__weights(trust_code=trust_code)
+        ltla_codes = weights.ltla.unique()
+
         computations = []
-        for ltla_code in self.ltla_codes:
+        for ltla_code in ltla_codes:
 
-            # row of weight per age group: constants
-            constants = self.__constants(ltla_code=ltla_code)
+            if os.path.exists(os.path.join(self.source_path, '{}.csv'.format(ltla_code))):
 
-            # matrix of daily cases, of a LTLA, per age group: values
-            readings = self.__read(ltla_code=ltla_code)
-            values = readings[self.age_groups]
+                # row of weight per age group: constants
+                constants = self.__constants(ltla_code=ltla_code, weights=weights)
 
-            # assigning proportions of the LTLA daily cases to the trust via the weights
-            frame = readings.copy()
-            frame.loc[:, self.age_groups] = np.multiply(values, constants)
+                # matrix of daily cases, of a LTLA, per age group: values
+                readings = self.__read(ltla_code=ltla_code)
+                values = readings[self.age_groups]
 
-            # melt
-            temporary = self.__melt(frame=frame, ltla_code=ltla_code)
+                # assigning proportions of the LTLA daily cases to the trust via the weights
+                frame = readings.copy()
+                frame.loc[:, self.age_groups] = np.multiply(values, constants)
 
-            # append
-            computations.append(temporary)
+                # melt
+                temporary = self.__melt(frame=frame, ltla_code=ltla_code)
+
+                # append
+                computations.append(temporary)
 
         return self.__aggregates(computations=computations)
