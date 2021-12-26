@@ -14,10 +14,8 @@ import config
 class Matrix:
 
     def __init__(self):
-        """
-
-        """
-
+        
+        # initiating
         self.am = src.design.aggregatedMeasures.AggregatedMeasures()
 
         # configurations
