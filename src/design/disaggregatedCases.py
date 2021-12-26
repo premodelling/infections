@@ -7,56 +7,60 @@ import config
 
 class DisaggregatedCases:
 
-    def __init__(self, weights):
+    def __init__(self, trust_code):
         """
-
-        :param weights: The weights of a single NHS Trust, w.r.t. contributing LTLA entities.  A data frame
-                        of 'ltla', 'ag', 'tfp_ltla_ag'
+        
+        :param trust_code: 
         """
-
-        self.weights = weights
-        self.codes = self.weights.ltla.unique()
 
         configurations = config.Config()
         self.age_groups = configurations.age_groups
         self.dates = configurations.dates()
 
         self.source_path = os.path.join('warehouse', 'virus', 'ltla', 'demographic', 'cases')
+        self.weights_path = os.path.join('warehouse', 'weights', 'series', 'ltla', 'focus', 'child')
 
-    def __read(self, code: str):
+        self.weights = self.__weights(trust_code=trust_code)
+        self.ltla_codes = self.weights.ltla.unique()
+        
+    def __weights(self, trust_code):
+
+        return pd.read_csv(filepath_or_buffer=os.path.join(self.weights_path, '{}.csv'.format(trust_code)))
+
+    def __read(self, ltla_code: str):
         """
         Reads the data set of a LTLA via its code
 
-        :param code: a LTLA code
+        :param ltla_code: a LTLA code
         :return:
         """
 
         try:
-            frame = pd.read_csv(filepath_or_buffer=os.path.join(self.source_path, '{}.csv'.format(code)))
+            frame = pd.read_csv(filepath_or_buffer=os.path.join(self.source_path, '{}.csv'.format(ltla_code)))
         except RuntimeError as err:
             raise Exception(err)
 
         return frame[['date'] + self.age_groups]
 
-    def __constants(self, code: str):
+    def __constants(self, ltla_code: str):
         """
 
-        :param code: a LTLA code
+        :param ltla_code: a LTLA code
         :return:
         """
 
-        factors = self.weights.loc[self.weights.ltla == code, ['ltla', 'ag', 'tfp_ltla_ag']]
+        factors = self.weights.loc[self.weights.ltla == ltla_code, ['ltla', 'ag', 'tfp_ltla_ag']]
         factors = factors.pivot(index='ltla', columns='ag', values='tfp_ltla_ag')
         factors.reset_index(drop=True, inplace=True)
         constants = factors[self.age_groups]
 
         return constants
 
-    def __melt(self, frame: pd.DataFrame, code: str):
+    def __melt(self, frame: pd.DataFrame, ltla_code: str):
         """
 
         :param frame:
-        :param code: a LTLA code
+        :param ltla_code: a LTLA code
         :return:
         """
 
@@ -65,12 +69,13 @@ class DisaggregatedCases:
         reference.fillna(value=0, inplace=True)
 
         # hence,melt
-        temporary = reference.melt(id_vars='date', var_name='age_group', value_name=code)
+        temporary = reference.melt(id_vars='date', var_name='age_group', value_name=ltla_code)
         temporary.set_index(keys=['date', 'age_group'], inplace=True)
 
         return temporary
 
-    def __aggregates(self, computations: list):
+    @staticmethod
+    def __aggregates(computations: list):
         """
 
         :param computations:
@@ -96,13 +101,13 @@ class DisaggregatedCases:
         """
 
         computations = []
-        for code in self.codes:
+        for ltla_code in self.ltla_codes:
 
             # row of weight per age group: constants
-            constants = self.__constants(code=code)
+            constants = self.__constants(ltla_code=ltla_code)
 
             # matrix of daily cases, of a LTLA, per age group: values
-            readings = self.__read(code=code)
+            readings = self.__read(ltla_code=ltla_code)
             values = readings[self.age_groups]
 
             # assigning proportions of the LTLA daily cases to the trust via the weights
@@ -110,7 +115,7 @@ class DisaggregatedCases:
             frame.loc[:, self.age_groups] = np.multiply(values, constants)
 
             # melt
-            temporary = self.__melt(frame=frame, code=code)
+            temporary = self.__melt(frame=frame, ltla_code=ltla_code)
 
             # append
             computations.append(temporary)
