@@ -5,7 +5,7 @@ import pandas as pd
 import config
 
 
-class FocusLTLA:
+class Focus:
 
     def __init__(self, year: int):
         """
