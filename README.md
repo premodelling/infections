@@ -90,7 +90,7 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 ``dailyFirstDoseByVaccinationDate`` | &#10003; | |
 ``dailySecondDoseByVaccinationDate`` | &#10003; | |
 ``dailyThirdInjectionByVaccinationDate`` | &#10003; | |
-``VaccineRegisterPopulationByVaccinationDate`` <sup>2</sup> | &#10003; | |
+``VaccineRegisterPopulationByVaccinationDate`` <sup>2, 3</sup> | &#10003; | |
 ``newVirusTestsBySpecimenDate`` | &#10003; | |
 ``newPCRTestsBySpecimenDate`` | &#10003; | |
 ``covidOccupiedBeds`` | | &#10003; | 
@@ -98,7 +98,8 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 ``estimatedNewAdmissions`` | | &#10003; | &#10003;
 
 <sup>1</sup> [daily cases disaggregated by age, per LTLA, are available](./warehouse/virus/ltla/demographic/cases)<br>
-<sup>2</sup> [age disaggregated vaccinations series, per LTLA, are available](./warehouse/virus/ltla/demographic/vaccinations)
+<sup>2</sup> The values of this field are probably erroneous.  
+<sup>3</sup> [age disaggregated vaccinations series, per LTLA, are available](./warehouse/virus/ltla/demographic/vaccinations)
 
 <br>
 <br>
