@@ -1,7 +1,7 @@
 import os
 
 import pandas as pd
-
+import config
 
 class TrustData:
 
@@ -9,6 +9,8 @@ class TrustData:
         """
 
         """
+
+        self.dates = config.Config().dates()
 
         self.source_path = os.path.join('warehouse', 'virus', 'trusts', 'measures')
 
@@ -20,6 +22,13 @@ class TrustData:
         except RuntimeError as err:
             raise Exception(err)
 
+    def __dates(self, frame: pd.DataFrame):
+
+        reference = self.dates[['date']].merge(frame, how='left', on='date')
+        reference.fillna(value=0, inplace=True)
+
+        return reference
+
     def exc(self, trust_code):
         """
 
@@ -27,4 +36,7 @@ class TrustData:
         :return:
         """
 
-        return self.__read(trust_code=trust_code)
+        frame = self.__read(trust_code=trust_code)
+        frame = self.__dates(frame=frame.copy())
+
+        return frame
