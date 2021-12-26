@@ -87,20 +87,22 @@ class AggregatedMeasures:
         computations = []
         for ltla_code in ltla_codes:
 
-            # weight: constant
-            factor = weights.loc[weights.ltla == ltla_code, :]
-            constant = factor.loc[factor.index[0], :].tfp_ltla
+            if os.path.exists(os.path.join(self.measures_path, '{}.csv'.format(ltla_code))):
 
-            # frame of date & daily cases; of a LTLA
-            readings = self.__read(ltla_code=ltla_code, field=field)
+                # weight: constant
+                factor = weights.loc[weights.ltla == ltla_code, :]
+                constant = factor.loc[factor.index[0], :].tfp_ltla
 
-            # assigning proportions of the LTLA daily cases to the trust
-            frame = readings.copy()
-            frame.loc[:, field] = np.multiply(frame[field], constant)
-            frame.rename(columns={field: ltla_code}, inplace=True)
+                # frame of date & daily cases; of a LTLA
+                readings = self.__read(ltla_code=ltla_code, field=field)
 
-            # setting the date as the index
-            frame.set_index(keys='date', inplace=True)
-            computations.append(frame)
+                # assigning proportions of the LTLA daily cases to the trust
+                frame = readings.copy()
+                frame.loc[:, field] = np.multiply(frame[field], constant)
+                frame.rename(columns={field: ltla_code}, inplace=True)
+
+                # setting the date as the index
+                frame.set_index(keys='date', inplace=True)
+                computations.append(frame)
 
         return self.__aggregates(computations=computations, field=field)
