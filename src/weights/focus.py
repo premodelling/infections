@@ -10,7 +10,7 @@ class Focus:
 
     def __init__(self, year: int):
         """
-
+        Constructor
         """
 
         # focus
@@ -46,7 +46,7 @@ class Focus:
         """
         a trust's flow properties data that outlines associated LTLA entities
 
-        :param trust_code:
+        :param trust_code: NHS Trust code
         :return:
         """
 
@@ -62,9 +62,10 @@ class Focus:
     @dask.delayed
     def __parent(self, trust_code: str, blob: pd.DataFrame):
         """
+        Extracts the top level weights; excludes child weights such as age group & sex
 
-        :param trust_code:
-        :param blob:
+        :param trust_code: NHS Trust code
+        :param blob: Patients counts data, w.r.t. a NHS Trust
         :return:
         """
 
@@ -81,6 +82,7 @@ class Focus:
     @dask.delayed
     def __child(self, trust_code: str, blob: pd.DataFrame, parent: pd.DataFrame):
         """
+        Calculates the age group weights by aggregating the age group & sex weights.
 
         :param trust_code:
         :param blob:
@@ -101,13 +103,16 @@ class Focus:
 
     def exc(self):
         """
+        Entry point
 
         :return:
         """
 
+        # excluding trusts for which we do not have data
         trust_codes = self.trusts.trust_code.unique()
         trust_codes = list(set(trust_codes) - {'RDZ', 'RD3'})
 
+        # create files of (a) top level, i.e., parent, and (b) age group level, i.e., child, weights
         computations = []
         for trust_code in trust_codes:
             print(trust_code)
