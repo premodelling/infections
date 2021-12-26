@@ -107,9 +107,9 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 
 The differing granularity of the variables can be addressed via estimated flow/mapping factors.  **More notes, and graphs, upcoming.** 
 
-* [warehouse/trusts/weights/series/ltla/disaggregated](./warehouse/trusts/weights/series/ltla/disaggregated)
+* [warehouse/weights/series/ltla/baseline/disaggregated](./warehouse/weights/series/ltla/baseline/disaggregated)
   
-* [warehouse/trusts/weights/series/ltla/aggregated](./warehouse/trusts/weights/series/ltla/aggregated)
+* [warehouse/weights/series/ltla/baseline/aggregated](./warehouse/weights/series/ltla/baseline/aggregated)
 
 
 <br>
