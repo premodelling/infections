@@ -2,32 +2,23 @@ import logging
 import os
 import sys
 
-import pandas as pd
-
 
 def main():
-
-    # the source of each trust's LTLA properties data file
-    endpoint = os.path.join('warehouse', 'weights', 'series', 'ltla', 'focus', 'child')
 
     # per trust
     trust_codes = trusts.trust_code.unique()
     for trust_code in trust_codes[2:4]:
 
-        # pending: dates check, fill NaN
+        # trust data
         data = src.design.trustdata.TrustData().exc(trust_code=trust_code)
         logger.info(data.tail())
 
-        # pending: move into disaggregated
-        # a trust's age group flow/weights properties data that outlines associated LTLA entities
-        weights = pd.read_csv(filepath_or_buffer=os.path.join(endpoint, '{}.csv'.format(trust_code)))
-
         # trust cases per age group determined via weights& LTLA cases
-        disaggregated = src.design.disaggregatedCases.DisaggregatedCases(weights=weights).exc()
+        disaggregated = src.design.disaggregatedCases.DisaggregatedCases(trust_code=trust_code).exc()
         logger.info(disaggregated.tail())
 
         # weighted aggregated cases
-        # src.design.aggregatedCases.AggregatedCases().exc(...)
+        # src.design.aggregatedCases.AggregatedCases(trust_code=trust_code).exc()
 
         # weighted vaccination numbers
 
