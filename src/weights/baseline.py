@@ -7,7 +7,7 @@ import dask.dataframe
 import numpy as np
 
 
-class Initial:
+class Baseline:
 
     def __init__(self):
         """
