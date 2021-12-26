@@ -1,7 +1,9 @@
 import os
 
 import pandas as pd
+
 import config
+
 
 class TrustData:
 
@@ -38,5 +40,6 @@ class TrustData:
 
         frame = self.__read(trust_code=trust_code)
         frame = self.__dates(frame=frame.copy())
+        frame.set_index(keys='date', drop=True, inplace=True)
 
         return frame
