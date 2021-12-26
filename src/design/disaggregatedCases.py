@@ -39,7 +39,7 @@ class DisaggregatedCases:
 
             # row vector of weight per age group: constants
             factors = weights.loc[weights.ltla == code, :]
-            factors = factors.pivot(index='ltla', columns='ag', values='ag_trust_factor')
+            factors = factors.pivot(index='ltla', columns='ag', values='tfp_ltla_ag')
             factors.reset_index(drop=True, inplace=True)
             constants = factors[self.age_groups]
 
