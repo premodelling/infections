@@ -5,7 +5,7 @@ import numpy as np
 import config
 
 
-class AggregatedCases:
+class AggregatedMeasures:
 
     def __init__(self):
         """
