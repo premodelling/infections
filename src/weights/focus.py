@@ -106,6 +106,7 @@ class Focus:
         """
 
         trust_codes = self.trusts.trust_code.unique()
+        trust_codes = list(set(trust_codes) - {'RDZ', 'RD3'})
 
         computations = []
         for trust_code in trust_codes:
