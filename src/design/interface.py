@@ -20,13 +20,13 @@ def main():
         disaggregated = src.design.disaggregatedCases.DisaggregatedCases(trust_code=trust_code).exc()
 
         # weighted aggregated cases
-        cases = src.design.aggregatedCases.AggregatedCases().exc(trust_code=trust_code, field='dailyCases')
+        cases = src.design.aggregatedMeasures.AggregatedMeasures().exc(trust_code=trust_code, field='dailyCases')
 
         # weighted vaccination numbers
-        first = src.design.aggregatedCases.AggregatedCases()\
+        first = src.design.aggregatedMeasures.AggregatedMeasures()\
             .exc(trust_code=trust_code, field='dailyFirstDoseByVaccinationDate')
 
-        second = src.design.aggregatedCases.AggregatedCases()\
+        second = src.design.aggregatedMeasures.AggregatedMeasures()\
             .exc(trust_code=trust_code, field='dailySecondDoseByVaccinationDate')
 
         # finally, the design matrix for the ML/forecasting algorithms
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     # libraries
     import config
     import src.design.disaggregatedCases
-    import src.design.aggregatedCases
+    import src.design.aggregatedMeasures
     import src.design.trustdata
 
     # configurations
