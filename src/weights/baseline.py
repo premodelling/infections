@@ -1,3 +1,8 @@
+"""
+This program searches for, and collates, the weights files per trust across the years
+
+"""
+
 import glob
 import logging
 import os
@@ -48,7 +53,7 @@ class Baseline:
 
     def __source_names(self):
         """
-        A Trust ca have data within the directory of one or more years.  This function/method
+        A Trust can have data within the directory of one or more years.  This function/method
         returns unique trust names.
 
         :return:
@@ -59,6 +64,11 @@ class Baseline:
         return np.unique(names)
 
     def exc(self):
+        """
+        Entry point
+
+        :return:
+        """
 
         source_names = self.__source_names()
 
