@@ -5,7 +5,12 @@ import sys
 
 def main():
 
-    messages = src.design.matrix.Matrix().exc()
+    # creating design matrices
+    # messages = src.design.matrix.Matrix().exc()
+    # logger.info(messages)
+
+    # concatenated design matrices for graphs
+    messages = src.design.temporary.Temporary().exc()
     logger.info(messages)
 
 
@@ -22,5 +27,6 @@ if __name__ == '__main__':
 
     # libraries
     import src.design.matrix
+    import src.design.temporary
 
     main()
