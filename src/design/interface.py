@@ -6,8 +6,8 @@ import sys
 def main():
 
     # creating design matrices
-    # messages = src.design.matrix.Matrix().exc()
-    # logger.info(messages)
+    messages = src.design.matrix.Matrix().exc()
+    logger.info(messages)
 
     # concatenated design matrices for graphs
     messages = src.design.temporary.Temporary().exc()
