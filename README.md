@@ -178,7 +178,7 @@ Official UK Data
 * [COVID-19 Hospital Activity](https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-hospital-activity/)
 
 Unofficial Sources
-* [Coronavirus Pandemic, Our World in Data, University of Oxford](https://ourworldindata.org/coronavirus)<br>The portal as excellent exploratory data analysis ideas & suggestions
+* [Coronavirus Pandemic, Our World in Data, University of Oxford](https://ourworldindata.org/coronavirus)<br>The portal has excellent exploratory data analysis ideas & suggestions
 
 <br>
 <br>
