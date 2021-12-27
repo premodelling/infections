@@ -7,6 +7,7 @@
   * [Plausible Features](#plausible-features)
   * [SARS-CoV-2 & Supplementary Data](#sars-cov-2--supplementary-data)
   * [Addressing Disparate Data](#addressing-disparate-data)
+  * [Design Matrices for Modelling](#design-matrices-for-modelling)
   
 * [Preliminaries](#preliminaries)
   * [Critical Considerations](#critical-considerations)
@@ -112,38 +113,35 @@ In brief, a section of NHS England records the number of patients that each Midd
 each year; each MSOA contributes patients to one or more NHS Trusts.  However, each MSOA region is a member of one LTLA region, hence 
 the number of patients that each LTLA contributes to a NHS Trust, per year, can be calculated via appropriate aggregates.
 
-Therefore, the questions
+Via these LTLA level aggregates the questions ... *per LTLA that contributes to a NHS Trust* 
 
-* Per LTLA that contributes to a NHS Trust, what fraction of the LTLA's patients did the trust receive?
-* Or, what fraction of the LTLA's patients, within age group 5 - 9, did the trust receive?  
+* what fraction of the LTLA's patients did the trust receive?
+* what fraction of the LTLA's patients, within age group 5 - 9, did the trust receive?  
 
-are addressed via these aggregates, and the resulting fractions guide the apportioning of LTLA level COVID measures
-to NHS Trusts.  The data files
+are calculable, and the resulting fractions guide the apportioning of LTLA level COVID measures
+to NHS Trusts.    The key values are within the data files that are linked to via the variables below
 
-* [warehouse/weights/series/ltla/baseline/disaggregated](./warehouse/weights/series/ltla/baseline/disaggregated)
-
-* [warehouse/weights/series/ltla/baseline/aggregated](./warehouse/weights/series/ltla/baseline/aggregated)
-
-outline the ...
-
+variable | description
+ :--- | :---
+[``tfp_ltla``](./warehouse/weights/series/ltla/focus/parent) | the trust fraction of the patients that<br>originated from the LTLA in question
+[``tfp_ltla_ag``](./warehouse/weights/series/ltla/focus/child) | the trust fraction of the patients, **w.r.t. an age group**,<br>that originated from the LTLA in question
+[``tfp_ltla_ag``](./warehouse/weights/series/ltla/baseline/disaggregated) | the trust fraction of the patients, **w.r.t. an age group and sex**,<br>that originated from the LTLA in question
 
 <br>
 <br>
 
-### Design Matrices
+### Design Matrices for Modelling
 
 The raw design matrices, wherein all measures are at NHS Trust level, are available at
 
 * [warehouse/design/raw](./warehouse/design/raw)
 
-Each *data file* has the data of a single NHS Trust, hence each file's name is the trust code.  Readers may explore
+Each *data file* has the data of a single NHS Trust, hence each file's name is the trust code.  Readers may explore the data
+at [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses); the explorable options are
 
-* [Estimated Cases by Age Group](https://public.tableau.com/views/EstimatedCasesbyAgeGroup/EstimatedCasesbyAgeGroup?:language=en-GB&:display_count=n&:origin=viz_share_link)
-  
-* [Occupied Beds]()
-
-
-
+* Estimated Cases by Age Group
+* Hospital Activity & Estimated Cases
+* Estimated Vaccination & Case Measures
 
 
 <br>
