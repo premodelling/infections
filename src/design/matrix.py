@@ -14,7 +14,7 @@ import config
 class Matrix:
 
     def __init__(self):
-        
+
         # initiating
         self.am = src.design.aggregatedMeasures.AggregatedMeasures()
 
@@ -29,27 +29,57 @@ class Matrix:
 
     @dask.delayed
     def __trust(self, trust_code):
+        """
+
+        :param trust_code:
+        :return: trust level data
+        """
 
         return src.design.trustdata.TrustData().exc(trust_code=trust_code)
 
     @dask.delayed
     def __disaggregated_cases(self, trust_code):
+        """
 
-        # trust cases per age group determined via weights& LTLA cases
+        :param trust_code: NHS Trust code
+        :return: returns disaggregated trust level cases per age group determined via weights & LTLA cases
+        """
+
         return src.design.disaggregatedCases.DisaggregatedCases().exc(trust_code=trust_code)
 
     @dask.delayed
     def __aggregated_measures(self, trust_code, field):
+        """
+
+        :param trust_code: NHS Trust code
+        :param field: measure of interest, e.g., dailyCases, etc.
+        :return: returns estimated trust level measures determined via weights & LTLA level measures
+        """
 
         return self.am.exc(trust_code=trust_code, field=field)
 
     @dask.delayed
     def __merge(self, trust, disaggregated_cases, cases_, first_, second_):
+        """
+
+        :param trust:
+        :param disaggregated_cases:
+        :param cases_:
+        :param first_:
+        :param second_:
+        :return: a raw design matrix
+        """
 
         return pd.concat((trust, disaggregated_cases, cases_, first_, second_), axis=1, ignore_index=False)
 
     @dask.delayed
     def __write(self, frame: pd.DataFrame, trust_code: str):
+        """
+
+        :param frame:
+        :param trust_code:
+        :return:
+        """
 
         try:
             frame.to_csv(path_or_buf=os.path.join(self.storage, '{}.csv'.format(trust_code)),
