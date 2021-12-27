@@ -121,11 +121,13 @@ Via these LTLA level aggregates the questions ... *per LTLA that contributes to 
 are calculable, and the resulting fractions guide the apportioning of LTLA level COVID measures
 to NHS Trusts.    The key values are within the data files that are linked to via the variables below
 
+<br>
+
 variable | description
  :--- | :---
-[``tfp_ltla``](./warehouse/weights/series/ltla/focus/parent) | the trust fraction of the patients that<br>originated from the LTLA in question
-[``tfp_ltla_ag``](./warehouse/weights/series/ltla/focus/child) | the trust fraction of the patients, **w.r.t. an age group**,<br>that originated from the LTLA in question
-[``tfp_ltla_ag``](./warehouse/weights/series/ltla/baseline/disaggregated) | the trust fraction of the patients, **w.r.t. an age group and sex**,<br>that originated from the LTLA in question
+[``tfp_ltla``](./warehouse/weights/series/ltla/focus/parent) | The trust fraction of the patients that originated from the<br>LTLA in question.
+[``tfp_ltla_ag``](./warehouse/weights/series/ltla/focus/child) | The trust fraction of the patients, **w.r.t. an age group**, that originated<br>from the LTLA in question.
+[``tfp_ltla_ag``](./warehouse/weights/series/ltla/baseline/disaggregated) | the trust fraction of the patients, **w.r.t. an age group and sex**,<br>that originated from the LTLA in question.<br><br>In future, this variable name will be changed to tfp_ltla_ags.  At present the<br>age-group & age-group-sex fractions can only exist in separate files.
 
 <br>
 <br>
