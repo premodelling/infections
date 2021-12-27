@@ -4,10 +4,9 @@
 **SCC460 Group Project: Infections**
 
 * [Project](#project)
-  * [Data Notes](#data-notes)
-    * [Features](#features)
-    * [SARS-CoV-2 Data](#sars-cov-2-data)
-    * [Addressing Multi-granularity](#addressing-multi-granularity)
+  * [Plausible Features](#plausible-features)
+  * [SARS-CoV-2 & Supplementary Data](#sars-cov-2--supplementary-data)
+  * [Addressing Disparate Data](#addressing-disparate-data)
   
 * [Preliminaries](#preliminaries)
   * [Critical Considerations](#critical-considerations)
@@ -36,9 +35,7 @@
 <br>
 <br>
 
-### Data Notes
-
-#### Features
+### Plausible Features
 
 There a number of features of interest, sometimes disaggregated by geography, for the forecasting problem in question.  Including:
 
@@ -54,7 +51,7 @@ There a number of features of interest, sometimes disaggregated by geography, fo
 <br>
 <br>
 
-#### SARS-CoV-2 Data
+### SARS-CoV-2 & Supplementary Data
 
 Thus far, the focus is the [coronavirus.data.gov.uk](https://coronavirus.data.gov.uk) SARS-CoV-2 data; data extraction via 
 the [API](https://coronavirus.data.gov.uk/details/developers-guide/main-api).  The table below outlines the variables 
@@ -104,13 +101,49 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 <br>
 <br>
 
-#### Addressing Multi-Granularity
+### Addressing Disparate Data
 
-The differing granularity of the variables can be addressed via estimated flow/mapping factors.  **More notes, and graphs, upcoming.** 
+The prospective modelling measures exists at either NHS Trust or Lower Tier Local Authority (LTLA) level, and because our interest is in 
+NHS Trust level admissions, we need the NHS Trust level forms of the LTLA measures.
+
+**Approach**
+
+In brief, a section of NHS England records the number of patients that each Middle Super Output Area (MSOA) contributes to each NHS Trust 
+each year; each MSOA contributes patients to one or more NHS Trusts.  However, each MSOA region is a member of one LTLA region, hence 
+the number of patients that each LTLA contributes to a NHS Trust, per year, can be calculated via appropriate aggregates.
+
+Therefore, the questions
+
+* Per LTLA that contributes to a NHS Trust, what fraction of the LTLA's patients did the trust receive?
+* Or, what fraction of the LTLA's patients, within age group 5 - 9, did the trust receive?  
+
+are addressed via these aggregates, and the resulting fractions guide the apportioning of LTLA level COVID measures
+to NHS Trusts.  The data files
 
 * [warehouse/weights/series/ltla/baseline/disaggregated](./warehouse/weights/series/ltla/baseline/disaggregated)
-  
+
 * [warehouse/weights/series/ltla/baseline/aggregated](./warehouse/weights/series/ltla/baseline/aggregated)
+
+outline the ...
+
+
+<br>
+<br>
+
+### Design Matrices
+
+The raw design matrices, wherein all measures are at NHS Trust level, are available at
+
+* [warehouse/design/raw](./warehouse/design/raw)
+
+Each *data file* has the data of a single NHS Trust, hence each file's name is the trust code.  Readers may explore
+
+* [Estimated Cases by Age Group](https://public.tableau.com/views/EstimatedCasesbyAgeGroup/EstimatedCasesbyAgeGroup?:language=en-GB&:display_count=n&:origin=viz_share_link)
+  
+* [Occupied Beds]()
+
+
+
 
 
 <br>
