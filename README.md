@@ -134,14 +134,14 @@ variable | description
 
 **Assumptions**
 
-In progress ...
-
 * The 2019 patient flow fractions from a LTLA to a NHS Trust, for all admissions types, are reasonable estimates of flow 
   fractions for any admission type.  Not ideal.  There are several arguments against this assumption.  In the case of SARS-CoV-2
   * Are all trusts equally equipped to deal with a respiratory pandemic?
   * Capacity
 
-* The characteristics of the populations have not ...
+* The population characteristics of each LTLA change minimally within a short period.  Not ideal either.
+
+* etc.
 
 <br>
 <br>
@@ -159,8 +159,9 @@ at [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses); the 
 * Hospital Activity & Estimated Cases
 * Estimated Vaccination & Case Measures
 
-Of interest, if we have time, a map that illustrates the fraction of LTLA patients that a NHS trust receives from each 
-contributing LTLA, and perhaps catchment estimates.
+**Of interest**, if we have time, a map that illustrates the fraction of LTLA patients that a NHS trust receives from each 
+contributing LTLA, and perhaps catchment estimates.  **Required for the report**, an illustration of the data sources, the weights
+calculations steps, and the data integration steps/processes that led to the design matrices.
 
 <br>
 <br>
