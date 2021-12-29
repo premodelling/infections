@@ -107,6 +107,8 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 The prospective modelling measures exists at either NHS Trust or Lower Tier Local Authority (LTLA) level, and because our interest is in 
 NHS Trust level admissions, we need the NHS Trust level forms of the LTLA measures.
 
+<br>
+
 **Approach**
 
 In brief, a section of NHS England records the number of patients that each Middle Super Output Area (MSOA) contributes to each NHS Trust 
@@ -128,6 +130,8 @@ variable | description
 [``tfp_ltla``](./warehouse/weights/series/ltla/focus/parent) | The trust fraction of the patients that originated from the<br>LTLA in question.
 [``tfp_ltla_ag``](./warehouse/weights/series/ltla/focus/child) | The trust fraction of the patients, **w.r.t. an age group**, that originated<br>from the LTLA in question.
 [``tfp_ltla_ag``](./warehouse/weights/series/ltla/baseline/disaggregated) | The trust fraction of the patients, **w.r.t. an age group and sex**,<br>that originated from the LTLA in question.<br><br>In future, this variable name will be changed to ``tfp_ltla_ags``.  At<br>present the age-group & age-group-sex fractions can only exist<br>in separate files.
+
+<br>
 
 **Of interest**, if we have time, a map that illustrates the fraction of LTLA patients that a NHS trust receives from each
 contributing LTLA, and perhaps catchment estimates.
