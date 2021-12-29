@@ -106,7 +106,6 @@ class DisaggregatedCases:
 
                 # row of weight per age group: constants
                 constants = self.__constants(ltla_code=ltla_code, weights=weights)
-                print(constants.sum(axis=1))
 
                 # matrix of daily cases, of a LTLA, per age group: values
                 readings = self.__read(ltla_code=ltla_code)
