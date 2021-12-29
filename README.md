@@ -7,7 +7,7 @@
   * [Plausible Features](#plausible-features)
   * [SARS-CoV-2 & Supplementary Data](#sars-cov-2--supplementary-data)
   * [Addressing Disparate Data](#addressing-disparate-data)
-  * [Design Matrices for Modelling](#design-matrices-for-modelling)
+  * [Design Matrices for Modelling](#design-matrix--outcomes-series-for-modelling)
   
 * [Preliminaries](#preliminaries)
   * [Critical Considerations](#critical-considerations)
@@ -158,17 +158,13 @@ The raw series for design matrices and outcomes, wherein all measures are at NHS
 
 * [warehouse/design/raw](./warehouse/design/raw)
 
-**Please do not use the *age group cases series/fields* yet**, they need to be adjusted for zero cases; meanwhile use 
-the ``dailyCases`` field instead.  Each *data file* has the data of a single NHS Trust, hence each file's name is 
-the trust code.  Readers may explore the data at [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses); the 
+Each *data file* has the data of a single NHS Trust, hence each file's name is the trust code.  The data is explorable via
+[Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the 
 explorable options are
 
 * Hospital Activity & Estimated Cases
 * Estimated Vaccination & Case Measures
-
-Upcoming
-
-* Estimated Cases by Age Group
+* Estimated Daily Cases by Age Group
 
 <br>
 
