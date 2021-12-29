@@ -38,7 +38,7 @@ class DisaggregatedCases:
 
         return frame[['date'] + self.age_groups]
 
-    def __constants(self, ltla_code: str, weights: pd.DataFrame):
+    def __constants(self, ltla_code: str, weights: pd.DataFrame) -> pd.DataFrame:
         """
 
         :param ltla_code: a LTLA code
@@ -52,7 +52,7 @@ class DisaggregatedCases:
 
         return constants
 
-    def __melt(self, frame: pd.DataFrame, ltla_code: str):
+    def __melt(self, frame: pd.DataFrame, ltla_code: str) -> pd.DataFrame:
         """
 
         :param frame:
@@ -71,7 +71,7 @@ class DisaggregatedCases:
         return temporary
 
     @staticmethod
-    def __aggregates(computations: list):
+    def __aggregates(computations: list) -> pd.DataFrame:
         """
 
         :param computations:
@@ -106,14 +106,26 @@ class DisaggregatedCases:
 
                 # row of weight per age group: constants
                 constants = self.__constants(ltla_code=ltla_code, weights=weights)
+                print(constants.sum(axis=1))
 
                 # matrix of daily cases, of a LTLA, per age group: values
                 readings = self.__read(ltla_code=ltla_code)
                 values = readings[self.age_groups]
 
+                # special
+                conditions = (values > 0).astype(int)
+                states = np.multiply(conditions, constants)
+                denominators = states.sum(axis=1).values
+                denominators = np.repeat(denominators.reshape((denominators.shape[0], -1)), 19, axis=1)
+
+                np.seterr(invalid='ignore')
+                adjuster = np.true_divide(states.values, denominators)
+                np.seterr(invalid='warn')
+                adjuster = constants.sum(axis=1).values[0] * adjuster
+
                 # assigning proportions of the LTLA daily cases to the trust via the weights
                 frame = readings.copy()
-                frame.loc[:, self.age_groups] = np.multiply(values, constants)
+                frame.loc[:, self.age_groups] = np.multiply(values.values, adjuster)
 
                 # melt
                 temporary = self.__melt(frame=frame, ltla_code=ltla_code)
