@@ -129,6 +129,8 @@ variable | description
 [``tfp_ltla_ag``](./warehouse/weights/series/ltla/focus/child) | The trust fraction of the patients, **w.r.t. an age group**, that originated<br>from the LTLA in question.
 [``tfp_ltla_ag``](./warehouse/weights/series/ltla/baseline/disaggregated) | The trust fraction of the patients, **w.r.t. an age group and sex**,<br>that originated from the LTLA in question.<br><br>In future, this variable name will be changed to ``tfp_ltla_ags``.  At<br>present the age-group & age-group-sex fractions can only exist<br>in separate files.
 
+**Of interest**, if we have time, a map that illustrates the fraction of LTLA patients that a NHS trust receives from each
+contributing LTLA, and perhaps catchment estimates.
 
 <br>
 
@@ -146,9 +148,9 @@ variable | description
 <br>
 <br>
 
-### Design Matrices for Modelling
+### Design Matrix & Outcomes Series for Modelling
 
-The raw design matrices, wherein all measures are at NHS Trust level, are available at
+The raw series for design matrices and outcomes, wherein all measures are at NHS Trust level, are available at
 
 * [warehouse/design/raw](./warehouse/design/raw)
 
@@ -166,9 +168,8 @@ Upcoming
 
 <br>
 
-**Of interest**, if we have time, a map that illustrates the fraction of LTLA patients that a NHS trust receives from each 
-contributing LTLA, and perhaps catchment estimates.  **Required for the report**, an illustration of the data sources, the weights
-calculations steps, and the data integration steps/processes that led to the design matrices.
+**Required for the report**, an illustration of the data sources, the weights calculations steps, and the data 
+integration steps/processes.
 
 <br>
 <br>
