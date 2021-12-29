@@ -165,7 +165,7 @@ explorable options are
 * Hospital Activity & Estimated Cases
 * Estimated Vaccination & Case Measures
 
-Upcoming
+Upcoming Tableau graph
 
 * Estimated Cases by Age Group
 
