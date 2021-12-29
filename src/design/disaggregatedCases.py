@@ -110,6 +110,7 @@ class DisaggregatedCases:
                 # matrix of daily cases, of a LTLA, per age group: values
                 readings = self.__read(ltla_code=ltla_code)
                 values = readings[self.age_groups]
+                totals = values.sum(axis=1).values.reshape((values.shape[0], -1))
 
                 # special
                 conditions = (values > 0).astype(int)
@@ -124,7 +125,7 @@ class DisaggregatedCases:
 
                 # assigning proportions of the LTLA daily cases to the trust via the weights
                 frame = readings.copy()
-                frame.loc[:, self.age_groups] = np.multiply(values.values, adjuster)
+                frame.loc[:, self.age_groups] = np.multiply(adjuster, totals)
 
                 # melt
                 temporary = self.__melt(frame=frame, ltla_code=ltla_code)
