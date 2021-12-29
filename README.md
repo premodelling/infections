@@ -158,9 +158,8 @@ The raw series for design matrices and outcomes, wherein all measures are at NHS
 
 * [warehouse/design/raw](./warehouse/design/raw)
 
-**Please do not use the *age group cases series/fields* yet**, they need to be adjusted for zero cases; meanwhile use 
-the ``dailyCases`` field instead.  Each *data file* has the data of a single NHS Trust, hence each file's name is 
-the trust code.  The data is explorable via [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the 
+Each *data file* has the data of a single NHS Trust, hence each file's name is the trust code.  The data is explorable 
+via [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the 
 explorable options are
 
 * Hospital Activity & Estimated Cases
