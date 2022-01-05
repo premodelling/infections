@@ -164,10 +164,7 @@ explorable options are
 
 * Hospital Activity & Estimated Cases
 * Estimated Vaccination & Case Measures
-
-Upcoming Tableau graph
-
-* Estimated Cases by Age Group
+* Estimated Trust Level Cases by Age Group
 
 <br>
 
