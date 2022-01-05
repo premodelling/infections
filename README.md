@@ -7,7 +7,7 @@
   * [Plausible Features](#plausible-features)
   * [SARS-CoV-2 & Supplementary Data](#sars-cov-2--supplementary-data)
   * [Addressing Disparate Data](#addressing-disparate-data)
-  * [Design Matrices for Modelling](#design-matrix--outcomes-series-for-modelling)
+  * [Design Matrices & Outcomes Series for Modelling](#design-matrices--outcomes-series-for-modelling)
   
 * [Preliminaries](#preliminaries)
   * [Critical Considerations](#critical-considerations)
@@ -152,7 +152,7 @@ contributing LTLA, and perhaps catchment estimates.
 <br>
 <br>
 
-### Design Matrix & Outcomes Series for Modelling
+### Design Matrices & Outcomes Series for Modelling
 
 The raw series for design matrices and outcomes, wherein all measures are at NHS Trust level, are available at
 
