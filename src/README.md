@@ -1,7 +1,7 @@
 
 <br>
 
-![](../notebooks/notes/images/outline.pdf)
+![](../notebooks/notes/images/outline.png)
 
 <br>
 
