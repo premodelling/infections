@@ -1,0 +1,295 @@
+---
+title: SCC460 Project Notes
+affiliation:
+  ## use one only of the following
+  # author-columnar: true         ## one column per author
+  institution-columnar: true  ## one column per institution (multiple autors eventually)
+  # wide: true                  ## one column wide author/affiliation fields
+
+  #author:   ## A custom author ordering field that breaks institution grouping.
+  #  - name: Eldon Tyrell
+  #    mark: 4
+  #    email: eldon@starfleet-academy.star
+  #  - name: Michael Shell
+  #    mark: 1
+  #  - name: Roy Batty
+  #    mark: 4
+  #    email: roy@replicant.offworld
+  ## Authors cited in institution field are ignored when author field exists
+
+  #author_multiline: ## Put authors in a given order, with multiline possibility. Authors cited in institution are ignored if exists
+  #  - line:         ## Create a new author line
+  #    - name: Michael Shell
+  #      mark: 1
+  #    - name: Homer Simpson
+  #      mark: 2
+  #      email: homer@thesimsons.com
+  #    - name: Roy Batty
+  #      mark: 4
+  #      email: roy@replicant.offworld
+  #  - line:         ## Create a second author line
+  #    - name: Montgomery Scott
+  #      mark: 3
+  #    - name: Eldon Tyrell
+  #      mark: 4
+
+  institution:
+    - name: Lancaster University
+      department: Lancaster University Medical School
+      location: Lancaster
+      email: science@lancaster.ac.uk
+      mark: 1
+      author:
+        - name: SCC460 Project Group
+    
+keywords: ["keyword 1", "keyword 2"]
+abstract: |
+  \vspace{10pt}
+  Aim: Predicting NHS Trust Hospitalisation Trends.
+  \vspace{10pt}
+  
+  Objectives: (a) Understanding, determining, the range of predictors that influence SARS-CoV-2 hospital admissions per NHS Trust, (b) Forecasting N weeks ahead
+  \vspace{10pt}
+
+# use some specific Tex packages if needed. 
+# with_ifpdf: true
+# with_cite: true
+# amsmath need to be true to use with bookdown for referencing equations.
+with_amsmath: true
+# with_algorithmic: true
+# with_array: true
+# with_dblfloatfix: true
+
+bibliography: mybibfile.bib
+output: rticles::ieee_article
+#citation_sorting: none   ## used as sorting option of the biblatex package (if selected)
+header-includes:
+   - \usepackage{graphicx}
+---
+
+Introduction
+=============
+
+## Notes
+
+* Motivation/Context: An interest in prediction/forecasting models that enable hospitals to anticipate patient flows, and have contingency plans, during future pandemics. There is a strong interest in understanding the range of predictors that underlie effective models because such understandings ensure that hospitals are privy to the range of variables that would enable effective anticipatory & contingency planning.
+
+* Research Question: What COVID-19 disease measures affect expected patient flows to an NHS England NHS Trust? 
+
+
+
+<!-- An example of a floating figure using the graphicx package.
+Note that \label must occur AFTER (or within) \caption.
+For figures, \caption should occur after the \includegraphics.
+Note that IEEEtran v1.7 and later has special internal code that
+is designed to preserve the operation of \label within \caption
+even when the captionsoff option is in effect. However, because
+of issues like this, it may be the safest practice to put all your
+\label just after \caption rather than within \caption{}.
+
+Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+option should be used if it is desired that the figures are to be
+displayed while in draft mode.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{myfigure}
+where an .eps filename suffix will be assumed under latex, 
+and a .pdf suffix will be assumed for pdflatex; or what has been declared
+via \DeclareGraphicsExtensions.
+\caption{Simulation results for the network.}
+\label{fig_sim}
+\end{figure}
+
+Note that the IEEE typically puts floats only at the top, even when this
+results in a large percentage of a column being occupied by floats.
+
+
+An example of a double column floating figure using two subfigures.
+(The subfig.sty package must be loaded for this to work.)
+The subfigure \label commands are set within each subfloat command,
+and the \label for the overall figure must come after \caption.
+\hfil is used as a separator to get equal spacing.
+Watch out that the combined width of all the subfigures on a 
+line do not exceed the text width or a line break will occur.
+
+\begin{figure*}[!t]
+\centering
+\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+\label{fig_first_case}}
+\hfil
+\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+\label{fig_second_case}}
+\caption{Simulation results for the network.}
+\label{fig_sim}
+\end{figure*}
+
+Note that often IEEE papers with subfigures do not employ subfigure
+captions (using the optional argument to \subfloat[]), but instead will
+reference/describe all of them (a), (b), etc., within the main caption.
+Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+labels, the optional argument to \subfloat must be present. If a
+subcaption is not desired, just leave its contents blank,
+e.g., \subfloat[].
+
+
+An example of a floating table. Note that, for IEEE style tables, the
+\caption command should come BEFORE the table and, given that table
+captions serve much like titles, are usually capitalized except for words
+such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+and up, which are usually not capitalized unless they are the first or
+last word of the caption. Table text will default to \footnotesize as
+the IEEE normally uses this smaller font for tables.
+The \label must come after \caption as always.
+
+\begin{table}[!t]
+% increase table row spacing, adjust to taste
+\renewcommand{\arraystretch}{1.3}
+if using array.sty, it might be a good idea to tweak the value of
+\extrarowheight as needed to properly center the text within the cells
+\caption{An Example of a Table}
+\label{table_example}
+\centering
+% Some packages, such as MDW tools, offer better commands for making tables
+% than the plain LaTeX2e tabular which is used here.
+\begin{tabular}{|c||c|}
+\hline
+One & Two\\
+\hline
+Three & Four\\
+\hline
+\end{tabular}
+\end{table}
+
+
+Note that the IEEE does not put floats in the very first column
+- or typically anywhere on the first page for that matter. Also,
+in-text middle ("here") positioning is typically not used, but it
+is allowed and encouraged for Computer Society conferences (but
+not Computer Society journals). Most IEEE journals/conferences use
+top floats exclusively. 
+Note that, LaTeX2e, unlike IEEE journals/conferences, places
+footnotes above bottom floats. This can be corrected via the
+\fnbelowfloat command of the stfloats package. -->
+
+
+\vspace{35pt}
+
+Data
+=======
+
+
+## Data Collection
+
+* A diagrammatic illustration of all the data sources, data transformations, feature engineering, data integration, etc., will be most useful.
+
+\vspace{10pt}
+
+## SARS-CoV-2 & Supplementary Data
+
+Thus far, the focus is the [coronavirus.data.gov.uk](https://coronavirus.data.gov.uk) SARS-CoV-2 data; data extraction via 
+the [API](https://coronavirus.data.gov.uk/details/developers-guide/main-api).  The table below outlines the variables 
+in focus thus far.  A few points
+
+* Data variables, i.e., SARS-CoV-2 data measures, are not available at equivalent granularity.  For example, only a
+  handful of un-aggregated measures are available at NHS Trust level; the aggregated measures depend on the un-aggregated measures.
+
+* Age demarcations are inconsistent: At the lower tier local authority (LTLA) level, the age groups used for  
+  *newCasesBySpecimenDateAgeDemographics*, differ from the age groups used for *vaccinationsAgeDemographics*.  
+  Although the API does not include NHS Trust level age group decompositions, such decompositions are available
+  via [COVID-19 Hospital Activity](https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-hospital-activity/),
+  which – amazingly – uses a third different set of age group demarcations.
+  
+* A few API variables have misleading names, these [are renamed](https://github.com/premodelling/infections/blob/develop/config.py); the NHS Trust level variables have been renamed to reflect their original 
+  [COVID-19 Hospital Activity](https://www.england.nhs.uk/statistics/statistical-work-areas/covid-19-hospital-activity/) 
+  labels.
+
+\vspace{20pt}
+
+## Addressing Disparate Data
+
+The prospective modelling measures exists at either NHS Trust or Lower Tier Local Authority (LTLA) level, and because our interest is in NHS Trust level admissions, we need the NHS Trust level forms of the LTLA measures.
+
+\vspace{10pt}
+
+**Approach**: In brief, a section of NHS England records the number of patients that each Middle Super Output Area (MSOA) contributes to each NHS Trust each year; each MSOA contributes patients to one or more NHS Trusts.  However, each MSOA region is a member of one LTLA region, hence the number of patients that each LTLA contributes to a NHS Trust, per year, can be calculated via appropriate aggregates.  Via these LTLA level aggregates the questions - *per LTLA that contributes to a NHS Trust* 
+
+\vspace{5pt}
+
+* what fraction of the LTLA's patients did the trust receive?
+* what fraction of the LTLA's patients, within age group 5 - 9, did the trust receive?  
+
+\vspace{5pt}
+
+are calculable, and the resulting fractions guide the apportioning of LTLA level COVID measures
+to NHS Trusts.
+
+\vspace{10pt}
+
+**Assumptions**: The preceding approach is based on a few assumptions, e.g.,
+
+* The 2019 patient flow fractions from a LTLA to a NHS Trust, for all admissions types, are reasonable estimates of flow 
+  fractions for any admission type.  Not ideal.  There are several arguments against this assumption.  For example, and in relation to SARS-CoV-2, are all trusts equally equipped to deal with a respiratory pandemic?
+
+* The population characteristics of each LTLA change minimally within a short period.  Not ideal either.
+
+
+\vspace{35pt}
+
+Methods
+=======
+
+## Research Strategy
+
+* Ideas: A Model of the Research Process [@Oates2006]
+
+\vspace{10pt}
+
+## Modelling
+
+* What pre-modelling procedures were applied?   [This point refers to the pre-ML/pre-forecasting pre-processing. It is separate from the initial pre-processing & features engineering that leads to the raw design matrix and dependent variable.]
+* What data mining techniques were used? 
+* What statistical techniques were used?
+
+\vspace{35pt}
+
+Results
+=======
+
+Project guide:
+
+* Explain your results and what your analysis revealed
+
+* What implications would your analysis' results have? How do your findings relate to the original question?
+
+* Were there potential biases in your work?
+
+* Validity
+
+\vspace{35pt}
+
+Conclusion
+============
+
+Project Guide:
+
+* Reflection on the approach taken. (Appropriate?)
+
+* How would you have improved the approach in future? (Alternative methodologies, models, etc)
+
+
+\vspace{35pt}
+
+
+Acknowledgment {#acknowledgment}
+==============
+
+Ay ackowledgements?
+
+
+\vspace{35pt}
+
+
+\newpage
+References {#references .numbered}
+==========
