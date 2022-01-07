@@ -114,7 +114,7 @@ data sets, and create [data sets](../warehouse/populations/ltla) with headers
 
 ## catchments
 
-The programs of [catchments](./catchments) are focused on raw weights calculations.  Refer to the [PDF notes]().
+The programs of [catchments](./catchments) are focused on raw weights calculations.  Refer to the [PDF notes](../notebooks/notes/notes.pdf).
 
 <br>
 <br>
