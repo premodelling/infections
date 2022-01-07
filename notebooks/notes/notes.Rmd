@@ -226,7 +226,7 @@ to NHS Trusts.
 
 \vspace{10pt}
 
-**Assumptions**: The preceding approach is based on a few assumptions, e.g.,
+**Assumptions**: The preceding approach makes a few assumptions, e.g.,
 
 * The 2019 patient flow fractions from a LTLA to a NHS Trust, for all admissions types, are reasonable estimates of flow 
   fractions for any admission type.  Not ideal.  There are several arguments against this assumption.  For example, and in relation to SARS-CoV-2, are all trusts equally equipped to deal with a respiratory pandemic?
@@ -247,9 +247,9 @@ Methods
 
 ## Modelling
 
-* What pre-modelling procedures were applied?   [This point refers to the pre-ML/pre-forecasting pre-processing. It is separate from the initial pre-processing & features engineering that leads to the raw design matrix and dependent variable.]
-* What data mining techniques were used? 
-* What statistical techniques were used?
+* Pre-modelling procedures.   [This point refers to the pre-ML/pre-forecasting pre-processing. It is separate from the initial pre-processing & features engineering that leads to the raw design matrix and dependent variable.]
+* Data mining techniques?
+* Statistical techniques?
 
 \vspace{35pt}
 
@@ -284,7 +284,7 @@ Project Guide:
 Acknowledgment {#acknowledgment}
 ==============
 
-Ay ackowledgements?
+Any acknowledgements?
 
 
 \vspace{35pt}
