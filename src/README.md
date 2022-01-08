@@ -1,12 +1,14 @@
 
+
+## Extraction, Transformation, Integration
+
 <br>
 
 ![](../notebooks/notes/images/outline.png)
 
 <br>
 
-
-## virus
+### virus
 
 A few of the raw COVID-19 measures extractable via 
 the [coronavirus.data.gov.uk API](https://coronavirus.data.gov.uk/details/developers-guide/main-api) using the 
@@ -39,12 +41,14 @@ The variables can be explored via the extracted data sets
 <br>
 <br>
 
-## preprocessing
+### preprocessing
 
 Baseline geographic, patient flow, and population data have been extracted/downloaded from official U.K. 
 government site.  The programs of the [preprocessing directory](./preprocessing) process & integrate the data sets.
 
-### districts
+<br>
+
+#### districts
 
 The [districts](./preprocessing/districts.py) program [creates data files](../warehouse/geography/districts) of 
 geographic mappings between middle super output area (MSOA) codes & lower tier local authority (LTLA) codes consists of
@@ -59,9 +63,8 @@ variable | description
 The lower tier local authority (LTLA) is also known as local authority district (LAD).
 
 <br>
-<br>
 
-### patients
+#### patients
 
 The [patients](./preprocessing/patients.py) program creates each 
 year's [*patients flow from MSOA to trust*](../warehouse/patients) data file
@@ -75,10 +78,10 @@ variable | description
 ``total_patients_of_msoa`` | the total number of patients that originated from<br>the MSOA during the catchment year in question
 ``ltla``| the code of the LTLA that the MSOA belongs to
 
-<br>
+
 <br>
 
-### populations: msoa
+#### populations: msoa
 
 The office for national statistics (ONS) creates MSOA population estimates by age and sex. The MSOA
 [populations](./preprocessing/populationsmsoa.py) & [age groups](./preprocessing/agegroupsmsoa.py) programs merge, structure, and aggregate the data 
@@ -93,9 +96,8 @@ to create [data sets](../warehouse/populations/msoa) with headers
 </ul>
 
 <br>
-<br>
 
-### populations: ltla
+#### populations: ltla
 
 The LTLA [populations](./preprocessing/populationsltla.py) & [age groups](./preprocessing/agegroupsltla.py) programs depend on the created MSOA 
 data sets, and create [data sets](../warehouse/populations/ltla) with headers
@@ -112,15 +114,14 @@ data sets, and create [data sets](../warehouse/populations/ltla) with headers
 <br>
 
 
-## catchments
+### catchments
 
 The programs of [catchments](./catchments) are focused on raw weights calculations.  Refer to the [PDF notes](../notebooks/notes/notes.pdf).
 
 <br>
 <br>
 
-
-## weights
+### weights
 
 The programs of [weights](./weights) pool the weights required for design matrix calculations. 
 
@@ -133,8 +134,7 @@ variable | description
 <br>
 <br>
 
-
-## design
+### design
 
 The raw series for design matrices and outcomes, wherein all measures are at NHS Trust level, are available at
 
@@ -147,6 +147,13 @@ explorable options are
 * Hospital Activity & Estimated Cases
 * Estimated Vaccination & Case Measures
 * Estimated Trust Level Cases by Age Group
+
+<br>
+<br>
+<br>
+
+## Modelling, Evaluation, Analysis
+
 
 <br>
 <br>
