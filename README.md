@@ -34,12 +34,11 @@
   [book chapters](docs/texts) <br>
   [project documents](docs/project)
   
-* [notebooks](notebooks)
-  * [project notes](./notebooks/notes/notes.pdf)
+* [notebooks](notebooks) <br>
+  [project notes](./notebooks/notes/notes.pdf)
 
 * [src](src) <br> 
-  The project's code
-  * [Data Collection & Integration Page](./src/README.md)
+  The project's code and accompanying notes.
 
 * [warehouse](warehouse) <br> 
   The arithmetics, modelling, and analysis outputs
