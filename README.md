@@ -41,7 +41,7 @@
   The project's code and accompanying notes.
 
 * [warehouse](warehouse) <br> 
-  The arithmetics, modelling, and analysis outputs
+  The arithmetic, modelling, and analysis outputs
 
   
 <br>
