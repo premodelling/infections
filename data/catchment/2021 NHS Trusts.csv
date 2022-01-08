@@ -1,0 +1,143 @@
+trust_code,trust_name,trust_type,PHEC15CD,PHEC15NM
+R0A,Manchester University NHS Foundation Trust,ACUTE - TEACHING,E45000018,North West
+R0B,South Tyneside and Sunderland NHS Foundation Trust ,ACUTE - LARGE,E45000009,North East
+R0D,University Hospitals Dorset NHS Foundation Trust,ACUTE - TBD,E45000020,South West
+R1F,Isle Of Wight NHS Trust,ACUTE - MULTI-SERVICE,E45000019,South East
+R1H,Barts Health NHS Trust,ACUTE - TEACHING,E45000001,London
+R1K,London North West Healthcare NHS Trust,ACUTE - LARGE,E45000001,London
+RA2,Royal Surrey County Hospital NHS Foundation Trust,ACUTE - MEDIUM,E45000019,South East
+RA4,Yeovil District Hospital NHS Foundation Trust,ACUTE - SMALL,E45000020,South West
+RA7,University Hospitals Bristol NHS Foundation Trust,ACUTE - TEACHING,E45000020,South West
+RA9,Torbay and South Devon Health Care NHS Foundation Trust,ACUTE - MEDIUM,E45000020,South West
+RAE,Bradford Teaching Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000010,Yorkshire and Humber
+RAJ,Southend University Hospital NHS Foundation Trust,ACUTE - MEDIUM,E45000017,East of England
+RAL,Royal Free London NHS Foundation Trust,ACUTE - TEACHING,E45000001,London
+RAN,Royal National Orthopaedic Hospital NHS Trust,ACUTE - SPECIALIST,E45000001,London
+RAP,North Middlesex University Hospital NHS Trust,ACUTE - SMALL,E45000001,London
+RAS,The Hillingdon Hospitals NHS Foundation Trust,ACUTE - SMALL,E45000001,London
+RAX,Kingston Hospital NHS Foundation Trust,ACUTE - SMALL,E45000001,London
+RBD,Dorset County Hospital NHS Foundation Trust,ACUTE - SMALL,E45000020,South West
+RBK,Walsall Healthcare NHS Trust,ACUTE - MEDIUM,E45000005,West Midlands
+RBL,Wirral University Teaching Hospital NHS Foundation Trust,ACUTE - TEACHING,E45000018,North West
+RBN,St Helens and Knowsley Teaching Hospitals NHS Trust,ACUTE - MEDIUM,E45000018,North West
+RBQ,Liverpool Heart and Chest NHS Foundation Trust,ACUTE - SPECIALIST,E45000018,North West
+RBS,Alder Hey Childrens NHS Foundation Trust,ACUTE - SPECIALIST,E45000018,North West
+RBT,The Mid Cheshire Hospitals NHS Foundation Trust,ACUTE - SMALL,E45000018,North West
+RBV,The Christie NHS Foundation Trust,ACUTE - SPECIALIST,E45000018,North West
+RBZ,Northern Devon Healthcare NHS Trust,ACUTE - SMALL,E45000020,South West
+RC9,Luton and Dunstable University Hospital NHS Foundation Trust,ACUTE - MEDIUM,E45000017,East of England
+RCB,York Teaching Hospital NHS Foundation Trust,ACUTE - TEACHING,E45000010,Yorkshire and Humber
+RCD,Harrogate and District NHS Foundation Trust,ACUTE - SMALL,E45000010,Yorkshire and Humber
+RCF,Airedale NHS Foundation Trust,ACUTE - SMALL,E45000010,Yorkshire and Humber
+RCU,Sheffield Childrens NHS Foundation Trust,ACUTE - SPECIALIST,E45000010,Yorkshire and Humber
+RCX,The Queen Elizabeth Hospital Kings Lynn NHS Foundation Trust,ACUTE - SMALL,E45000017,East of England
+RD1,Royal United Hospitals Bath NHS Foundation Trust,ACUTE - MEDIUM,E45000020,South West
+RD3,Poole Hospital NHS Foundation Trust,ACUTE - SMALL,E45000020,South West
+RD8,Milton Keynes Hospital NHS Foundation Trust,ACUTE - SMALL,E45000017,East of England
+RDE,East Suffolk and North Essex NHS Foundation Trust,ACUTE - MEDIUM,E45000017,East of England
+RDU,Frimley Health NHS Foundation Trust,ACUTE - MEDIUM,E45000019,South East
+RDZ,The Royal Bournemouth and Christchurch Hospitals NHS Foundation Trust,ACUTE - MEDIUM,E45000020,South West
+REF,Royal Cornwall Hospitals NHS Trust,ACUTE - LARGE,E45000020,South West
+REM,Liverpool University Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000018,North West
+REN,Clatterbridge Cancer Centre NHS Foundation Trust,ACUTE - SPECIALIST,E45000018,North West
+REP,Liverpool Womens NHS Foundation Trust,ACUTE - SPECIALIST,E45000018,North West
+RET,Walton Centre NHS Foundation Trust,ACUTE - SPECIALIST,E45000018,North West
+RF4,Barking Havering and Redbridge University Hospitals NHS Trust,ACUTE - LARGE,E45000001,London
+RFF,Barnsley Hospital NHS Foundation Trust,ACUTE - SMALL,E45000010,Yorkshire and Humber
+RFR,The Rotherham NHS Foundation Trust,ACUTE - MEDIUM,E45000010,Yorkshire and Humber
+RFS,Chesterfield Royal Hospital NHS Foundation Trust,ACUTE - SMALL,E45000016,East Midlands
+RGM,Royal Papworth Hospital NHS Foundation Trust,ACUTE - SPECIALIST,E45000017,East of England
+RGN,North West Anglia NHS Foundation Trust,ACUTE - LARGE,E45000017,East of England
+RGP,James Paget University Hospitals NHS Foundation Trust,ACUTE - SMALL,E45000017,East of England
+RGR,West Suffolk NHS Foundation Trust,ACUTE - SMALL,E45000017,East of England
+RGT,Cambridge University Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000017,East of England
+RH8,Royal Devon and Exeter NHS Foundation Trust,ACUTE - LARGE,E45000020,South West
+RHM,University Hospital Southampton NHS Foundation Trust,ACUTE - TEACHING,E45000019,South East
+RHQ,Sheffield Teaching Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000010,Yorkshire and Humber
+RHU,Portsmouth Hospitals NHS Trust,ACUTE - LARGE,E45000019,South East
+RHW,Royal Berkshire NHS Foundation Trust,ACUTE - LARGE,E45000019,South East
+RJ1,Guys and St Thomas NHS Foundation Trust,ACUTE - TEACHING,E45000001,London
+RJ2,The Lewisham and Greenwich NHS Trust,ACUTE - LARGE,E45000001,London
+RJ6,Croydon Health Services NHS Trust,ACUTE - MEDIUM,E45000001,London
+RJ7,St Georges University Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000001,London
+RJC,South Warwickshire NHS Foundation Trust,ACUTE - SMALL,E45000005,West Midlands
+RJE,University Hospital Of North Midlands NHS Trust,ACUTE - TEACHING,E45000005,West Midlands
+RJL,Northern Lincolnshire and Goole NHS Foundation Trust,ACUTE - LARGE,E45000010,Yorkshire and Humber
+RJN,East Cheshire NHS Trust,ACUTE - SMALL,E45000018,North West
+RJR,Countess Of Chester Hospital NHS Foundation Trust,ACUTE - SMALL,E45000018,North West
+RJZ,Kings College Hospital NHS Foundation Trust,ACUTE - TEACHING,E45000001,London
+RK5,Sherwood Forest Hospitals NHS Foundation Trust,ACUTE - MEDIUM,E45000016,East Midlands
+RK9,University Hospitals Plymouth NHS Trust,ACUTE - TEACHING,E45000020,South West
+RKB,University Hospitals Coventry and Warwickshire NHS Trust,ACUTE - TEACHING,E45000005,West Midlands
+RKE,Whittington Health NHS Trust,ACUTE - MEDIUM,E45000001,London
+RL1,Robert Jones and Agnes Hunt Orthopaedic Hospital NHS Foundation Trust,ACUTE - SPECIALIST,E45000005,West Midlands
+RL4,The Royal Wolverhampton NHS Trust,ACUTE - LARGE,E45000005,West Midlands
+RLQ,Wye Valley NHS Trust,ACUTE - SMALL,E45000005,West Midlands
+RLT,George Eliot Hospital NHS Trust,ACUTE - SMALL,E45000005,West Midlands
+RM1,Norfolk and Norwich University Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000017,East of England
+RM3,Salford Royal NHS Foundation Trust,ACUTE - TEACHING,E45000018,North West
+RMC,Bolton NHS Foundation Trust,ACUTE - MEDIUM,E45000018,North West
+RMP,Tameside and Glossop Integrated Care NHS Foundation Trust,ACUTE - SMALL,E45000018,North West
+RN3,Great Western Hospitals NHS Foundation Trust,ACUTE - MEDIUM,E45000020,South West
+RN5,Hampshire Hospitals NHS Foundation Trust,ACUTE - LARGE,E45000019,South East
+RN7,Dartford and Gravesham NHS Trust,ACUTE - SMALL,E45000019,South East
+RNA,The Dudley Group NHS Foundation Trust,ACUTE - MEDIUM,E45000005,West Midlands
+RNN,North Cumbria Integrated Care NHS Foundation Trust,ACUTE - SMALL,E45000018,North West
+RNQ,Kettering General Hospital NHS Foundation Trust,ACUTE - SMALL,E45000016,East Midlands
+RNS,Northampton General Hospital NHS Trust,ACUTE - MEDIUM,E45000016,East Midlands
+RNZ,Salisbury NHS Foundation Trust,ACUTE - SMALL,E45000020,South West
+RP4,Great Ormond Street Hospital For Children NHS Foundation Trust,ACUTE - SPECIALIST,E45000001,London
+RP5,Doncaster and Bassetlaw Teaching Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000010,Yorkshire and Humber
+RP6,Moorfields Eye Hospital NHS Foundation Trust,ACUTE - SPECIALIST,E45000001,London
+RPA,Medway NHS Foundation Trust,ACUTE - MEDIUM,E45000019,South East
+RPC,Queen Victoria Hospital NHS Foundation Trust,ACUTE - SPECIALIST,E45000019,South East
+RPY,The Royal Marsden NHS Foundation Trust,ACUTE - SPECIALIST,E45000001,London
+RQ3,Birmingham Womens and Childrens NHS Foundation Trust,ACUTE - SPECIALIST,E45000005,West Midlands
+RQM,Chelsea and Westminster Hospital NHS Foundation Trust,ACUTE - TEACHING,E45000001,London
+RQW,The Princess Alexandra Hospital NHS Trust,ACUTE - SMALL,E45000017,East of England
+RQX,Homerton University Hospital NHS Foundation Trust,ACUTE - MEDIUM,E45000001,London
+RR7,Gateshead Health NHS Foundation Trust,ACUTE - SMALL,E45000009,North East
+RR8,Leeds Teaching Hospitals NHS Trust,ACUTE - TEACHING,E45000010,Yorkshire and Humber
+RRF,Wrightington Wigan and Leigh NHS Foundation Trust,ACUTE - MEDIUM,E45000018,North West
+RRJ,Royal Orthopaedic Hospital NHS Foundation Trust,ACUTE - SPECIALIST,E45000005,West Midlands
+RRK,University Hospitals Birmingham NHS Foundation Trust,ACUTE - TEACHING,E45000005,West Midlands
+RRV,University College London NHS Foundation Trust,ACUTE - TEACHING,E45000001,London
+RT3,Royal Brompton and Harefield NHS Foundation Trust,ACUTE - SPECIALIST,E45000001,London
+RTD,The Newcastle Upon Tyne Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000009,North East
+RTE,Gloucestershire Hospitals NHS Foundation Trust,ACUTE - LARGE,E45000020,South West
+RTF,Northumbria Healthcare NHS Foundation Trust,ACUTE - LARGE,E45000009,North East
+RTG,University Hospitals Of Derby and Burton NHS Foundation Trust,ACUTE - TEACHING,E45000016,East Midlands
+RTH,Oxford University Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000019,South East
+RTK,Ashford and St Peters Hospitals NHS Foundation Trust,ACUTE - MEDIUM,E45000019,South East
+RTP,Surrey and Sussex Healthcare NHS Trust,ACUTE - MEDIUM,E45000019,South East
+RTR,South Tees Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000009,North East
+RTX,University Hospitals Of Morecambe Bay NHS Foundation Trust,ACUTE - MEDIUM,E45000018,North West
+RVJ,North Bristol NHS Trust,ACUTE - LARGE,E45000020,South West
+RVR,Epsom and St Helier University Hospitals NHS Trust,ACUTE - LARGE,E45000001,London
+RVV,East Kent Hospitals University NHS Foundation Trust,ACUTE - TEACHING,E45000019,South East
+RVW,North Tees and Hartlepool NHS Foundation Trust,ACUTE - MEDIUM,E45000009,North East
+RVY,Southport and Ormskirk Hospital NHS Trust,ACUTE - SMALL,E45000018,North West
+RW6,Pennine Acute Hospitals NHS Trust,ACUTE - LARGE,E45000018,North West
+RWA,Hull University Teaching Hospitals NHS Trust,ACUTE - TEACHING,E45000010,Yorkshire and Humber
+RWD,United Lincolnshire Hospitals NHS Trust,ACUTE - LARGE,E45000016,East Midlands
+RWE,University Hospitals Of Leicester NHS Trust,ACUTE - TEACHING,E45000016,East Midlands
+RWF,Maidstone and Tunbridge Wells NHS Trust,ACUTE - LARGE,E45000019,South East
+RWG,West Hertfordshire Hospitals NHS Trust,ACUTE - MEDIUM,E45000017,East of England
+RWH,East and North Hertfordshire NHS Trust,ACUTE - LARGE,E45000017,East of England
+RWJ,Stockport NHS Foundation Trust,ACUTE - MEDIUM,E45000018,North West
+RWP,Worcestershire Acute Hospitals NHS Trust,ACUTE - LARGE,E45000005,West Midlands
+RWW,Warrington and Halton Teaching Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000018,North West
+RWY,Calderdale and Huddersfield NHS Foundation Trust,ACUTE - LARGE,E45000010,Yorkshire and Humber
+RX1,Nottingham University Hospitals NHS Trust,ACUTE - TEACHING,E45000016,East Midlands
+RXC,East Sussex Healthcare NHS Trust,ACUTE - LARGE,E45000019,South East
+RXF,Mid Yorkshire Hospitals NHS Trust,ACUTE - LARGE,E45000010,Yorkshire and Humber
+RXH,Brighton and Sussex University Hospitals NHS Trust,ACUTE - TEACHING,E45000019,South East
+RXK,Sandwell and West Birmingham Hospitals NHS Trust,ACUTE - LARGE,E45000005,West Midlands
+RXL,Blackpool Teaching Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000018,North West
+RXN,Lancashire Teaching Hospitals NHS Foundation Trust,ACUTE - TEACHING,E45000018,North West
+RXP,County Durham and Darlington NHS Foundation Trust,ACUTE - MULTI-SERVICE,E45000009,North East
+RXQ,Buckinghamshire Healthcare NHS Trust,ACUTE - MULTI-SERVICE,E45000019,South East
+RXR,East Lancashire Hospitals NHS Trust,ACUTE - LARGE,E45000018,North West
+RXW,Shrewsbury and Telford Hospital NHS Trust,ACUTE - LARGE,E45000005,West Midlands
+RYJ,Imperial College Healthcare NHS Trust,ACUTE - TEACHING,E45000001,London
+RYR,Western Sussex Hospitals NHS Foundation Trust,ACUTE - LARGE,E45000019,South East
