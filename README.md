@@ -23,13 +23,27 @@
 
 **Content**
 
-* [Project Notes](./notebooks/notes/notes.pdf)
+* [data](data) <br> 
+  The project's raw data.  Each directory consists of the raw data and links to the source, or API links.
+  
+* [development](development) <br> 
+  The Python development environment notes.
+  
+* [docs](docs) <br> 
+  [papers](docs/papers) <br>
+  [book chapters](docs/texts) <br>
+  [project documents](docs/project)
+  
+* [notebooks](notebooks)
+  * [project notes](./notebooks/notes/notes.pdf)
 
-* [Data Collection & Integration Page](./src/README.md)
+* [src](src) <br> 
+  The project's code
+  * [Data Collection & Integration Page](./src/README.md)
 
-* [Development Notes](development/README.md#development-notes)
-  * [Virtual Development Environment](development/README.md#virtual-development-environment)
-  * [Code Snippets](development/README.md#code-snippets)
+* [warehouse](warehouse) <br> 
+  The arithmetics, modelling, and analysis outputs
+
   
 <br>
 <br>
