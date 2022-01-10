@@ -16,8 +16,8 @@ def main():
     populationsmsoa = src.preprocessing.populationsmsoa.PopulationsMSOA().exc()
     logger.info(populationsmsoa)
 
-    agegroupsmsoa = src.preprocessing.agegroupsmsoa.AgeGroupsMSOA().exc()
-    logger.info(agegroupsmsoa)
+    agegroupsexmsoa = src.preprocessing.agegroupsexmsoa.AgeGroupSexMSOA().exc()
+    logger.info(agegroupsexmsoa)
 
     exceptions = src.preprocessing.exceptions.Exceptions().exc()
     logger.info(exceptions)
@@ -25,8 +25,8 @@ def main():
     populationsltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
     logger.info(populationsltla)
 
-    agegroupsltla = src.preprocessing.agegroupsltla.AgeGroupsLTLA().exc()
-    logger.info(agegroupsltla)
+    agegroupsexltla = src.preprocessing.agegroupsexltla.AgeGroupSexLTLA().exc()
+    logger.info(agegroupsexltla)
 
 
 if __name__ == '__main__':
@@ -45,9 +45,9 @@ if __name__ == '__main__':
     import src.preprocessing.patients
     import src.preprocessing.districts
     import src.preprocessing.populationsmsoa
-    import src.preprocessing.agegroupsmsoa
+    import src.preprocessing.agegroupsexmsoa
     import src.preprocessing.exceptions
     import src.preprocessing.populationsltla
-    import src.preprocessing.agegroupsltla
+    import src.preprocessing.agegroupsexltla
 
     main()
