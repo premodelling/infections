@@ -6,6 +6,9 @@ import sys
 def main():
     logger.info('infections')
 
+    messages = src.preprocessing.vaccinationgroupsmsoa.VaccinationGroupsMSOA().exc()
+    logger.info(messages)
+
 
 if __name__ == '__main__':
     root = os.getcwd()
@@ -17,5 +20,7 @@ if __name__ == '__main__':
                         format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
                         datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
+
+    import src.preprocessing.vaccinationgroupsmsoa
 
     main()
