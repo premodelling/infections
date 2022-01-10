@@ -9,6 +9,9 @@ def main():
     messages = src.preprocessing.vaccinationgroupsmsoa.VaccinationGroupsMSOA().exc()
     logger.info(messages)
 
+    messages = src.preprocessing.vaccinationgroupsltla.VaccinationGroupsLTLA().exc()
+    logger.info(messages)
+
 
 if __name__ == '__main__':
     root = os.getcwd()
@@ -21,6 +24,8 @@ if __name__ == '__main__':
                         datefmt='%Y-%m-%d %H:%M:%S')
     logger = logging.getLogger(__name__)
 
+    # libraries
     import src.preprocessing.vaccinationgroupsmsoa
+    import src.preprocessing.vaccinationgroupsltla
 
     main()
