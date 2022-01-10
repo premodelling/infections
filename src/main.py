@@ -4,7 +4,11 @@ import sys
 
 
 def main():
+
     logger.info('infections')
+
+    messages = src.catchments.weightsofltla.WeightsOfLTLA().exc()
+    logger.info(messages)
 
     messages = src.preprocessing.vaccinationgroupsmsoa.VaccinationGroupsMSOA().exc()
     logger.info(messages)
@@ -25,6 +29,7 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     # libraries
+    import src.catchments.weightsofltla
     import src.preprocessing.vaccinationgroupsmsoa
     import src.preprocessing.vaccinationgroupsltla
 
