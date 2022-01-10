@@ -13,10 +13,13 @@ import config
 
 class Matrix:
 
-    def __init__(self):
+    def __init__(self, weights_of_year: int):
+
+        self.weights_of_year = weights_of_year
 
         # initiating
-        self.am = src.design.aggregatedMeasures.AggregatedMeasures()
+        self.am = src.design.aggregatedMeasures.AggregatedMeasures(weights_of_year=weights_of_year)
+        self.dc = src.design.disaggregatedCases.DisaggregatedCases(weights_of_year=weights_of_year)
 
         # configurations
         configurations = config.Config()
@@ -45,7 +48,7 @@ class Matrix:
         :return: returns disaggregated trust level cases per age group determined via weights & LTLA cases
         """
 
-        return src.design.disaggregatedCases.DisaggregatedCases().exc(trust_code=trust_code)
+        return self.dc.exc(trust_code=trust_code)
 
     @dask.delayed
     def __aggregated_measures(self, trust_code, field):
@@ -59,18 +62,21 @@ class Matrix:
         return self.am.exc(trust_code=trust_code, field=field)
 
     @dask.delayed
-    def __merge(self, trust, disaggregated_cases, cases_, first_, second_):
+    def __merge(self, trust, disaggregated_cases, cases_, deaths_, first_, second_, third_):
         """
 
         :param trust:
         :param disaggregated_cases:
         :param cases_:
+        :param deaths_:
         :param first_:
         :param second_:
+        :param third_:
         :return: a raw design matrix
         """
 
-        return pd.concat((trust, disaggregated_cases, cases_, first_, second_), axis=1, ignore_index=False)
+        return pd.concat((trust, disaggregated_cases, cases_, deaths_, first_, second_, third_),
+                         axis=1, ignore_index=False)
 
     @dask.delayed
     def __write(self, frame: pd.DataFrame, trust_code: str):
@@ -100,10 +106,13 @@ class Matrix:
             disaggregated_cases = self.__disaggregated_cases(trust_code=trust_code)
 
             cases_ = self.__aggregated_measures(trust_code=trust_code, field='dailyCases')
+            deaths_ = self.__aggregated_measures(trust_code=trust_code, field='newDeaths28DaysByDeathDate')
             first_ = self.__aggregated_measures(trust_code=trust_code, field='dailyFirstDoseByVaccinationDate')
             second_ = self.__aggregated_measures(trust_code=trust_code, field='dailySecondDoseByVaccinationDate')
+            third_ = self.__aggregated_measures(trust_code=trust_code, field='dailyThirdInjectionByVaccinationDate')
 
-            frame = self.__merge(trust, disaggregated_cases, cases_, first_, second_)
+            frame = self.__merge(trust=trust, disaggregated_cases=disaggregated_cases, cases_=cases_,
+                                 deaths_=deaths_, first_=first_, second_=second_, third_=third_)
 
             message = self.__write(frame=frame, trust_code=trust_code)
             computations.append(message)
