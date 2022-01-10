@@ -6,7 +6,7 @@ import sys
 def main():
 
     # extract weights by trust
-    messages = src.weights.weightsltla.WeightsLTLA().exc()
+    messages = src.catchments.weightsltla.WeightsLTLA().exc()
     logger.info(messages)
 
 
@@ -22,6 +22,6 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     # libraries
-    import src.weights.weightsltla
+    import src.catchments.weightsltla
 
     main()
