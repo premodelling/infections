@@ -54,15 +54,15 @@ class LTLA:
 
         frame = self.reference.copy().loc[self.reference.trust_code == trust, :]
         frame.drop(columns='trust_code', inplace=True)
-        segment = frame.copy().melt(id_vars=self.id_vars, var_name='ag', value_name='ag_ppln_ltla')
+        segment = frame.copy().melt(id_vars=self.id_vars, var_name='ag', value_name='ags_ppln_ltla')
 
-        # age group fraction of LTLA population, age group [nhs] trust factor
-        segment.loc[:, 'agf_ppln_ltla'] = np.true_divide(segment.ag_ppln_ltla, segment.ppln_ltla)
-        segment.loc[:, 'tfp_ltla_ag'] = np.multiply(segment.tfp_ltla, segment.agf_ppln_ltla)
+        # age group sex fraction of LTLA population, age group sex [nhs] trust factor
+        segment.loc[:, 'agsf_ppln_ltla'] = np.true_divide(segment.ags_ppln_ltla, segment.ppln_ltla)
+        segment.loc[:, 'tfp_ltla_ags'] = np.multiply(segment.tfp_ltla, segment.agsf_ppln_ltla)
 
         # LTLA fraction of total trust patients
         segment.loc[:, 'ltla_frac_tp'] = np.true_divide(segment.patients_from_ltla_to_trust, segment.total_trust_patients)
-        segment.loc[:, 'ag_ltla_frac_tp'] = np.multiply(segment.ltla_frac_tp, segment.agf_ppln_ltla)
+        segment.loc[:, 'ags_ltla_frac_tp'] = np.multiply(segment.ltla_frac_tp, segment.agsf_ppln_ltla)
 
         return segment
 
