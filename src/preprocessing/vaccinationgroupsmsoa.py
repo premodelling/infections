@@ -21,7 +21,7 @@ class VaccinationGroupsMSOA:
         self.sources = glob.glob(pathname=os.path.join(self.sources_path, '*.csv'))
 
         # storage path
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'reference', 'vaccination')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'reference', 'vaccinations')
         self.__path()
 
     def __path(self):
