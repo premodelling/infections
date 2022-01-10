@@ -5,7 +5,7 @@ import dask
 import pandas as pd
 
 
-class AgeGroupsLTLA:
+class AgeGroupSexLTLA:
 
     def __init__(self):
         """
