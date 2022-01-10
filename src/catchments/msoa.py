@@ -53,15 +53,15 @@ class MSOA:
 
         frame = self.reference.copy().loc[self.reference.trust_code == trust, :]
         frame.drop(columns='trust_code', inplace=True)
-        segment = frame.copy().melt(id_vars=self.id_vars, var_name='ag', value_name='ag_ppln_msoa')
+        segment = frame.copy().melt(id_vars=self.id_vars, var_name='ag', value_name='ags_ppln_msoa')
 
-        # age group fraction of MSOA population, age group [nhs] trust factor
-        segment.loc[:, 'agf_ppln_msoa'] = np.true_divide(segment.ag_ppln_msoa, segment.ppln_msoa)
-        segment.loc[:, 'tfp_msoa_ag'] = np.multiply(segment.tfp_msoa, segment.agf_ppln_msoa)
+        # age group sex fraction of MSOA population, age group sex [nhs] trust factor
+        segment.loc[:, 'agsf_ppln_msoa'] = np.true_divide(segment.ags_ppln_msoa, segment.ppln_msoa)
+        segment.loc[:, 'tfp_msoa_ags'] = np.multiply(segment.tfp_msoa, segment.agsf_ppln_msoa)
 
         # MSOA fraction of total trust patients
         segment.loc[:, 'msoa_frac_tp'] = np.true_divide(segment.patients_from_msoa_to_trust, segment.total_trust_patients)
-        segment.loc[:, 'ag_msoa_frac_tp'] = np.multiply(segment.msoa_frac_tp, segment.agf_ppln_msoa)
+        segment.loc[:, 'ags_msoa_frac_tp'] = np.multiply(segment.msoa_frac_tp, segment.agsf_ppln_msoa)
 
         return segment
 
