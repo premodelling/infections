@@ -14,7 +14,8 @@ class AggregatesMSOA:
         self.patients = patients.rename(columns={'catchment_year': 'year'})
         self.populations = populations.drop(columns='ppln_ltla')
 
-    def __total_trust_patients(self, blob):
+    @staticmethod
+    def __total_trust_patients(blob):
 
         # thus far, how many patients has a trust received per year?
         frame = blob.copy()[['trust_code', 'msoa', 'patients_from_msoa_to_trust']].drop_duplicates()
