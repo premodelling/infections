@@ -3,11 +3,12 @@ import pandas as pd
 import numpy as np
 
 import config
+import src.design.weights
 
 
 class AggregatedMeasures:
 
-    def __init__(self):
+    def __init__(self, weights_of_year: int):
         """
         Constructor
         """
@@ -16,9 +17,11 @@ class AggregatedMeasures:
         configurations = config.Config()
         self.dates = configurations.dates()
 
+        # weights
+        self.weights = src.design.weights.Weights(weights_of_year=weights_of_year)
+
         # sources
         self.measures_path = os.path.join('warehouse', 'virus', 'ltla', 'measures')
-        self.weights_path = os.path.join('warehouse', 'weights', 'series', 'ltla', 'focus', 'parent')
 
     def __weights(self, trust_code):
         """
@@ -27,11 +30,7 @@ class AggregatedMeasures:
         :return:
         """
 
-        try:
-            return pd.read_csv(filepath_or_buffer=os.path.join(self.weights_path, '{}.csv'.format(trust_code)),
-                               header=0, encoding='utf-8')
-        except RuntimeError as err:
-            raise Exception(err)
+        return self.weights.aggregated(trust_code=trust_code)
 
     def __read(self, ltla_code: str, field: str):
         """
