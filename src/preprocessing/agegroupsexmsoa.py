@@ -11,7 +11,7 @@ import pandas as pd
 import config
 
 
-class AgeGroupsMSOA:
+class AgeGroupSexMSOA:
 
     def __init__(self):
         """
