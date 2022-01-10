@@ -121,7 +121,7 @@ class VaccinationGroupsMSOA:
 
             computations.append(message)
 
-        dask.visualize(computations, filename='vaccinationGroupMSOAs', format='pdf')
+        dask.visualize(computations, filename='vaccinationGroupsMSOA', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
         return messages
