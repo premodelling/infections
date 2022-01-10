@@ -12,7 +12,7 @@ import dask.dataframe
 import numpy as np
 
 
-class WeightsOfLTLA:
+class WeightSeriesLTLA:
 
     def __init__(self):
         """
