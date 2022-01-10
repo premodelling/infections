@@ -4,7 +4,7 @@
 * [Extraction, Transformation, Integration](#extraction-transformation-integration)
   * [virus](#virus)
   * [preprocessing](#preprocessing)
-  * [cathchments](#catchments)
+  * [catchments](#catchments)
   * [weights](#weights)
   * [design](#design)  
 
@@ -97,7 +97,7 @@ variable | description
 #### populations: msoa
 
 The office for national statistics (ONS) creates MSOA population estimates by age and sex. The MSOA
-[populations](./preprocessing/populationsmsoa.py) & [age groups](./preprocessing/agegroupsmsoa.py) programs merge, structure, and aggregate the data 
+[populations](./preprocessing/populationsmsoa.py) & [age groups](preprocessing/agegroupsexmsoa.py) programs merge, structure, and aggregate the data 
 to create [data sets](../warehouse/populations/msoa) with headers
 
 <ul>
@@ -112,7 +112,7 @@ to create [data sets](../warehouse/populations/msoa) with headers
 
 #### populations: ltla
 
-The LTLA [populations](./preprocessing/populationsltla.py) & [age groups](./preprocessing/agegroupsltla.py) programs depend on the created MSOA 
+The LTLA [populations](./preprocessing/populationsltla.py) & [age groups](preprocessing/agegroupsexltla.py) programs depend on the created MSOA 
 data sets, and create [data sets](../warehouse/populations/ltla) with headers
 
 <ul>
