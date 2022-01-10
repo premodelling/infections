@@ -44,8 +44,6 @@ class Temporary:
 
         dgr = frame[['date', 'trust_code'] + self.age_groups]
         dgr = dgr.melt(id_vars=['date', 'trust_code'], var_name='age_group', value_name='daily_cases')
-        # dgr.reset_index(drop=False, inplace=True)
-
         agg = frame.drop(columns=self.age_groups)
 
         return dgr, agg
