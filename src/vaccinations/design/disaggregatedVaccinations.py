@@ -103,7 +103,8 @@ class DisaggregatedVaccinations:
                 conditions = (values > 0).astype(int)
                 states = np.multiply(conditions, constants)
                 denominators = states.sum(axis=1).values
-                denominators = np.repeat(denominators.reshape((denominators.shape[0], -1)), 19, axis=1)
+                denominators = np.repeat(denominators.reshape((denominators.shape[0], -1)),
+                                         len(self.age_groups), axis=1)
 
                 np.seterr(invalid='ignore')
                 adjuster = np.true_divide(states.values, denominators)
