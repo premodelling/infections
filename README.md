@@ -41,7 +41,7 @@
   The project's code and accompanying notes.
 
 * [warehouse](warehouse) <br> 
-  The arithmetic, modelling, and analysis outputs
+  The data structuring & integration, analysis, modelling, and evaluations outputs.
 
   
 <br>
