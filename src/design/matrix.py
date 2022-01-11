@@ -53,6 +53,7 @@ class Matrix:
 
         return self.dc.exc(trust_code=trust_code)
 
+    @dask.delayed
     def __disaggregated_vaccinations(self, trust_code):
         """
 
