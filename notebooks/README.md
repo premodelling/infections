@@ -1,6 +1,18 @@
 <br>
 
-catchment.ipynb<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/notebooks/catchment.ipynb)
+### Progress Notes
+
+* [notes](notes/notes.pdf)
+
+<br>
+
+### Exploration Notebooks
+
+* catchment.ipynb<br>
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/notebooks/explorations/catchment.ipynb)
+
+* demographics.ipynb<br>
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/notebooks/explorations/demographics.ipynb)
 
 <br>
 <br>
