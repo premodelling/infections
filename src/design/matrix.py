@@ -48,10 +48,19 @@ class Matrix:
         """
 
         :param trust_code: NHS Trust code
-        :return: returns disaggregated trust level cases per age group determined via weights & LTLA cases
+        :return: estimates of disaggregated trust level cases per age group (est. via weights & LTLA)
         """
 
         return self.dc.exc(trust_code=trust_code)
+
+    def __disaggregated_vaccinations(self, trust_code):
+        """
+
+        :param trust_code: NHS Trust code
+        :return: estimates of disaggregated trust level vaccinations data per age group (est. via weights & LTLA)
+        """
+
+        return self.dv.exc(trust_code=trust_code)
 
     @dask.delayed
     def __aggregated_measures(self, trust_code, field):
@@ -65,7 +74,7 @@ class Matrix:
         return self.am.exc(trust_code=trust_code, field=field)
 
     @dask.delayed
-    def __merge(self, trust, disaggregated_cases, cases_, deaths_, first_, second_, third_):
+    def __merge(self, trust, disaggregated_cases, cases_, deaths_, first_, second_, third_, disaggregated_vaccinations):
         """
 
         :param trust:
@@ -75,10 +84,12 @@ class Matrix:
         :param first_:
         :param second_:
         :param third_:
+        :param disaggregated_vaccinations:
         :return: a raw design matrix
         """
 
-        return pd.concat((trust, disaggregated_cases, cases_, deaths_, first_, second_, third_),
+        return pd.concat((trust, disaggregated_cases, cases_, deaths_,
+                          first_, second_, third_, disaggregated_vaccinations),
                          axis=1, ignore_index=False)
 
     @dask.delayed
@@ -107,6 +118,7 @@ class Matrix:
 
             trust = self.__trust(trust_code=trust_code)
             disaggregated_cases = self.__disaggregated_cases(trust_code=trust_code)
+            disaggregated_vaccinations = self.__disaggregated_vaccinations(trust_code=trust_code)
 
             cases_ = self.__aggregated_measures(trust_code=trust_code, field='dailyCases')
             deaths_ = self.__aggregated_measures(trust_code=trust_code, field='newDeaths28DaysByDeathDate')
@@ -115,7 +127,8 @@ class Matrix:
             third_ = self.__aggregated_measures(trust_code=trust_code, field='dailyThirdInjectionByVaccinationDate')
 
             frame = self.__merge(trust=trust, disaggregated_cases=disaggregated_cases, cases_=cases_,
-                                 deaths_=deaths_, first_=first_, second_=second_, third_=third_)
+                                 deaths_=deaths_, first_=first_, second_=second_, third_=third_,
+                                 disaggregated_vaccinations=disaggregated_vaccinations)
 
             message = self.__write(frame=frame, trust_code=trust_code)
             computations.append(message)
