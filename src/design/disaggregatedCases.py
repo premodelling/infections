@@ -1,34 +1,35 @@
 import os
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 
 import config
+import src.design.weights
 
 
 class DisaggregatedCases:
 
-    def __init__(self):
+    def __init__(self, weights_of_year: int):
 
         configurations = config.Config()
         self.age_groups = configurations.age_groups
         self.dates = configurations.dates()
 
+        # weights
+        self.weights = src.design.weights.Weights(weights_of_year=weights_of_year)
+
+        # path
         self.source_path = os.path.join('warehouse', 'virus', 'ltla', 'demographic', 'cases')
-        self.weights_path = os.path.join('warehouse', 'weights', 'series', 'ltla', 'focus', 'child')
 
     def __weights(self, trust_code):
 
-        try:
-            return pd.read_csv(filepath_or_buffer=os.path.join(self.weights_path, '{}.csv'.format(trust_code)))
-        except RuntimeError as err:
-            raise Exception(err)
+        return self.weights.disaggregated(trust_code=trust_code)
 
     def __read(self, ltla_code: str):
         """
-        Reads the data set of a LTLA via its code
 
         :param ltla_code: a LTLA code
-        :return:
+        :return: the data set of a LTLA
         """
 
         try:
@@ -70,8 +71,7 @@ class DisaggregatedCases:
 
         return temporary
 
-    @staticmethod
-    def __aggregates(computations: list) -> pd.DataFrame:
+    def __aggregates(self, computations: list) -> pd.DataFrame:
         """
 
         :param computations:
@@ -85,8 +85,9 @@ class DisaggregatedCases:
 
         frame = blob.sum(axis=1).to_frame(name='daily_cases')
         frame.reset_index(drop=False, inplace=True)
-
         restructured = frame.pivot(index='date', columns='age_group', values='daily_cases')
+        restructured.set_axis(labels=['EDC{}'.format(age_group) for age_group in self.age_groups],
+                              axis='columns', inplace=True)
 
         return restructured
 
@@ -103,7 +104,6 @@ class DisaggregatedCases:
         for ltla_code in ltla_codes:
 
             if os.path.exists(os.path.join(self.source_path, '{}.csv'.format(ltla_code))):
-
                 # row of weight per age group: constants
                 constants = self.__constants(ltla_code=ltla_code, weights=weights)
 
@@ -116,7 +116,8 @@ class DisaggregatedCases:
                 conditions = (values > 0).astype(int)
                 states = np.multiply(conditions, constants)
                 denominators = states.sum(axis=1).values
-                denominators = np.repeat(denominators.reshape((denominators.shape[0], -1)), 19, axis=1)
+                denominators = np.repeat(denominators.reshape((denominators.shape[0], -1)),
+                                         len(self.age_groups), axis=1)
 
                 np.seterr(invalid='ignore')
                 adjuster = np.true_divide(states.values, denominators)
