@@ -7,6 +7,7 @@ import pandas as pd
 import src.design.trustdata
 import src.design.disaggregatedCases
 import src.design.aggregatedMeasures
+import src.vaccinations.design.disaggregatedVaccinations
 
 import config
 
@@ -20,6 +21,8 @@ class Matrix:
         # initiating
         self.am = src.design.aggregatedMeasures.AggregatedMeasures(weights_of_year=weights_of_year)
         self.dc = src.design.disaggregatedCases.DisaggregatedCases(weights_of_year=weights_of_year)
+        self.dv = src.vaccinations.design.disaggregatedVaccinations.\
+            DisaggregatedVaccinations(weights_of_year=weights_of_year)
 
         # configurations
         configurations = config.Config()
