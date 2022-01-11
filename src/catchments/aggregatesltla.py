@@ -51,7 +51,8 @@ class AggregatesLTLA:
 
         return values
 
-    def __total_trust_patients(self, blob):
+    @staticmethod
+    def __total_trust_patients(blob):
 
         # thus far, how many patients has a trust received per year?
         frame = blob.copy()[['trust_code', 'ltla', 'patients_from_ltla_to_trust']].drop_duplicates()
