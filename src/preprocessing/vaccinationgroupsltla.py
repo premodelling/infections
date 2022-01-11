@@ -13,11 +13,11 @@ class VaccinationGroupsLTLA:
         """
 
         # population data set
-        sources_path = os.path.join(os.getcwd(), 'warehouse', 'populations', 'msoa', 'reference', 'vaccinations')
+        sources_path = os.path.join(os.getcwd(), 'warehouse', 'vaccinations', 'populations', 'msoa', 'group')
         self.sources = glob.glob(pathname=os.path.join(sources_path, '*.csv'))
 
         # storage
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'populations', 'ltla', 'reference', 'vaccinations')
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'vaccinations', 'populations', 'ltla', 'group')
         self.__path()
 
     def __path(self):
