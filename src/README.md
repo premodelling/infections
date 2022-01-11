@@ -5,7 +5,6 @@
   * [virus](#virus)
   * [preprocessing](#preprocessing)
   * [catchments](#catchments)
-  * [weights](#weights)
   * [design](#design)  
 
 * [Modelling, Evaluation, Analysis](#modelling-evaluation-analysis) <br>
@@ -126,23 +125,9 @@ data sets, and create [data sets](../warehouse/populations/ltla) with headers
 <br>
 <br>
 
-
 ### catchments
 
 The programs of [catchments](./catchments) are focused on raw weights calculations.  Refer to the [PDF notes](../notebooks/notes/notes.pdf).
-
-<br>
-<br>
-
-### weights
-
-The programs of [weights](./weights) pool the weights required for design matrix calculations. 
-
-variable | description
- :--- | :---
-[``tfp_ltla``](../warehouse/weights/series/ltla/focus/parent) | The trust fraction of the patients that originated from the<br>LTLA in question.
-[``tfp_ltla_ag``](../warehouse/weights/series/ltla/focus/child) | The trust fraction of the patients, **w.r.t. an age group**, that originated<br>from the LTLA in question.
-[``tfp_ltla_ag``](../warehouse/weights/series/ltla/baseline/disaggregated) | The trust fraction of the patients, **w.r.t. an age group and sex**,<br>that originated from the LTLA in question.<br><br>In future, this variable name will be changed to ``tfp_ltla_ags``.  At<br>present the age-group & age-group-sex fractions can only exist<br>in separate files.
 
 <br>
 <br>
