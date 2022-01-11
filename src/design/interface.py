@@ -5,8 +5,10 @@ import sys
 
 def main():
 
+    weights_of_year = 2019
+
     # creating design matrices
-    messages = src.design.matrix.Matrix().exc()
+    messages = src.design.matrix.Matrix(weights_of_year=weights_of_year).exc()
     logger.info(messages)
 
     # concatenated design matrices for graphs
