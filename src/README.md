@@ -43,22 +43,24 @@ Trust; each file's name it the trust's code.  The variables per file are
 
 <br>
 
-variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | description
+variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | description<br>(per day)
  :--- | :--- | :--- | :---
 ``date`` |  |  |
-``covidOccupiedBeds`` | | &#10003; | A bed occupied by a coronavirus disease<br> patient
-``covidOccupiedMVBeds`` | | &#10003; | A mechanical ventilation bed occupied by a<br> coronavirus disease patient
-``estimatedNewAdmissions`` | | &#10003; | Estimated by NHS England
-``EDC0-4``, ``EDC5-9``, ``EDC10-14``, ...<br> ``EDC80-84``, ``EDC85-89``, ``EDC90+``  | &#10003; | | Estimated daily cases (EDC) by age group ...
-``dailyCases`` | &#10003; | | Estimated daily cases
-``newDeaths28DaysByDeathDate`` | &#10003; | | Estimated daily deaths count, 28 days ...
-``dailyFirstDoseByVaccinationDate`` | &#10003; | | Estimated daily number of first vaccination<br> doses by ...
-``dailySecondDoseByVaccinationDate`` | &#10003; | | Estimated daily number of second vaccination<br> doses by ...
-``dailyThirdInjectionByVaccinationDate`` | &#10003; | | Estimated daily number of third vaccination<br> doses by ...
-``EDV12-15``, ``EDV16-17``, ``EDV18-24``,<br> ``EDV25-29``, ``EDV30-34``, ``EDV35-39``, ...,<br> ``EDV80-84``, ``EDV85-89``, ``EDV90+``  | &#10003; | | Estimated daily vaccinations (EDV) by age group ...
+``covidOccupiedBeds`` | | &#10003; | The \# of beds occupied by coronavirus disease<br> patients.
+``covidOccupiedMVBeds`` | | &#10003; | The \# of mechanical ventilation beds occupied by <br> coronavirus disease patients
+``estimatedNewAdmissions`` | | &#10003; | The day's/date's estimated new admissions, estimated<br>by an NHS England entity.
+``EDC0-4``, ``EDC5-9``, ``EDC10-14``, ...<br> ``EDC80-84``, ``EDC85-89``, ``EDC90+``  | &#10003; | | The estimated \# of daily cases (EDC) by age group.
+``dailyCases`` | &#10003; | | The \# of estimated daily cases.
+``newDeaths28DaysByDeathDate`` | &#10003; | | The \# of estimated daily deaths, whereby each death<br>occurred *within 28 days of a first positive*<br>*laboratory-confirmed test*. <sup>2</sup>
+``dailyFirstDoseByVaccinationDate`` | &#10003; | | The daily estimated \# of first vaccinations<br> by vaccination date.
+``dailySecondDoseByVaccinationDate`` | &#10003; | | The daily estimated \# of second vaccinations<br> by vaccination date.
+``dailyThirdInjectionByVaccinationDate`` | &#10003; | | The daily estimated \# of third vaccinations<br> by vaccination date.
+``EDV12-15``, ``EDV16-17``, ``EDV18-24``,<br> ``EDV25-29``, ``EDV30-34``, ``EDV35-39``, ...,<br> ``EDV80-84``, ``EDV85-89``, ``EDV90+``  | &#10003; | | The estimated \# of daily vaccinations (EDV)<br>by age group; second vaccinations.
 
 <sup>1</sup> Project estimates based on the government's lower tier local authority (LTLA) level COVID-19 measures, and Public Health England 
 patients flow data; yearly flow patterns from middle super output area (MSOA) entities to NHS Trusts.
+
+<sup>2</sup> [Deaths](https://www.gov.uk/government/news/new-uk-wide-methodology-agreed-to-record-covid-19-deaths)
 
 <br>
 <br>
