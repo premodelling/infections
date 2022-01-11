@@ -73,7 +73,7 @@ class DisaggregatedVaccinations:
         frame = blob.sum(axis=1).to_frame(name='daily_vaccinations')
         frame.reset_index(drop=False, inplace=True)
         restructured: pd.DataFrame = frame.pivot(index='date', columns='age_group', values='daily_vaccinations')
-        restructured.set_axis(labels=['V{}'.format(age_group) for age_group in self.age_groups],
+        restructured.set_axis(labels=['DV{}'.format(age_group) for age_group in self.age_groups],
                               axis='columns', inplace=True)
 
         return restructured
