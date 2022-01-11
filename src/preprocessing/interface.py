@@ -13,20 +13,25 @@ def main():
     patients = src.preprocessing.patients.Patients().exc()
     logger.info(patients)
 
-    populationsmsoa = src.preprocessing.populationsmsoa.PopulationsMSOA().exc()
-    logger.info(populationsmsoa)
+    populations_msoa = src.preprocessing.populationsmsoa.PopulationsMSOA().exc()
+    logger.info(populations_msoa)
 
-    agegroupsmsoa = src.preprocessing.agegroupsmsoa.AgeGroupsMSOA().exc()
-    logger.info(agegroupsmsoa)
+    age_group_sex_msoa = src.preprocessing.agegroupsexmsoa.AgeGroupSexMSOA().exc()
+    logger.info(age_group_sex_msoa)
 
     exceptions = src.preprocessing.exceptions.Exceptions().exc()
     logger.info(exceptions)
 
-    populationsltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
-    logger.info(populationsltla)
+    populations_ltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
+    logger.info(populations_ltla)
 
-    agegroupsltla = src.preprocessing.agegroupsltla.AgeGroupsLTLA().exc()
-    logger.info(agegroupsltla)
+    age_group_sex_ltla = src.preprocessing.agegroupsexltla.AgeGroupSexLTLA().exc()
+    logger.info(age_group_sex_ltla)
+
+    vaccinations_msoa = src.preprocessing.vaccinationgroupsmsoa.VaccinationGroupsMSOA().exc()
+    logger.info(vaccinations_msoa)
+    vaccinations_ltla = src.preprocessing.vaccinationgroupsltla.VaccinationGroupsLTLA().exc()
+    logger.info(vaccinations_ltla)
 
 
 if __name__ == '__main__':
@@ -45,9 +50,12 @@ if __name__ == '__main__':
     import src.preprocessing.patients
     import src.preprocessing.districts
     import src.preprocessing.populationsmsoa
-    import src.preprocessing.agegroupsmsoa
+    import src.preprocessing.agegroupsexmsoa
     import src.preprocessing.exceptions
     import src.preprocessing.populationsltla
-    import src.preprocessing.agegroupsltla
+    import src.preprocessing.agegroupsexltla
+
+    import src.preprocessing.vaccinationgroupsmsoa
+    import src.preprocessing.vaccinationgroupsltla
 
     main()
