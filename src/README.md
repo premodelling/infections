@@ -43,7 +43,7 @@ Trust; each file's name it the trust's code.  The variables per file are
 
 <br>
 
-variable | Estimated<br>NHS Trust Level | NHS Trust Level | description
+variable | Estimated<br>NHS Trust<br>Level | NHS Trust<br>Level | description
  :--- | :--- | :--- | :---
 ``date`` |  |  |
 ``covidOccupiedBeds`` | | &#10003; | A bed occupied by a coronavirus disease<br> patient
