@@ -71,8 +71,7 @@ class DisaggregatedCases:
 
         return temporary
 
-    @staticmethod
-    def __aggregates(computations: list) -> pd.DataFrame:
+    def __aggregates(self, computations: list) -> pd.DataFrame:
         """
 
         :param computations:
@@ -87,6 +86,8 @@ class DisaggregatedCases:
         frame = blob.sum(axis=1).to_frame(name='daily_cases')
         frame.reset_index(drop=False, inplace=True)
         restructured = frame.pivot(index='date', columns='age_group', values='daily_cases')
+        restructured.set_axis(labels=['DC{}'.format(age_group) for age_group in self.age_groups],
+                              axis='columns', inplace=True)
 
         return restructured
 
