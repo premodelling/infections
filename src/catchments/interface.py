@@ -22,6 +22,9 @@ def main():
         ltla = src.catchments.ltla.LTLA(reference=aggregates_ltla, year=year).exc()
         logger.info(ltla)
 
+    messages = src.catchments.weightseriesltla.WeightSeriesLTLA().exc()
+    logger.info(messages)
+
 
 if __name__ == '__main__':
 
@@ -41,6 +44,7 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     # libraries
+    import src.catchments.weightseriesltla
     import src.catchments.patients
     import src.catchments.populations
     import src.catchments.aggregatesltla
