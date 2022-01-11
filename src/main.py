@@ -4,6 +4,7 @@ import sys
 
 
 def main():
+
     logger.info('infections')
 
 
