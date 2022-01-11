@@ -18,7 +18,8 @@ class Temporary:
     def __init__(self):
 
         # expected age groups
-        self.age_groups = config.Config().age_groups
+        age_groups = config.Config().age_groups
+        self.age_groups = ['EDC{}'.format(age_group) for age_group in age_groups]
 
         # source
         self.source_path = os.path.join('warehouse', 'design', 'raw')
@@ -44,8 +45,6 @@ class Temporary:
 
         dgr = frame[['date', 'trust_code'] + self.age_groups]
         dgr = dgr.melt(id_vars=['date', 'trust_code'], var_name='age_group', value_name='daily_cases')
-        # dgr.reset_index(drop=False, inplace=True)
-
         agg = frame.drop(columns=self.age_groups)
 
         return dgr, agg
