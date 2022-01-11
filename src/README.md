@@ -43,7 +43,7 @@ Trust; each file's name it the trust's code.  The variables per file are
 
 <br>
 
-variable | Estimated<br>NHS Trust<br>Level | NHS Trust<br>Level | description
+variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | description
  :--- | :--- | :--- | :---
 ``date`` |  |  |
 ``covidOccupiedBeds`` | | &#10003; | A bed occupied by a coronavirus disease<br> patient
@@ -56,6 +56,9 @@ variable | Estimated<br>NHS Trust<br>Level | NHS Trust<br>Level | description
 ``dailySecondDoseByVaccinationDate`` | &#10003; | | Estimated daily number of second vaccination<br> doses by ...
 ``dailyThirdInjectionByVaccinationDate`` | &#10003; | | Estimated daily number of third vaccination<br> doses by ...
 ``EDV12-15``, ``EDV16-17``, ``EDV18-24``,<br> ``EDV25-29``, ``EDV30-34``, ``EDV35-39``, ...,<br> ``EDV80-84``, ``EDV85-89``, ``EDV90+``  | &#10003; | | Estimated daily vaccinations (EDV) by age group ...
+
+<sup>1</sup> Project estimates based on the government's lower tier local authority (LTLA) level COVID-19 measures, and Public Health England 
+patients flow data; yearly flow patterns from middle super output area (MSOA) entities to NHS Trusts.
 
 <br>
 <br>
