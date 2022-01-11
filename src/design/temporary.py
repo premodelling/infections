@@ -18,7 +18,8 @@ class Temporary:
     def __init__(self):
 
         # expected age groups
-        self.age_groups = config.Config().age_groups
+        age_groups = config.Config().age_groups
+        self.age_groups = ['EDC{}'.format(age_group) for age_group in age_groups]
 
         # source
         self.source_path = os.path.join('warehouse', 'design', 'raw')
