@@ -10,9 +10,6 @@ import config
 class DisaggregatedVaccinations:
 
     def __init__(self, weights_of_year: int):
-        """
-
-        """
 
         configurations = config.Config()
         self.dates = configurations.dates()
@@ -46,11 +43,6 @@ class DisaggregatedVaccinations:
         return frame[['date'] + self.age_groups]
 
     def __constants(self, ltla_code: str, weights: pd.DataFrame) -> pd.DataFrame:
-        """
-
-        :param ltla_code: a LTLA code
-        :return:
-        """
 
         factors = weights.loc[weights.ltla == ltla_code, ['ltla', 'ag', 'tfp_ltla_ag']]
         factors = factors.pivot(index='ltla', columns='ag', values='tfp_ltla_ag')
@@ -60,39 +52,29 @@ class DisaggregatedVaccinations:
         return constants
 
     def __melt(self, frame: pd.DataFrame, ltla_code: str) -> pd.DataFrame:
-        """
-
-        :param frame:
-        :param ltla_code: a LTLA code
-        :return:
-        """
 
         # foremost, ensure all dates within the dates range exists
         reference = self.dates[['date']].merge(frame, how='left', on='date')
         reference.fillna(value=0, inplace=True)
 
-        # hence,melt
+        # hence, melt
         temporary = reference.melt(id_vars='date', var_name='age_group', value_name=ltla_code)
         temporary.set_index(keys=['date', 'age_group'], inplace=True)
 
         return temporary
 
-    @staticmethod
-    def __aggregates(computations: list) -> pd.DataFrame:
-        """
-
-        :param computations:
-        :return:
-        """
+    def __aggregates(self, computations: list) -> pd.DataFrame:
 
         if len(computations) > 1:
             blob = pd.concat(computations, ignore_index=False, axis=1)
         else:
             blob = computations[0]
 
-        frame = blob.sum(axis=1).to_frame(name='daily_cases')
+        frame = blob.sum(axis=1).to_frame(name='daily_vaccinations')
         frame.reset_index(drop=False, inplace=True)
-        restructured = frame.pivot(index='date', columns='age_group', values='daily_cases')
+        restructured: pd.DataFrame = frame.pivot(index='date', columns='age_group', values='daily_vaccinations')
+        restructured.set_axis(labels=['V{}'.format(age_group) for age_group in self.age_groups],
+                              axis='columns', inplace=True)
 
         return restructured
 
