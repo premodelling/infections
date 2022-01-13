@@ -5,7 +5,6 @@
   * [The design matrix & outcomes vectors](#the-design-matrix--outcomes-vectors)
 
 * [Modelling, Evaluation, Analysis](#modelling-evaluation-analysis)
-  * Upcoming
 
 <br>
 
@@ -67,6 +66,13 @@ patients flow data; yearly flow patterns from middle super output area (MSOA) en
 <br>
 
 ## Modelling, Evaluation, Analysis
+
+Thus far, prototypes.  The directory [prototyping](./prototyping) hosts the underlying programs of the prototype notebooks
+
+* [multiple steps ahead](../notebooks#exploration-notebooks)
+* [single step ahead](../notebooks#exploration-notebooks)
+
+
 
 <br>
 <br>

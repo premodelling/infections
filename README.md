@@ -35,12 +35,11 @@
   [project documents](docs/project)
   
 * [notebooks](notebooks) <br>
-  [project notes](./notebooks/notes/notes.pdf)
+  [project notes](./notebooks#project-notes)<br>
+  [exploration notebooks](./notebooks#exploration-notebooks)
 
 * [src](src) <br> 
   The project's code and accompanying notes.
-  * [Extraction, Transformation, Integration](./src#extraction-transformation-integration) <br>
-    [The design matrix & outcomes vectors](./src#the-design-matrix--outcomes-vectors)
 
 * [warehouse](warehouse) <br> 
   The data structuring & integration, analysis, modelling, and evaluations outputs.
