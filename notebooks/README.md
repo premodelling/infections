@@ -1,6 +1,6 @@
 <br>
 
-### Progress Notes
+### Project Notes
 
 * [notes](notes/notes.pdf)
 
