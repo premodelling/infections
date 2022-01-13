@@ -35,7 +35,7 @@
   [project documents](docs/project)
   
 * [notebooks](notebooks) <br>
-  [project notes](./notebooks#project-notes)
+  [project notes](./notebooks#project-notes)<br>
   [exploration notebooks](./notebooks#exploration-notebooks)
 
 * [src](src) <br> 
