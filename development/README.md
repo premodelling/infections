@@ -36,6 +36,7 @@ Hence
     conda install -c anaconda pytest coverage pytest-cov pylint flake8
     conda install -c anaconda nodejs pywin32 jupyterlab # installs: requests, urllib3, etc.
     conda install -c anaconda python-graphviz
+    conda install -c anaconda arviz
     
     # distributed computing
     conda install -c anaconda dask
@@ -135,6 +136,51 @@ if response.status_code > 204:
 logger.info(response.json())
 
 ```
+
+<br>
+
+### Periodicity
+
+````python
+import tensorflow as tf
+
+import pandas as pd
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+
+class FFT:
+
+  def __init__(self):
+    """
+    Constructor
+    """
+
+  @staticmethod
+  def fft(data: pd.DataFrame):
+    fourier = tf.signal.rfft(data['dailyCases'])
+
+    indices = np.arange(0, len(fourier))
+
+    n_samples = data.shape[0]
+    days_per_week = 7
+    n_weeks = n_samples / days_per_week
+
+    return indices / n_weeks
+
+  def exc(self, data: pd.DataFrame):
+    frequencies = self.fft(data=data)
+
+    plt.step(frequencies, np.abs(FFT))
+    plt.xscale('log')
+
+    for spine in plt.gca().spines.values():
+      spine.set_visible(False)
+    plt.tick_params(top='off', bottom='off', left='off', right='off', labelleft='on', labelbottom='on')
+    plt.xticks([1, 7], labels=['1/week', '1/day'])
+
+````
 
 <br>
 <br>
