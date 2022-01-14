@@ -21,6 +21,7 @@
   <span style="color:#D3D3D3;">The data structuring & integration, analysis, modelling, and evaluations outputs.</span>
 
 <br>
+<br>
 
 ## SCC460 Group Project
 
@@ -59,10 +60,16 @@ The project relies on
 
 data sets, which required the structuring, transformations, and integrations outlined below.
 
+<br>
+
 <img align="middle" src="/notebooks/notes/images/outline.png" style="height: 65%" />
+
+<br>
 
 The government's coronavirus measures have been a challenge due to their disparate units of measure.  The table below outlines this point, and it is this issue that underlies
 the need for the additional data sets, i.e., the above-listed patients, populations, and geographic data sets.
+
+<br>
 
 variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/virus/trusts/measures) | Prospective<br>Outcome<br>Variable
  :--- | :--- | :--- | :---
