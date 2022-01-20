@@ -45,7 +45,7 @@ affiliation:
 keywords: ["keyword 1", "keyword 2"]
 abstract: |
   \vspace{10pt}
-  Aim: Predicting NHS Trust Hospitalisation Trends.
+  To develop a prediction model that forecasts what the expected number of patient admissions will/might be - per day, N weeks ahead, and per NHS Trust - during an infectious disease pandemic.
   \vspace{10pt}
   
   Objectives: (a) Understanding, determining, the range of predictors that influence SARS-CoV-2 hospital admissions per NHS Trust, (b) Forecasting N weeks ahead
@@ -74,7 +74,7 @@ Introduction
 
 * Motivation/Context: An interest in prediction/forecasting models that enable hospitals to anticipate patient flows, and have contingency plans, during future pandemics. There is a strong interest in understanding the range of predictors that underlie effective models because such understandings ensure that hospitals are privy to the range of variables that would enable effective anticipatory & contingency planning.
 
-* Research Question: What COVID-19 disease measures affect expected patient flows to an NHS England NHS Trust? 
+* Research Question: What disease measures affect expected patient flows to an England NHS Trust during an infectious disease pandemic?
 
 
 

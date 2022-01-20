@@ -26,12 +26,13 @@
 ## SCC460 Group Project
 
 **Aim**
-> Predicting hospitalisation trends of NHS Trusts
+> To develop a prediction model that forecasts what the expected number of patient admissions will/might be - per day, 
+> N weeks ahead, and per NHS Trust - during an infectious disease pandemic.
 
 <br>
 
 **Research Question**
-> What COVID-19 disease measures affect expected patient flows to an NHS England NHS Trust?
+> What disease measures affect expected patient flows to an England NHS Trust during an infectious disease pandemic?
 
 <br>
 
