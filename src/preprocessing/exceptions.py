@@ -62,7 +62,6 @@ class Exceptions:
                 frame = pd.read_excel(io=os.path.join(self.source, self.detail.filename),
                                       sheet_name=self.detail.sheets[index], header=self.detail.header,
                                       usecols=self.detail.cells)
-                print(frame.head())
                 if self.detail.overflow is not None:
                     frame = frame.copy().loc[~frame[self.detail.overflow].notna(), :]
             except RuntimeError as err:
