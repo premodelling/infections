@@ -93,7 +93,7 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 
 #### Estimated NHS Trust Level Measures
 
-The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation factors/weights based on **(a)** the LTLA 
+The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation weights based on **(a)** the LTLA 
 measures, **(b)** and the above-listed patients, populations, and geographic data sets, and **(c)** Public Health England's 
 [NHS Trust Catchment estimation](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9) approach.
 
@@ -115,6 +115,20 @@ variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | d
 
 <sup>1</sup> Project estimates based on the government's lower tier local authority (LTLA) level COVID-19 measures, and Public Health England
 patients flow data; yearly flow patterns from middle super output area (MSOA) entities to NHS Trusts.
+
+<br>
+
+It is these NHS Trust Level variables, estimated and otherwise, that underlie design matrices of the developed models.  The raw design matrix and 
+outcome variables, wherein all measures are at NHS Trust level, are available at
+
+* [warehouse/design/raw](warehouse/design/raw)
+
+Each file has the data of a single NHS Trust, hence each file's name is the trust code. The data is explorable 
+via [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the current explorable options are
+
+* Hospital Activity & Estimated Cases
+* Estimated Vaccination & Case Measures
+* Estimated Trust Level Cases by Age Group
 
 <br>
 <br>
