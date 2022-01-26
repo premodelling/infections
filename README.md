@@ -58,7 +58,7 @@ data sets, which required the structuring, transformations, and integrations out
 <br>
 <br>
 
-<img align="middle" src="docs/images/flow.png" style="height: 80%" />
+<img align="middle" src="images/flow.png" style="height: 80%" />
 
 <br>
 <br>
