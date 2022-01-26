@@ -1,7 +1,6 @@
 
 <br>
 
-
 * [data](data) <br>
   <span style="color:#D3D3D3;">The project's raw data.  Each directory consists of the raw data and links to the source, or API links.</span>
 
@@ -12,7 +11,7 @@
   [papers](docs/papers), [book chapters](docs/texts), [project documents](docs/project)
 
 * [notebooks](notebooks) <br>
-  [project notes](./notebooks#project-notes), [exploration notebooks](./notebooks#exploration-notebooks)
+  [exploration notebooks](./notebooks#exploration-notebooks)
 
 * [src](src) <br>
   <span style="color:#D3D3D3;">The project's code and accompanying notes.</span>
@@ -32,7 +31,7 @@
 <br>
 
 **Research Question**
-> What disease measures affect expected patient flows to an England NHS Trust during an infectious disease pandemic?
+> How many future admissions should a NHS trust expect during an infectious disease pandemic?
 
 <br>
 
@@ -44,13 +43,8 @@
 <br>
 <br>
 
-## Summary
 
-The project's focus is patient admission forecasts for NHS Trusts. 
-
-<br>
-
-### Data 
+## Data 
 
 The project relies on
 
@@ -63,9 +57,11 @@ data sets, which required the structuring, transformations, and integrations out
 
 <br>
 
-<img align="middle" src="/notebooks/notes/images/outline.png" style="height: 65%" />
+<img align="middle" src="/docs/images/flow.png" style="height: 65%" />
 
 <br>
+
+### data.gov.uk SARS-CoV-2 Infection Measures
 
 The government's coronavirus measures have been a challenge due to their disparate units of measure.  The table below outlines this point, and it is this issue that underlies
 the need for the additional data sets, i.e., the above-listed patients, populations, and geographic data sets.
@@ -93,6 +89,8 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 
 <br>
 
+### Estimated NHS Trust Level Measures
+
 The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation factors/weights based on **(a)** the LTLA 
 measures, **(b)** and the above-listed patients, populations, and geographic data sets, and **(c)** Public Health England's 
 [NHS Trust Catchment estimation](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9) approach.
@@ -119,7 +117,7 @@ patients flow data; yearly flow patterns from middle super output area (MSOA) en
 <br>
 <br>
 
-### Exploration, Modelling, Analysis
+## Exploration, Modelling, Analysis
 
 The variables of the table above are the variables that underlie the project's explorations, modelling, and analysis.  The prepared data set per 
 NHS Trust is available at
