@@ -12,6 +12,7 @@ if __name__ == '__main__':
     root = os.getcwd()
     sys.path.append(root)
     sys.path.append(os.path.join(root, 'src'))
+    sys.path.append(os.path.join(root, 'src', 'preprocessing'))
 
     # Logging
     logging.basicConfig(level=logging.INFO,

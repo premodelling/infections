@@ -90,10 +90,15 @@ class Config:
 
     @staticmethod
     def dates():
+        """
+        In order to limit errors, the end date of the data sets will be 5 days before the current, today's, date
+
+        :return:
+        """
 
         pattern = '%Y-%m-%d'
         starting: str = '2020-03-01'
-        ending: str = (datetime.datetime.today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d')
+        ending: str = (datetime.datetime.today() - datetime.timedelta(days=5)).strftime('%Y-%m-%d')
 
         values = pd.DataFrame(pd.date_range(start=starting, end=ending, freq='D'), columns=['datetimeobject'])
         values.loc[:, 'date'] = values.datetimeobject.apply(lambda x: x.strftime(pattern))

@@ -59,7 +59,7 @@ class AgeGroupVaccinations:
             else:
                 frame = pd.DataFrame()
         except RuntimeError as err:
-            raise Exception(err)
+            frame = pd.DataFrame()
 
         return frame
 

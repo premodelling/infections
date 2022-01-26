@@ -30,6 +30,7 @@ def main():
 
     vaccinations_msoa = src.preprocessing.vaccinationgroupsmsoa.VaccinationGroupsMSOA().exc()
     logger.info(vaccinations_msoa)
+
     vaccinations_ltla = src.preprocessing.vaccinationgroupsltla.VaccinationGroupsLTLA().exc()
     logger.info(vaccinations_ltla)
 

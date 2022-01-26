@@ -1,7 +1,6 @@
 
 <br>
 
-
 * [data](data) <br>
   <span style="color:#D3D3D3;">The project's raw data.  Each directory consists of the raw data and links to the source, or API links.</span>
 
@@ -12,7 +11,7 @@
   [papers](docs/papers), [book chapters](docs/texts), [project documents](docs/project)
 
 * [notebooks](notebooks) <br>
-  [project notes](./notebooks#project-notes), [exploration notebooks](./notebooks#exploration-notebooks)
+  [exploration notebooks](./notebooks#exploration-notebooks)
 
 * [src](src) <br>
   <span style="color:#D3D3D3;">The project's code and accompanying notes.</span>
@@ -23,7 +22,7 @@
 <br>
 <br>
 
-## SCC460 Group Project
+### SCC460 Group Project
 
 **Aim**
 > To develop a prediction model that forecasts what the expected number of patient admissions will/might be - per day, 
@@ -32,7 +31,7 @@
 <br>
 
 **Research Question**
-> What disease measures affect expected patient flows to an England NHS Trust during an infectious disease pandemic?
+> How many future admissions should a NHS trust expect during an infectious disease pandemic?
 
 <br>
 
@@ -44,11 +43,6 @@
 <br>
 <br>
 
-## Summary
-
-The project's focus is patient admission forecasts for NHS Trusts. 
-
-<br>
 
 ### Data 
 
@@ -62,10 +56,14 @@ The project relies on
 data sets, which required the structuring, transformations, and integrations outlined below.
 
 <br>
+<br>
 
-<img align="middle" src="/notebooks/notes/images/outline.png" style="height: 65%" />
+<img align="middle" src="docs/images/flow.png" style="height: 80%" />
 
 <br>
+<br>
+
+#### data.gov.uk SARS-CoV-2 Infection Measures
 
 The government's coronavirus measures have been a challenge due to their disparate units of measure.  The table below outlines this point, and it is this issue that underlies
 the need for the additional data sets, i.e., the above-listed patients, populations, and geographic data sets.
@@ -93,7 +91,9 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 
 <br>
 
-The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation factors/weights based on **(a)** the LTLA 
+#### Estimated NHS Trust Level Measures
+
+The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation weights based on **(a)** the LTLA 
 measures, **(b)** and the above-listed patients, populations, and geographic data sets, and **(c)** Public Health England's 
 [NHS Trust Catchment estimation](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9) approach.
 
@@ -115,6 +115,20 @@ variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | d
 
 <sup>1</sup> Project estimates based on the government's lower tier local authority (LTLA) level COVID-19 measures, and Public Health England
 patients flow data; yearly flow patterns from middle super output area (MSOA) entities to NHS Trusts.
+
+<br>
+
+It is these NHS Trust Level variables, estimated and otherwise, that underlie design matrices of the developed models.  The raw design matrix and 
+outcome variables, wherein all measures are at NHS Trust level, are available at
+
+* [warehouse/design/raw](warehouse/design/raw)
+
+Each file has the data of a single NHS Trust, hence each file's name is the trust code. The data is explorable 
+via [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the current explorable options are
+
+* Hospital Activity & Estimated Cases
+* Estimated Vaccination & Case Measures
+* Estimated Trust Level Cases by Age Group
 
 <br>
 <br>

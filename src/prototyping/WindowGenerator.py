@@ -58,7 +58,7 @@ class WindowGenerator:
         # noinspection PyUnresolvedReferences
         dataset = tf.keras.preprocessing.timeseries_dataset_from_array(
             data=data, targets=None, sequence_length=self.total_window_size,
-            sequence_stride=1, shuffle=True, batch_size=32)
+            sequence_stride=1, shuffle=False, batch_size=32)
 
         dataset = dataset.map(self.split_window)
 
