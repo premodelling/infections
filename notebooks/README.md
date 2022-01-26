@@ -1,11 +1,5 @@
 <br>
 
-### Project Notes
-
-* [notes](notes/notes.pdf)
-
-<br>
-
 ### Exploration Notebooks
 
 * catchment.ipynb<br>
