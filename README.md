@@ -22,7 +22,7 @@
 <br>
 <br>
 
-## SCC460 Group Project
+### SCC460 Group Project
 
 **Aim**
 > To develop a prediction model that forecasts what the expected number of patient admissions will/might be - per day, 
@@ -44,7 +44,7 @@
 <br>
 
 
-## Data 
+### Data 
 
 The project relies on
 
@@ -56,12 +56,14 @@ The project relies on
 data sets, which required the structuring, transformations, and integrations outlined below.
 
 <br>
+<br>
 
 <img align="middle" src="docs/images/flow.png" style="height: 100%" />
 
 <br>
+<br>
 
-### data.gov.uk SARS-CoV-2 Infection Measures
+#### data.gov.uk SARS-CoV-2 Infection Measures
 
 The government's coronavirus measures have been a challenge due to their disparate units of measure.  The table below outlines this point, and it is this issue that underlies
 the need for the additional data sets, i.e., the above-listed patients, populations, and geographic data sets.
@@ -89,7 +91,7 @@ variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/vir
 
 <br>
 
-### Estimated NHS Trust Level Measures
+#### Estimated NHS Trust Level Measures
 
 The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation factors/weights based on **(a)** the LTLA 
 measures, **(b)** and the above-listed patients, populations, and geographic data sets, and **(c)** Public Health England's 
@@ -117,7 +119,7 @@ patients flow data; yearly flow patterns from middle super output area (MSOA) en
 <br>
 <br>
 
-## Exploration, Modelling, Analysis
+### Exploration, Modelling, Analysis
 
 The variables of the table above are the variables that underlie the project's explorations, modelling, and analysis.  The prepared data set per 
 NHS Trust is available at
