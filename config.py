@@ -1,4 +1,5 @@
 import os
+import collections
 import datetime
 
 import numpy as np
@@ -104,3 +105,19 @@ class Config:
         values.loc[:, 'date'] = values.datetimeobject.apply(lambda x: x.strftime(pattern))
 
         return values
+
+    @staticmethod
+    def modelling():
+
+        Modelling = collections.namedtuple(typename='Modelling', field_names=['variables'])
+
+        variables = ['covidOccupiedBeds', 'covidOccupiedMVBeds', 'estimatedNewAdmissions',
+                     'EDC0-4', 'EDC5-9', 'EDC10-14', 'EDC15-19', 'EDC20-24', 'EDC25-29',
+                     'EDC30-34', 'EDC35-39', 'EDC40-44', 'EDC45-49', 'EDC50-54', 'EDC55-59',
+                     'EDC60-64', 'EDC65-69', 'EDC70-74', 'EDC75-79', 'EDC80-84', 'EDC85-89',
+                     'EDC90+', 'newDeaths28DaysByDeathDate', 'EDV12-15', 'EDV16-17',
+                     'EDV18-24', 'EDV25-29', 'EDV30-34', 'EDV35-39', 'EDV40-44', 'EDV45-49',
+                     'EDV50-54', 'EDV55-59', 'EDV60-64', 'EDV65-69', 'EDV70-74', 'EDV75-79',
+                     'EDV80-84', 'EDV85-89', 'EDV90+']
+
+        return Modelling(variables=variables)
