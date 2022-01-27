@@ -44,7 +44,7 @@
 <br>
 
 
-### Data 
+### A FEW NOTES ABOUT DATA
 
 The project relies on
 
@@ -59,6 +59,22 @@ data sets, which required the structuring, transformations, and integrations out
 <br>
 
 <img align="middle" src="images/flow.png" style="height: 80%" />
+
+<br>
+
+**Figure ...**: A high level illustration of the project's processing, analysis, modelling, and evaluation steps. The acronyms/abbreviations are 
+API: application programming interface, MSOA: middle layer super output area ([a United Kingdom census geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)), 
+LTLA: lower tier local authority ([a United Kingdom admnitrative geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/administrativegeography)), 
+ONS: office for national statistics, NHS: national health service, PHE: Public Health England.  The ONS, NHS, and PHE, and United Kingdom entities.
+
+The data sources are &rarr; England's SARS-CoV-2 infections related measures: [coronavirus.data.gov.uk API](https://coronavirus.data.gov.uk/details/developers-guide/main-api), 
+demographics data: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates), 
+MSOA &harr; LTLA geographic codes mappings: [Open Geography Portal (geoportal)](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD)), 
+annual intake of patients from one or more MSOA areas to an NHS Trust: PHE [NHS Trust Catchments Estimation](https://app.box.com/s/qh8gzpzeo1firv1ezfxx2e6c4tgtrudl), 
+[visualisations of](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
+
+Please refer to the methodologies section for a description of (a) the patient flow weights - &lambda;, &lambda;<sub>ag</sub>, &lambda;<sub>ags</sub> - representations of patient flows
+from a LTLA area to a NHS Trust, and (b) the estimation of NHS trust level measures via flow weights and LTLA level measures. 
 
 <br>
 <br>
