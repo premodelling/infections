@@ -66,7 +66,7 @@ data sets, which required the structuring, transformations, and integrations out
 > **Figure ...**: A high level illustration of the project's processing, analysis, modelling, and evaluation steps. The acronyms/abbreviations are 
 API: application programming interface, MSOA: middle layer super output area ([a United Kingdom census geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)), 
 LTLA: lower tier local authority ([a United Kingdom admnitrative geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/administrativegeography)), 
-ONS: office for national statistics, NHS: national health service, PHE: Public Health England.  The ONS, NHS, and PHE, and United Kingdom entities.
+ONS: office for national statistics, NHS: national health service, PHE: Public Health England.  The ONS, NHS, and PHE, are United Kingdom entities.
 >
 > The data sources are &rarr; England's SARS-CoV-2 infections related measures: [coronavirus.data.gov.uk API](https://coronavirus.data.gov.uk/details/developers-guide/main-api), 
 demographics data: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates), 
