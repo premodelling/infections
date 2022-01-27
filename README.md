@@ -69,7 +69,7 @@ ONS: office for national statistics, NHS: national health service, PHE: Public H
 
 The data sources are &rarr; England's SARS-CoV-2 infections related measures: [coronavirus.data.gov.uk API](https://coronavirus.data.gov.uk/details/developers-guide/main-api), 
 demographics data: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates), 
-MSOA &harr; LTLA geographic codes mappings: [Open Geography Portal (geoportal)](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD)), 
+MSOA &lrarr; LTLA geographic codes mappings: [Open Geography Portal (geoportal)](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD)), 
 annual intake of patients from one or more MSOA areas to an NHS Trust: PHE [NHS Trust Catchments Estimation](https://app.box.com/s/qh8gzpzeo1firv1ezfxx2e6c4tgtrudl), 
 [visualisations of](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
 
