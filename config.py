@@ -111,7 +111,7 @@ class Config:
 
         Modelling = collections.namedtuple(typename='Modelling', field_names=['variables'])
 
-        variables = ['covidOccupiedBeds', 'covidOccupiedMVBeds', 'estimatedNewAdmissions',
+        variables = ['date', 'covidOccupiedBeds', 'covidOccupiedMVBeds', 'estimatedNewAdmissions',
                      'EDC0-4', 'EDC5-9', 'EDC10-14', 'EDC15-19', 'EDC20-24', 'EDC25-29',
                      'EDC30-34', 'EDC35-39', 'EDC40-44', 'EDC45-49', 'EDC50-54', 'EDC55-59',
                      'EDC60-64', 'EDC65-69', 'EDC70-74', 'EDC75-79', 'EDC80-84', 'EDC85-89',
