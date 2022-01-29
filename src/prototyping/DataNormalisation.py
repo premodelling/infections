@@ -14,8 +14,8 @@ class DataNormalisation:
         self.__validating = validating
         self.__testing = testing
 
-        self.__mean = self.__training.mean()
-        self.__deviation = self.__training.std()
+        self.__mean = self.__training.mean(axis=0)
+        self.__deviation = self.__training.std(axis=0)
 
     def __normalise(self, data: pd.DataFrame):
 

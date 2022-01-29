@@ -158,10 +158,7 @@ NHS Trust is available at
 
 > [warehouse/design/raw](./warehouse/design/raw)
 
-Thus far, prototypes.  The directory [prototyping](./src/prototyping) hosts the underlying programs of the prototype notebooks
-
-* [multiple steps ahead](./notebooks#exploration-notebooks)
-* [single step ahead](./notebooks#exploration-notebooks)
+Thus far, ...
 
 <br>
 <br>

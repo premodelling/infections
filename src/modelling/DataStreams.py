@@ -13,8 +13,14 @@ import src.modelling.DataSplitting
 
 class DataStreams:
 
-    def __init__(self, fraction: collections.namedtuple(typename='Fraction',
-                                                        field_names=['training', 'validating', 'testing'])):
+    def __init__(self, root: str,
+                 fraction: collections.namedtuple(typename='Fraction',
+                                                  field_names=['training', 'validating', 'testing'])):
+        """
+
+        :param root: the package directory
+        :param fraction: the fraction of each data split
+        """
 
         # get the collection of modelling parameters
         configurations = config.Config()
@@ -24,11 +30,11 @@ class DataStreams:
         self.splitting = src.modelling.DataSplitting.DataSplitting(fraction=fraction)
 
         # get the list of the data files that would be used for modelling
-        self.source = os.path.join(os.getcwd(), 'warehouse', 'design', 'raw')
+        self.source = os.path.join(root, 'warehouse', 'design', 'raw')
         self.files = glob.glob(pathname=os.path.join(self.source, '*.csv'))
 
         # storage
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'modelling', 'splitting')
+        self.storage = os.path.join(root, 'warehouse', 'modelling', 'splitting')
         self.__path()
 
     def __path(self):
@@ -44,6 +50,7 @@ class DataStreams:
     def __read(self, stem):
         """
 
+        :param stem: the stem of a file path, i.e., the file name excluding its extension
         :return:
         """
 
@@ -59,6 +66,7 @@ class DataStreams:
     def __split(self, blob):
         """
 
+        :param blob:
         :return:
         """
 
@@ -68,6 +76,8 @@ class DataStreams:
     def __indexing(self, index: int, blob: pd.DataFrame):
         """
 
+        :param index:
+        :param blob:
         :return:
         """
 
@@ -77,10 +87,15 @@ class DataStreams:
 
     @staticmethod
     def __structures(frames):
+        """
 
-        training = pd.concat([frame[0] for frame in frames], axis=0, ignore_index=True)
-        validating = pd.concat([frame[1] for frame in frames], axis=0, ignore_index=True)
-        testing = pd.concat([frame[2] for frame in frames], axis=0, ignore_index=True)
+        :param frames:
+        :return:
+        """
+
+        training = pd.concat([frame[0] for frame in frames], axis=0, ignore_index=False)
+        validating = pd.concat([frame[1] for frame in frames], axis=0, ignore_index=False)
+        testing = pd.concat([frame[2] for frame in frames], axis=0, ignore_index=False)
 
         return training, validating, testing
 
