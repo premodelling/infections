@@ -9,16 +9,14 @@ def main():
 
     logger.info('infections')
 
+    # the training, validating, and testing data sets
     Fraction = collections.namedtuple(typename='Fraction', field_names=['training', 'validating', 'testing'])
-
     training, validating, testing = src.modelling.DataStreams.DataStreams(
-        fraction=Fraction._make((0.75, 0.15, 0.10))).exc()
+        root=root, fraction=Fraction._make((0.75, 0.15, 0.10))).exc()
 
-    logger.info(training.shape)
-    logger.info(validating.shape)
-    logger.info(testing.shape)
-
-    logger.info(training.info())
+    logger.info('training data %s', training.shape)
+    logger.info('validating data %s', validating.shape)
+    logger.info('testing data %s', testing.shape)
 
 
 if __name__ == '__main__':
