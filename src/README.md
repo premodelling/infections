@@ -12,7 +12,7 @@
 
 <br>
 
-![](../notebooks/notes/images/outline.png)
+![](../images/flow.png)
 
 <br>
 
