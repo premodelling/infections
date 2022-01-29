@@ -10,7 +10,7 @@ class ModellingSteps:
 
         self.epochs = 100
 
-    def modelling(self, model, window, patience=13):
+    def modelling(self, model, window, patience=9):
 
         # noinspection PyUnresolvedReferences
         early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss',
@@ -21,7 +21,7 @@ class ModellingSteps:
                       optimizer=tf.optimizers.Adam(),
                       metrics=[tf.metrics.MeanAbsoluteError()])
 
-        history = model.fit(window.train, epochs=self.epochs,
+        model.fit(window.train, epochs=self.epochs,
                             validation_data=window.validate,
                             callbacks=[early_stopping])
-        return history
+        return model
