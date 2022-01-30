@@ -76,15 +76,6 @@ class WindowGenerator:
     def test(self):
         return self.make_dataset(self.testing)
 
-    @property
-    def example(self):
-
-        sample = getattr(self, '_example', None)
-        if sample is None:
-            sample = next(iter(self.train))
-
-        return sample
-
     def __repr__(self):
         return '\n'.join([
             f'Total window size: {self.total_window_size}',
