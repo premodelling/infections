@@ -4,8 +4,8 @@ import os
 import pandas as pd
 
 import src.modelling.EstimatesCNN
+import src.modelling.EstimatesGRU
 import src.modelling.EstimatesLSTM
-import src.modelling.ModellingSteps
 import src.modelling.WindowGenerator
 
 
@@ -21,32 +21,25 @@ class Estimates:
         self.n_features = n_features
         self.output_steps = output_steps
 
-        self.steps = src.modelling.ModellingSteps.ModellingSteps()
+        # storage
+        self.storage = os.path.join(os.getcwd(), 'warehouse', 'modelling', 'evaluations', 'endpoints')
+        self.__path()
 
-        self.storage = os.path.join(os.getcwd(), 'warehouse', 'modelling', 'evaluations', 'histories')
+    def __path(self):
 
-    @staticmethod
-    def __path(path: str):
-        """
+        if not os.path.exists(self.storage):
+            os.makedirs(self.storage)
 
-        :param path:
-        :return:
-        """
-
-        if not os.path.exists(path):
-            os.makedirs(path)
-
-    def __write(self, blob: pd.DataFrame, method: str, width: int):
+    def __write(self, blob: pd.DataFrame, stem: str):
         """
 
         :param blob:
-        :param method:
-        :param width:
+        :param stem:
         :return:
         """
 
         try:
-            blob.to_csv(path_or_buf=os.path.join(self.storage, method, '{:03d}.csv'.format(width)),
+            blob.to_csv(path_or_buf=os.path.join(self.storage, '{}.csv'.format(stem)),
                         index=False, header=True)
         except RuntimeError as err:
             raise Exception(err)
@@ -77,6 +70,19 @@ class Estimates:
 
         return lstm_, method
 
+    def __gru(self, width: int, window: src.modelling.WindowGenerator.WindowGenerator):
+        """
+
+        :param width:
+        :param window:
+        :return:
+        """
+
+        gru_, method = src.modelling.EstimatesGRU.EstimatesLSTM(
+            n_features=self.n_features, output_steps=self.output_steps).exc(width=width, window=window)
+
+        return gru_, method
+
     def exc(self, widths: range, arguments: collections.namedtuple(typename='Arguments',
                                                                    field_names=['input_width', 'label_width', 'shift',
                                                                                 'training_', 'validating_', 'testing_',
@@ -100,16 +106,16 @@ class Estimates:
                 label_columns=arguments.label_columns)
 
             # CNN Modelling
-            convolution_, method = self.__convolution(width=width, window=window)
-            validations.loc[validations.shape[0], :] = [method, width, self.output_steps] + convolution_.model.evaluate(
-                window.validate, verbose=0)
-            tests.loc[tests.shape[0], :] = [method, width, self.output_steps] + convolution_.model.evaluate(window.test,
-                                                                                                            verbose=0)
+            convolution_, diagnostics = self.__convolution(width=width, window=window)
+            validations.loc[validations.shape[0], :] = diagnostics.validations
+            tests.loc[tests.shape[0], :] = diagnostics.tests
+
             # LSTM Modelling
-            lstm_, method = self.__lstm(width=width, window=window)
-            validations.loc[validations.shape[0], :] = [method, width, self.output_steps] + lstm_.model.evaluate(
-                window.validate, verbose=0)
-            tests.loc[tests.shape[0], :] = [method, width, self.output_steps] + lstm_.model.evaluate(window.test,
-                                                                                                     verbose=0)
+            lstm_, diagnostics = self.__lstm(width=width, window=window)
+            validations.loc[validations.shape[0], :] = diagnostics.validations
+            tests.loc[tests.shape[0], :] = diagnostics.tests
+
+        self.__write(blob=validations, stem='validations')
+        self.__write(blob=tests, stem='tests')
 
         return validations, tests
