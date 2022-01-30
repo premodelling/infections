@@ -1,3 +1,4 @@
+import collections
 import os
 
 import pandas as pd
@@ -50,6 +51,17 @@ class EstimatesLSTM:
         except RuntimeError as err:
             raise Exception(err)
 
+    def __diagnostics(self, width: int, window: src.modelling.WindowGenerator.WindowGenerator,
+                      model_: tf.keras.Model):
+
+        Diagnostics = collections.namedtuple(typename='Diagnostics', field_names=['validations', 'tests'])
+
+        Diagnostics(validations=[self.method, width, self.output_steps] + model_.model.evaluate(window.validate,
+                                                                                                verbose=0),
+                    tests=[self.method, width, self.output_steps] + model_.model.evaluate(window.test, verbose=0))
+
+        return Diagnostics
+
     def exc(self, width: int, window: src.modelling.WindowGenerator.WindowGenerator):
         """
 
@@ -73,4 +85,4 @@ class EstimatesLSTM:
 
         self.__write(blob=lstm_history, width=width)
 
-        return lstm_, self.method
+        return lstm_, self.__diagnostics(width=width, window=window, model_=lstm_)
