@@ -21,7 +21,7 @@ class ModellingSteps:
                       optimizer=tf.optimizers.Adam(),
                       metrics=[tf.metrics.MeanAbsoluteError()])
 
-        history = model.fit(window.train, epochs=self.epochs,
+        model_ = model.fit(window.train, epochs=self.epochs,
                             validation_data=window.validate,
                             callbacks=[early_stopping])
-        return history
+        return model_
