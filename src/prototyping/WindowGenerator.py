@@ -8,6 +8,16 @@ class WindowGenerator:
     def __init__(self, input_width: int, label_width: int, shift: int,
                  training: pd.DataFrame, validating: pd.DataFrame, testing: pd.DataFrame,
                  label_columns: list = None):
+        """
+
+        :param input_width: input data history (days)
+        :param label_width: prediction steps ahead (days)
+        :param shift: window logic parameter
+        :param training: training data
+        :param validating: validating data
+        :param testing: testing data
+        :param label_columns: the dependent variable
+        """
         
         # data
         self.training = training
@@ -36,6 +46,11 @@ class WindowGenerator:
         self.label_indices = np.arange(self.total_window_size)[self.label_slice]
 
     def split_window(self, features):
+        """
+
+        :param features:
+        :return:
+        """
 
         inputs = features[:, self.input_slice, :]
         labels = features[:, self.label_slice, :]
@@ -52,6 +67,11 @@ class WindowGenerator:
         return inputs, labels
 
     def make_dataset(self, data):
+        """
+
+        :param data:
+        :return:
+        """
 
         data = np.array(data, dtype=np.float32)
 
