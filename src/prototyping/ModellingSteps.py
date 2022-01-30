@@ -11,6 +11,13 @@ class ModellingSteps:
         self.epochs = 100
 
     def modelling(self, model, window, patience=7):
+        """
+
+        :param model:
+        :param window:
+        :param patience:
+        :return:
+        """
 
         # noinspection PyUnresolvedReferences
         early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss',
