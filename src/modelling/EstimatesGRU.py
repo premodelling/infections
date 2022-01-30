@@ -57,11 +57,11 @@ class EstimatesLSTM:
 
         Diagnostics = collections.namedtuple(typename='Diagnostics', field_names=['validations', 'tests'])
 
-        Diagnostics(validations=[self.method, width, self.output_steps] + model_.model.evaluate(window.validate,
-                                                                                                verbose=0),
-                    tests=[self.method, width, self.output_steps] + model_.model.evaluate(window.test, verbose=0))
+        diagnostics = Diagnostics(
+            validations=[self.method, width, self.output_steps] + model_.model.evaluate(window.validate, verbose=0),
+            tests=[self.method, width, self.output_steps] + model_.model.evaluate(window.test, verbose=0))
 
-        return Diagnostics
+        return diagnostics
 
     def exc(self, width: int, window: src.modelling.WindowGenerator.WindowGenerator):
         """
