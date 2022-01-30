@@ -7,12 +7,18 @@ class DataSplitting:
                                                         field_names=['training', 'validating', 'testing'])):
         """
 
+        :param fraction:
         """
 
         self.__second = fraction.training
         self.__penultimate = fraction.training + fraction.validating
 
     def exc(self, data):
+        """
+
+        :param data:
+        :return:
+        """
         
         instances = data.shape[0]
 
