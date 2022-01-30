@@ -1,8 +1,7 @@
 import os
 
-import tensorflow as tf
-
 import pandas as pd
+import tensorflow as tf
 
 import src.modelling.ModellingSteps
 import src.modelling.WindowGenerator
@@ -22,10 +21,13 @@ class EstimatesLSTM:
         self.n_features = n_features
         self.output_steps = output_steps
 
+        # an instance of modelling steps
         self.steps = src.modelling.ModellingSteps.ModellingSteps()
 
+        # method
         self.method = 'LSTM'
 
+        # storage
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'modelling', 'evaluations', 'histories', self.method)
         self.__path()
 
