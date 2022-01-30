@@ -1,3 +1,4 @@
+import collections
 import os
 
 import pandas as pd
@@ -40,7 +41,6 @@ class EstimatesCNN:
         """
 
         :param blob:
-        :param method:
         :param width:
         :return:
         """
@@ -50,6 +50,17 @@ class EstimatesCNN:
                         index=False, header=True)
         except RuntimeError as err:
             raise Exception(err)
+
+    def __diagnostics(self, width: int, window: src.modelling.WindowGenerator.WindowGenerator,
+                      model_: tf.keras.Model):
+
+        Diagnostics = collections.namedtuple(typename='Diagnostics', field_names=['validations', 'tests'])
+
+        Diagnostics(validations=[self.method, width, self.output_steps] + model_.model.evaluate(window.validate,
+                                                                                                verbose=0),
+                    tests=[self.method, width, self.output_steps] + model_.model.evaluate(window.test, verbose=0))
+
+        return Diagnostics
 
     def exc(self, width: int, window: src.modelling.WindowGenerator.WindowGenerator):
         """
@@ -61,7 +72,7 @@ class EstimatesCNN:
 
         convolution = tf.keras.Sequential([
             tf.keras.layers.Lambda(lambda x: x[:, -width:, :]),
-            tf.keras.layers.Conv1D(256, activation='relu', kernel_size=(width)),
+            tf.keras.layers.Conv1D(256, activation='relu', kernel_size=width),
             tf.keras.layers.Dense(self.output_steps * self.n_features, kernel_initializer=tf.initializers.zeros()),
             tf.keras.layers.Reshape([self.output_steps, self.n_features])
         ])
@@ -75,4 +86,4 @@ class EstimatesCNN:
 
         self.__write(blob=convolution_history, width=width)
 
-        return convolution_, self.method
+        return convolution_, self.__diagnostics(width=width, window=window, model_=convolution_)
