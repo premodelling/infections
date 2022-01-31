@@ -158,7 +158,25 @@ NHS Trust is available at
 
 > [warehouse/design/raw](./warehouse/design/raw)
 
-Thus far, ...
+The algorithms in focus are
+
+* CNN: convolutional neural networks
+* LSTM: long short term memory
+* GRU: gated recurrent unit
+
+A results preview:
+
+<br>
+
+<p style="margin-left:30%; margin-right:1%;">
+<img align="middle" 
+ src="https://raw.githubusercontent.com/premodelling/trusts/develop/warehouse/modelling/evaluations/validationMAE.png" 
+ style="width: 69%" />
+</p>
+
+<br>
+
+
 
 <br>
 <br>
