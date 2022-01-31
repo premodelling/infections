@@ -55,11 +55,11 @@ The project relies on
 
 data sets, which required the structuring, transformations, and integrations outlined below.
 
-<br>
-<br>
 
-<img align="middle" src="images/schematic.png" style="width: 60%" />
-
+<br>
+<p style="margin-left:10%; margin-right:10%;">
+<img align="middle" src="images/schematic.png" style="width: 65%" />
+</p>
 <br>
 
 
