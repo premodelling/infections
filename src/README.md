@@ -12,7 +12,9 @@
 
 <br>
 
-![](../images/flow.png)
+<p style="margin-left:30%; margin-right:1%;">
+<img align="middle" src="../images/schematic.png" style="width: 69%" />
+</p>
 
 <br>
 
