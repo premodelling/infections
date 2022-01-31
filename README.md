@@ -164,7 +164,8 @@ The algorithms in focus are
 * LSTM: long short term memory
 * GRU: gated recurrent unit
 
-A results preview:
+The developed programs,  and the developer interface, are within the src/modeling directory; a generic Jupyter 
+interface will be submitted.  A results preview:
 
 <br>
 
@@ -176,8 +177,12 @@ A results preview:
 
 <br>
 
+The CNN, LSTM, and GRU architectures of the project can be minimally explored via
 
+* extended.ipynb<br>
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/notebooks/modelling/extended.ipynb)
 
+  
 <br>
 <br>
 <br>
