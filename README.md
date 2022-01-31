@@ -168,10 +168,10 @@ A results preview:
 
 <br>
 
-<p style="margin-left:30%; margin-right:1%;">
+<p style="margin-left:19%; margin-right:1%;">
 <img align="middle" 
  src="https://raw.githubusercontent.com/premodelling/trusts/develop/warehouse/modelling/evaluations/validationMAE.png" 
- style="width: 69%" />
+ style="width: 80%" />
 </p>
 
 <br>
