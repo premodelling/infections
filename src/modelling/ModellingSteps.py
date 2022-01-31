@@ -3,14 +3,21 @@ import tensorflow as tf
 
 class ModellingSteps:
 
-    def __init__(self):
+    def __init__(self, epochs: int = 100):
         """
 
         """
 
-        self.epochs = 100
+        self.epochs = epochs
 
     def modelling(self, model, window, patience=9):
+        """
+
+        :param model:
+        :param window:
+        :param patience:
+        :return:
+        """
 
         # noinspection PyUnresolvedReferences
         early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss',

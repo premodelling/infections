@@ -55,11 +55,11 @@ The project relies on
 
 data sets, which required the structuring, transformations, and integrations outlined below.
 
-<br>
-<br>
 
-<img align="middle" src="images/flow.png" style="height: 80%" />
-
+<br>
+<p style="margin-left:30%; margin-right:1%;">
+<img align="middle" src="images/schematic.png" style="width: 69%" />
+</p>
 <br>
 
 
@@ -74,8 +74,8 @@ MSOA &lrarr; LTLA geographic codes mappings: [Open Geography Portal (geoportal)]
 annual intake of patients from one or more MSOA areas to an NHS Trust: **(a)** [NHS Trust Catchments Estimation](https://app.box.com/s/qh8gzpzeo1firv1ezfxx2e6c4tgtrudl), **(b)**
 [visualisations of](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
 >
->Please refer to the methodologies section for a description of (a) the patient flow weights - &lambda;, &lambda;<sub>ag</sub>, &lambda;<sub>ags</sub> - representations of patient flows
-from a LTLA area to a NHS Trust, and (b) the estimation of NHS trust level measures via flow weights and LTLA level measures. 
+> Please refer to the methodologies section for a description of (a) the patient flow weights, and (b) the 
+> estimation of NHS trust level measures via flow weights and LTLA level measures. 
 
 
 <br>
@@ -158,7 +158,25 @@ NHS Trust is available at
 
 > [warehouse/design/raw](./warehouse/design/raw)
 
-Thus far, ...
+The algorithms in focus are
+
+* CNN: convolutional neural networks
+* LSTM: long short term memory
+* GRU: gated recurrent unit
+
+A results preview:
+
+<br>
+
+<p style="margin-left:19%; margin-right:1%;">
+<img align="middle" 
+ src="https://raw.githubusercontent.com/premodelling/trusts/develop/warehouse/modelling/evaluations/validationMAE.png" 
+ style="width: 80%" />
+</p>
+
+<br>
+
+
 
 <br>
 <br>
