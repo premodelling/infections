@@ -44,6 +44,21 @@
 <br>
 
 
+**Jupyter Interfaces**
+
+The project's data processing & modelling steps are ...
+
+* preliminary.ipynb<br>
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/preliminary.ipynb)
+
+* modelling.ipynb<br>
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/modelling.ipynb)
+
+
+<br>
+<br>
+
+
 ### A FEW NOTES ABOUT DATA
 
 The project relies on
