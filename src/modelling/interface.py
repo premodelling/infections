@@ -75,7 +75,7 @@ if __name__ == '__main__':
         typename='Arguments',
         field_names=['input_width', 'label_width', 'shift', 'training_', 'validating_', 'testing_', 'label_columns'])
 
-    widths = range(27, 40)
+    widths = range(18, 40)
     output_steps = 15
 
     main()
