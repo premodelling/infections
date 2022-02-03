@@ -46,7 +46,7 @@
 
 **Jupyter Interfaces**
 
-The project's data processing & modelling steps are ...
+The project's data processing & modelling steps are ... Google Colaboratory links for quick viewing purposes.
 
 * preliminary.ipynb<br>
   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/preliminary.ipynb)
