@@ -1,41 +1,36 @@
 
 <br>
 
-* [data](data) <br>
-  <span style="color:#D3D3D3;">The project's raw data.  Each directory consists of the raw data and links to the source, or API links.</span>
-
-* [development](development) <br>
-  <span style="color:#D3D3D3;">The Python development environment notes.</span>
-
-* [docs](docs) <br>
-  [papers](docs/papers), [book chapters](docs/texts), [project documents](docs/project)
-
-* [notebooks](notebooks) <br>
-  [exploration notebooks](./notebooks#exploration-notebooks)
-
-* [src](src) <br>
-  <span style="color:#D3D3D3;">The project's code and accompanying notes.</span>
-
-* [warehouse](warehouse) <br>
-  <span style="color:#D3D3D3;">The data structuring & integration, analysis, modelling, and evaluations outputs.</span>
+[SCC460 Group Project](#scc460-group-project)
+* [Aim](#aim)
+* [Research Question](#research-question)
+* [Objectives](#objectives)
+* [Jupyter Interfaces](#jupyter-interfaces)
+* [Data](#data)
+* [Project Steps](#project-steps)
+* [Repository Contents](#contents)
 
 <br>
 <br>
 
 ### SCC460 Group Project
 
-**Aim**
+<br>
+
+#### Aim
 > To develop a prediction model that forecasts what the expected number of patient admissions will/might be - per day, 
 > N weeks ahead, and per NHS Trust - during an infectious disease pandemic.
 
 <br>
+<br>
 
-**Research Question**
+#### Research Question
 > How many future admissions should a NHS trust expect during an infectious disease pandemic?
 
 <br>
+<br>
 
-**Objectives**
+#### Objectives
 > * Understanding, determining, the range of predictors that influence SARS-CoV-2 hospital admissions per NHS Trust
 > 
 > * Forecasting N weeks ahead
@@ -43,8 +38,22 @@
 <br>
 <br>
 
+#### Jupyter Interfaces
 
-### A FEW NOTES ABOUT DATA
+The project's data processing & modelling steps are explorable via
+
+* [preliminary.ipynb](preliminary.ipynb) <br>
+  Read Only Viewer [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/preliminary.ipynb)
+
+* [modelling.ipynb](modelling.ipynb) <br>
+  Read Only Viewer [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/modelling.ipynb)
+
+
+<br>
+<br>
+
+
+#### Data
 
 The project relies on
 
@@ -53,63 +62,9 @@ The project relies on
 * The Office for National Statistics' [Middle Super Output Area Population Estimates](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates)
 * The Open Geography Portal's middle super output area (MSOA) & lower tier local authority (LTLA) [mappings](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD))
 
-data sets, which required the structuring, transformations, and integrations outlined below.
-
-
-<br>
-<p style="margin-left:30%; margin-right:1%;">
-<img align="middle" src="images/schematic.png" style="width: 69%" />
-</p>
 <br>
 
-
-> **Figure ...**: A high level illustration of the project's processing, analysis, modelling, and evaluation steps. The acronyms/abbreviations are 
-API: application programming interface, MSOA: middle layer super output area ([a United Kingdom census geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)), 
-LTLA: lower tier local authority ([a United Kingdom admnitrative geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/administrativegeography)), 
-ONS: office for national statistics, NHS: national health service, PHE: Public Health England.  The ONS, NHS, and PHE, are United Kingdom entities.
->
-> The data sources are &rarr; England's SARS-CoV-2 infections related measures: [coronavirus.data.gov.uk API](https://coronavirus.data.gov.uk/details/developers-guide/main-api), 
-demographics data: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates), 
-MSOA &lrarr; LTLA geographic codes mappings: [Open Geography Portal (geoportal)](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD)), 
-annual intake of patients from one or more MSOA areas to an NHS Trust: **(a)** [NHS Trust Catchments Estimation](https://app.box.com/s/qh8gzpzeo1firv1ezfxx2e6c4tgtrudl), **(b)**
-[visualisations of](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
->
-> Please refer to the methodologies section for a description of (a) the patient flow weights, and (b) the 
-> estimation of NHS trust level measures via flow weights and LTLA level measures. 
-
-
-<br>
-<br>
-
-#### data.gov.uk SARS-CoV-2 Infection Measures
-
-The government's coronavirus measures have been a challenge due to their disparate units of measure.  The table below outlines this point, and it is this issue that underlies
-the need for the additional data sets, i.e., the above-listed patients, populations, and geographic data sets.
-
-<br>
-
-variable | [LTLA](./warehouse/virus/ltla/measures) | [NHS Trust](./warehouse/virus/trusts/measures) | Prospective<br>Outcome<br>Variable
- :--- | :--- | :--- | :---
-``date`` | &#10003; | &#10003; |
-``dailyCases`` <sup>1</sup> | &#10003; | |
-``newDeaths28DaysByDeathDate`` | &#10003; | |
-``dailyFirstDoseByVaccinationDate`` | &#10003; | |
-``dailySecondDoseByVaccinationDate`` | &#10003; | |
-``dailyThirdInjectionByVaccinationDate`` | &#10003; | |
-``VaccineRegisterPopulationByVaccinationDate`` <sup>2, 3</sup> | &#10003; | |
-``newVirusTestsBySpecimenDate`` | &#10003; | |
-``newPCRTestsBySpecimenDate`` | &#10003; | |
-``covidOccupiedBeds`` | | &#10003; |
-``covidOccupiedMVBeds`` | | &#10003; |
-``estimatedNewAdmissions`` | | &#10003; | &#10003;
-
-<sup>1</sup> [daily cases disaggregated by age, per LTLA, are available](./warehouse/virus/ltla/demographic/cases)<br>
-<sup>2</sup> The values of this field are probably erroneous.  
-<sup>3</sup> [age disaggregated vaccinations series, per LTLA, are available](./warehouse/virus/ltla/demographic/vaccinations)
-
-<br>
-
-#### Estimated NHS Trust Level Measures
+##### Estimated NHS Trust Level Measures
 
 The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation weights based on **(a)** the LTLA 
 measures, **(b)** and the above-listed patients, populations, and geographic data sets, and **(c)** Public Health England's 
@@ -135,53 +90,53 @@ variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | d
 patients flow data; yearly flow patterns from middle super output area (MSOA) entities to NHS Trusts.
 
 <br>
-
-It is these NHS Trust Level variables, estimated and otherwise, that underlie design matrices of the developed models.  The raw design matrix and 
-outcome variables, wherein all measures are at NHS Trust level, are available at
-
-* [warehouse/design/raw](warehouse/design/raw)
-
-Each file has the data of a single NHS Trust, hence each file's name is the trust code. The data is explorable 
-via [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the current explorable options are
-
-* Hospital Activity & Estimated Cases
-* Estimated Vaccination & Case Measures
-* Estimated Trust Level Cases by Age Group
-
-<br>
 <br>
 
-### Exploration, Modelling, Analysis
-
-The variables of the table above are the variables that underlie the project's explorations, modelling, and analysis.  The prepared data set per 
-NHS Trust is available at
-
-> [warehouse/design/raw](./warehouse/design/raw)
-
-The algorithms in focus are
-
-* CNN: convolutional neural networks
-* LSTM: long short term memory
-* GRU: gated recurrent unit
-
-The developed programs,  and the developer interface, are within the src/modeling directory; a generic Jupyter 
-interface will be submitted.  A results preview:
+#### Project Steps
 
 <br>
-
-<p style="margin-left:19%; margin-right:1%;">
-<img align="middle" 
- src="https://raw.githubusercontent.com/premodelling/trusts/develop/warehouse/modelling/evaluations/validationMAE.png" 
- style="width: 80%" />
+<p style="margin-left:30%; margin-right:1%;">
+<img align="middle" src="images/schematic.png" style="width: 69%" />
 </p>
-
 <br>
 
-The CNN, LSTM, and GRU architectures of the project can be minimally explored via
 
-* extended.ipynb<br>
-  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/notebooks/modelling/extended.ipynb)
+> **Figure 1**: A high level illustration of the project's processing, analysis, modelling, and evaluation steps. The acronyms/abbreviations are
+API: application programming interface, MSOA: middle layer super output area ([a United Kingdom census geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)),
+LTLA: lower tier local authority ([a United Kingdom admnitrative geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/administrativegeography)),
+ONS: office for national statistics, NHS: national health service, PHE: Public Health England.  The ONS, NHS, and PHE, are United Kingdom entities.
+>
+> The data sources are &rarr; England's SARS-CoV-2 infections related measures: [coronavirus.data.gov.uk API](https://coronavirus.data.gov.uk/details/developers-guide/main-api),
+demographics data: [ONS](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates),
+MSOA &lrarr; LTLA geographic codes mappings: [Open Geography Portal (geoportal)](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD)),
+annual intake of patients from one or more MSOA areas to an NHS Trust: **(a)** [NHS Trust Catchments Estimation](https://app.box.com/s/qh8gzpzeo1firv1ezfxx2e6c4tgtrudl), **(b)**
+[visualisations of](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
+>
+> Please refer to the methods section for a description of (a) the patient flow weights, and (b) the
+> estimation of NHS trust level measures via flow weights and LTLA level measures.
 
+<br>
+<br>
+
+#### Contents
+
+* [data](data) <br>
+  <span style="color:#D3D3D3;">The project's raw data.  Each directory consists of the raw data and links to the source, or API links.</span>
+
+* [development](development) <br>
+  <span style="color:#D3D3D3;">The Python development environment notes.</span>
+
+* [docs](docs) <br>
+  [papers](docs/papers), [book chapters](docs/texts), [project documents](docs/project)
+
+* [notebooks](notebooks) <br>
+  [exploration notebooks](./notebooks#exploration-notebooks)
+
+* [src](src) <br>
+  <span style="color:#D3D3D3;">The project's code and accompanying notes.</span>
+
+* [warehouse](warehouse) <br>
+  <span style="color:#D3D3D3;">The data structuring & integration, analysis, modelling, and evaluations outputs.</span>
   
 <br>
 <br>
