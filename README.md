@@ -38,6 +38,14 @@
 <br>
 <br>
 
+#### The Report
+
+The [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf) with a small correction &xrarr; the captions 
+of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling/trusts/commit/09d076836641524f005c831576dbf893dac8c0e5). 
+
+<br>
+<br>
+
 #### Jupyter Interfaces
 
 The project's data processing & modelling steps are explorable via
