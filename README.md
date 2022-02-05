@@ -5,6 +5,7 @@
 * [Aim](#aim)
 * [Research Question](#research-question)
 * [Objectives](#objectives)
+* [The Report](#the-report)  
 * [Jupyter Interfaces](#jupyter-interfaces)
 * [Data](#data)
 * [Project Steps](#project-steps)
