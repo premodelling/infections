@@ -5,7 +5,7 @@
 * [Aim](#aim)
 * [Research Question](#research-question)
 * [Objectives](#objectives)
-* [The Report](#the-report)  
+* [Official Report](#official-report)  
 * [Jupyter Interfaces](#jupyter-interfaces)
 * [Data](#data)
 * [Project Steps](#project-steps)
@@ -39,7 +39,7 @@
 <br>
 <br>
 
-#### The Report
+#### Official Report
 
 The [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf) with a small correction &xrarr; the captions 
 of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling/trusts/commit/09d076836641524f005c831576dbf893dac8c0e5). 
@@ -105,7 +105,7 @@ patients flow data; yearly flow patterns from middle super output area (MSOA) en
 
 <br>
 <p style="margin-left:30%; margin-right:1%;">
-<img align="middle" src="images/schematic.png" style="width: 69%" />
+<img align="middle" src="images/flow.png" style="width: 79%; height: 79%;" />
 </p>
 <br>
 
@@ -139,10 +139,10 @@ annual intake of patients from one or more MSOA areas to an NHS Trust: **(a)** [
   [papers](docs/papers), [book chapters](docs/texts), [project documents](docs/project)
 
 * [notebooks](notebooks) <br>
-  [exploration notebooks](./notebooks#exploration-notebooks)
+  Explorations and modelling notebooks.
 
 * [src](src) <br>
-  <span style="color:#D3D3D3;">The project's code and accompanying notes.</span>
+  <span style="color:#D3D3D3;">The project's code; including notes.</span>
 
 * [warehouse](warehouse) <br>
   <span style="color:#D3D3D3;">The data structuring & integration, analysis, modelling, and evaluations outputs.</span>
