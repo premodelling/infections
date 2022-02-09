@@ -142,7 +142,7 @@ annual intake of patients from one or more MSOA areas to an NHS Trust: **(a)** [
   Explorations and modelling notebooks.
 
 * [src](src) <br>
-  <span style="color:#D3D3D3;">The project's code and accompanying notes.</span>
+  <span style="color:#D3D3D3;">The project's code; including notes.</span>
 
 * [warehouse](warehouse) <br>
   <span style="color:#D3D3D3;">The data structuring & integration, analysis, modelling, and evaluations outputs.</span>
