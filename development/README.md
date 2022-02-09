@@ -57,7 +57,7 @@ For more about Dask, refer to https://docs.dask.org/en/latest/install.html
 
 <br>
 
-Focusing the **Windows Operating System & `cmd`**, within the prospective project directory the command
+Within the prospective project directory the command
 
 ```
 # Visit https://docs.python.org/3/library/venv.html for more details about venv
@@ -68,7 +68,7 @@ Focusing the **Windows Operating System & `cmd`**, within the prospective projec
 
 <br>
 
-will create a virtual environment.  Activate the environment via
+will create a virtual environment.  Within a **Windows Operating System** environment, activate the virtual environment via
 
 ```
 >> env\Scripts\activate.bat
