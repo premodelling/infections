@@ -105,7 +105,7 @@ patients flow data; yearly flow patterns from middle super output area (MSOA) en
 
 <br>
 <p style="margin-left:30%; margin-right:1%;">
-<img align="middle" src="images/flow.png" style="width: 69%; height: 69%;" />
+<img align="middle" src="images/flow.png" style="width: 79%; height: 79%;" />
 </p>
 <br>
 
