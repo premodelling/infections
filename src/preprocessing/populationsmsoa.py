@@ -126,4 +126,6 @@ class PopulationsMSOA:
         dask.visualize(computations, filename='populations', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
+        print('\npopulations MSOA: \n {}'.format(messages))
+
         return messages
