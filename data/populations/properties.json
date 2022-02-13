@@ -35,7 +35,7 @@
     "keys":  ["Area Codes"],
     "overflow":  "Area Names"},
 
-  {"filename": "SAPE20DT3-mid-2016-msoa-syoa-estimates-formatted.XLS",
+  {"filename": "SAPE20DT3-mid-2016-msoa-syoa-estimates-formatted.xls",
     "year": 2016,
     "sex":  ["female", "male"],
     "sheets": ["Mid-2016 Females", "Mid-2016 Males"],

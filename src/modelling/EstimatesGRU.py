@@ -7,10 +7,10 @@ import tensorflow as tf
 import src.modelling.ModellingSteps
 import src.modelling.WindowGenerator
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
-class EstimatesLSTM:
+class EstimatesGRU:
 
     def __init__(self, n_features: int, output_steps: int):
         """

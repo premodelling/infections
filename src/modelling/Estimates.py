@@ -78,7 +78,7 @@ class Estimates:
         :return:
         """
 
-        gru_, method = src.modelling.EstimatesGRU.EstimatesLSTM(
+        gru_, method = src.modelling.EstimatesGRU.EstimatesGRU(
             n_features=self.n_features, output_steps=self.output_steps).exc(width=width, window=window)
 
         return gru_, method
@@ -112,6 +112,11 @@ class Estimates:
 
             # LSTM Modelling
             lstm_, diagnostics = self.__lstm(width=width, window=window)
+            validations.loc[validations.shape[0], :] = diagnostics.validations
+            tests.loc[tests.shape[0], :] = diagnostics.tests
+
+            # GRU Modelling
+            gru, diagnostics = self.__gru(width=width, window=window)
             validations.loc[validations.shape[0], :] = diagnostics.validations
             tests.loc[tests.shape[0], :] = diagnostics.tests
 
