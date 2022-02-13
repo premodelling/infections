@@ -96,4 +96,6 @@ class PopulationsLTLA:
         dask.visualize(computations, filename='populationsLTLA', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
+        print('\nLTLA Populations: \n {}'.format(messages))
+
         return messages
