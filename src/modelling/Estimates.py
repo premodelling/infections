@@ -78,7 +78,7 @@ class Estimates:
         :return:
         """
 
-        gru_, method = src.modelling.EstimatesGRU.EstimatesLSTM(
+        gru_, method = src.modelling.EstimatesGRU.EstimatesGRU(
             n_features=self.n_features, output_steps=self.output_steps).exc(width=width, window=window)
 
         return gru_, method
