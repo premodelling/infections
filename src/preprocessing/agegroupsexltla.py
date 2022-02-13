@@ -93,4 +93,6 @@ class AgeGroupSexLTLA:
         dask.visualize(computations, filename='ageGroupsLTLA', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
+        print('\nLTLA Populations Disaggregated by Sex & Age Group: \n {}'.format(messages))
+
         return messages
