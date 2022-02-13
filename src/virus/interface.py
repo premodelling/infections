@@ -7,6 +7,7 @@ import collections
 import logging
 import os
 import sys
+import time
 
 
 def main():
@@ -15,15 +16,18 @@ def main():
     measures = src.virus.measures.Measures(fields=fields_ltla, path=os.path.join('ltla', 'measures')) \
         .exc(area_codes=codes_ltla, area_type='ltla')
     logger.info(measures)
+    time.sleep(60)
 
     # trust Level measures
     measures = src.virus.measures.Measures(fields=fields_trusts, path=os.path.join('trusts', 'measures')) \
         .exc(area_codes=codes_trusts, area_type='nhsTrust')
     logger.info(measures)
+    time.sleep(60)
 
     # lower tier local authority level measures: Cases disaggregated by Age Group
     measures = src.virus.agegroupcases.AgeGroupCases().exc(area_codes=codes_ltla, area_type='ltla')
     logger.info(measures)
+    time.sleep(60)
 
     # lower tier local authority level measures: Vaccinations disaggregated by Age Group
     # a few areas do not have any data, albeit their request response status is 200
