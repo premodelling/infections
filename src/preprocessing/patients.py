@@ -72,6 +72,12 @@ class Patients:
 
     @dask.delayed
     def __ltla(self, frame: pd.DataFrame):
+        """
+        Adds an LTLA Code field to 'frame'
+
+        :param frame:
+        :return:
+        """
 
         return frame.copy().merge(self.districts, how='left', on='msoa')
         
@@ -107,5 +113,7 @@ class Patients:
 
         dask.visualize(computations, filename='patients', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
+
+        print('\npatients: \n {}'.format(messages))
 
         return messages
