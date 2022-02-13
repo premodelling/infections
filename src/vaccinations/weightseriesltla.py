@@ -77,9 +77,6 @@ class WeightSeriesLTLA:
         computations = []
         for source_name in source_names:
 
-            # source name
-            self.logger.info(source_name)
-
             # search for and read all the trust's files at once
             frame = dask.dataframe.read_csv(urlpath=os.path.join(self.source_path, '*', '{}.csv'.format(source_name)))
 
