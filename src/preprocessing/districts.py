@@ -98,4 +98,6 @@ class Districts:
         dask.visualize(computations, filename='districts', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
+        print('\ndistricts: \n {}'.format(messages))
+
         return messages
