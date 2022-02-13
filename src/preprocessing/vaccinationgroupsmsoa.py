@@ -124,4 +124,6 @@ class VaccinationGroupsMSOA:
         dask.visualize(computations, filename='vaccinationGroupsMSOA', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
+        print('\nSpecial MSOA populations age group & sex brackets for vaccination data: \n {}'.format(messages))
+
         return messages
