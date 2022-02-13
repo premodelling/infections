@@ -45,7 +45,7 @@ class AgeGroupVaccinations:
         return url
 
     @dask.delayed
-    def __read(self, url):
+    def __read(self, url) -> pd.DataFrame:
         """
 
         :param url:
@@ -58,7 +58,7 @@ class AgeGroupVaccinations:
                 frame = pd.read_csv(filepath_or_buffer=url)
             else:
                 frame = pd.DataFrame()
-        except RuntimeError as err:
+        except RuntimeError:
             frame = pd.DataFrame()
 
         return frame
@@ -115,9 +115,9 @@ class AgeGroupVaccinations:
         computations = []
         for parameters in parameters_:
             url = self.__url(parameters=parameters)
-            frame = self.__read(url=url)
-            frame = self.__structure(frame=frame)
-            message = self.__write(frame=frame, parameters=parameters)
+            readings = self.__read(url=url)
+            skeleton = self.__structure(frame=readings)
+            message = self.__write(frame=skeleton, parameters=parameters)
             computations.append(message)
 
         dask.visualize(computations, filename='vaccinations', format='pdf')
