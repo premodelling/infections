@@ -93,6 +93,6 @@ class VaccinationGroupsLTLA:
         dask.visualize(computations, filename='vaccinationGroupsLTLA', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
+        print('\nSpecial LTLA age group & sex brackets for vaccination data: \n {}'.format(messages))
+
         return messages
-
-

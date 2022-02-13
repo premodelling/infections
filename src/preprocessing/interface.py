@@ -1,62 +1,128 @@
 import logging
-import os
-import sys
+import time
+
+import src.preprocessing.patients
+import src.preprocessing.districts
+import src.preprocessing.populationsmsoa
+import src.preprocessing.agegroupsexmsoa
+import src.preprocessing.exceptions
+import src.preprocessing.populationsltla
+import src.preprocessing.agegroupsexltla
+
+import src.preprocessing.vaccinationgroupsmsoa
+import src.preprocessing.vaccinationgroupsltla
 
 
-def main():
+class Interface:
 
-    logger.info('preprocessing ...')
+    def __init__(self):
 
-    districts = src.preprocessing.districts.Districts().exc()
-    logger.info(districts)
+        # logging
+        logging.basicConfig(level=logging.INFO,
+                            format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
+                            datefmt='%Y-%m-%d %H-%M-%S')
+        self.logger = logging.getLogger(__name__)
+        self.logger.info('preprocessing ...')
 
-    patients = src.preprocessing.patients.Patients().exc()
-    logger.info(patients)
+        # processing times object
+        self.times = dict(programs=[])
 
-    populations_msoa = src.preprocessing.populationsmsoa.PopulationsMSOA().exc()
-    logger.info(populations_msoa)
+    @staticmethod
+    def __districts() -> dict:
 
-    age_group_sex_msoa = src.preprocessing.agegroupsexmsoa.AgeGroupSexMSOA().exc()
-    logger.info(age_group_sex_msoa)
+        starting = time.time()
+        src.preprocessing.districts.Districts().exc()
+        ending = time.time()
 
-    exceptions = src.preprocessing.exceptions.Exceptions().exc()
-    logger.info(exceptions)
+        return {'desc': 'districts', 'program': 'preprocessing.districts', 'seconds': ending - starting}
 
-    populations_ltla = src.preprocessing.populationsltla.PopulationsLTLA().exc()
-    logger.info(populations_ltla)
+    @staticmethod
+    def __patients() -> dict:
 
-    age_group_sex_ltla = src.preprocessing.agegroupsexltla.AgeGroupSexLTLA().exc()
-    logger.info(age_group_sex_ltla)
+        starting = time.time()
+        src.preprocessing.patients.Patients().exc()
+        ending = time.time()
 
-    vaccinations_msoa = src.preprocessing.vaccinationgroupsmsoa.VaccinationGroupsMSOA().exc()
-    logger.info(vaccinations_msoa)
+        return {'desc': 'patients', 'program': 'preprocessing.patients', 'seconds': ending - starting}
 
-    vaccinations_ltla = src.preprocessing.vaccinationgroupsltla.VaccinationGroupsLTLA().exc()
-    logger.info(vaccinations_ltla)
+    @staticmethod
+    def __msoa() -> list:
 
+        starting = time.time()
+        src.preprocessing.populationsmsoa.PopulationsMSOA().exc()
+        ending = time.time()
 
-if __name__ == '__main__':
-    # paths
-    root = os.getcwd()
-    sys.path.append(root)
-    sys.path.append(os.path.join(root, 'src'))
+        initial = [{'desc': 'MSOA populations',
+                    'program': 'preprocessing.populationsmsoa', 'seconds': ending - starting}]
 
-    # logging
-    logging.basicConfig(level=logging.INFO,
-                        format='\n\n%(message)s\n%(asctime)s.%(msecs)03d',
-                        datefmt='%Y-%m-%d %H-%M-%S')
-    logger = logging.getLogger(__name__)
+        starting = time.time()
+        src.preprocessing.agegroupsexmsoa.AgeGroupSexMSOA().exc()
+        ending = time.time()
 
-    # libraries
-    import src.preprocessing.patients
-    import src.preprocessing.districts
-    import src.preprocessing.populationsmsoa
-    import src.preprocessing.agegroupsexmsoa
-    import src.preprocessing.exceptions
-    import src.preprocessing.populationsltla
-    import src.preprocessing.agegroupsexltla
+        initial.append({'desc': 'MSOA populations: age group & sex brackets',
+                        'program': 'preprocessing.agegroupsexmsoa', 'seconds': ending - starting})
 
-    import src.preprocessing.vaccinationgroupsmsoa
-    import src.preprocessing.vaccinationgroupsltla
+        return initial
 
-    main()
+    @staticmethod
+    def __ltla() -> list:
+
+        starting = time.time()
+        src.preprocessing.populationsltla.PopulationsLTLA().exc()
+        ending = time.time()
+
+        initial = [{'desc': 'LTLA populations',
+                    'program': 'preprocessing.populationsltla', 'seconds': ending - starting}]
+
+        starting = time.time()
+        src.preprocessing.agegroupsexltla.AgeGroupSexLTLA().exc()
+        ending = time.time()
+
+        initial.append({'desc': 'LTLA populations: age group & sex brackets',
+                        'program': 'preprocessing.agegroupsexltla', 'seconds': ending - starting})
+
+        return initial
+
+    @staticmethod
+    def __exceptions() -> dict:
+
+        starting = time.time()
+        src.preprocessing.exceptions.Exceptions().exc()
+        ending = time.time()
+
+        return {'desc': '2011 demographic data', 'program': 'preprocessing.exceptions', 'seconds': ending - starting}
+
+    @staticmethod
+    def __vaccination_brackets() -> list:
+
+        starting = time.time()
+        src.preprocessing.vaccinationgroupsmsoa.VaccinationGroupsMSOA().exc()
+        ending = time.time()
+
+        initial = [{'desc': 'special MSOA demographics for vac',
+                    'program': 'preprocessing.vaccinationgroupsmsoa', 'seconds': ending - starting}]
+
+        starting = time.time()
+        src.preprocessing.vaccinationgroupsltla.VaccinationGroupsLTLA().exc()
+        ending = time.time()
+
+        initial.append({'desc': 'special LTLA demographics for vac',
+                        'program': 'preprocessing.vaccinationgroupsltla', 'seconds': ending - starting})
+
+        return initial
+
+    def exc(self):
+
+        times = self.times
+
+        times['programs'].append(self.__districts())
+        times['programs'].append(self.__patients())
+
+        [times['programs'].append(process) for process in self.__msoa()]
+        [times['programs'].append(process) for process in self.__ltla()]
+
+        times['programs'].append(self.__exceptions())
+
+        [times['programs'].append(process) for process in self.__vaccination_brackets()]
+
+        return times

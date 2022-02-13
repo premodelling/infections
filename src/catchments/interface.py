@@ -20,10 +20,11 @@ def main():
         aggregates_ltla = src.catchments.aggregatesltla.AggregatesLTLA(patients=patients, populations=populations) \
             .exc()
         ltla = src.catchments.ltla.LTLA(reference=aggregates_ltla, year=year).exc()
-        logger.info(ltla)
+        logger.info('%d: weights calculated for approx. %d trusts', year, len(ltla))
 
     messages = src.catchments.weightseriesltla.WeightSeriesLTLA().exc()
-    logger.info(messages)
+    logger.info('For approx. %d trusts, a file has been created per trust - '
+                'it contains the weights data of a trust, for all years.', len(messages))
 
 
 if __name__ == '__main__':

@@ -111,4 +111,6 @@ class AgeGroupSexMSOA:
         dask.visualize(computations, filename='ageGroups', format='pdf')
         messages = dask.compute(computations, scheduler='processes')[0]
 
+        print('\nMSOA Populations Disaggregated by Sex & Age Group: \n {}'.format(messages))
+
         return messages

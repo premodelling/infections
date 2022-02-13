@@ -107,4 +107,6 @@ class Exceptions:
         merged = self.__merge(population=population)
         message = self.__write(frame=merged, year=self.detail.year)
 
+        print('\nAn oddity, the 2011 demographic data: \n {}'.format(message))
+
         return message
