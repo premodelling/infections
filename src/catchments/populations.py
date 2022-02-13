@@ -12,7 +12,8 @@ class Populations:
 
         self.source_path = source_path
 
-    def __aggregates(self, frame: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def __aggregates(frame: pd.DataFrame) -> pd.DataFrame:
         """
         Calculates the population of each MSOA, and each LTLA.  Each LTLA consist of
         one or more MSOA geographic entities; a MSOA is a member of a single LTLA only.
