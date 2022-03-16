@@ -116,9 +116,9 @@ class Estimates:
             tests.loc[tests.shape[0], :] = diagnostics.tests
 
             # GRU Modelling
-            gru, diagnostics = self.__gru(width=width, window=window)
-            validations.loc[validations.shape[0], :] = diagnostics.validations
-            tests.loc[tests.shape[0], :] = diagnostics.tests
+            # gru, diagnostics = self.__gru(width=width, window=window)
+            # validations.loc[validations.shape[0], :] = diagnostics.validations
+            # tests.loc[tests.shape[0], :] = diagnostics.tests
 
         self.__write(blob=validations, stem='validations')
         self.__write(blob=tests, stem='tests')
