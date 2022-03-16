@@ -7,7 +7,7 @@ import tensorflow as tf
 import src.modelling.ModellingSteps
 import src.modelling.WindowGenerator
 
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
 class EstimatesCNN:
