@@ -7,6 +7,7 @@ import src.modelling.EstimatesCNN
 import src.modelling.EstimatesGRU
 import src.modelling.EstimatesLSTM
 import src.modelling.WindowGenerator
+import src.utilities.directories
 
 
 class Estimates:
@@ -21,14 +22,13 @@ class Estimates:
         self.n_features = n_features
         self.output_steps = output_steps
 
+        # prepare directories
+        src.utilities.directories.Directories().exc(
+            text=os.path.join(os.getcwd(), 'warehouse', 'modelling', 'evaluations'))
+
         # storage
         self.storage = os.path.join(os.getcwd(), 'warehouse', 'modelling', 'evaluations', 'endpoints')
-        self.__path()
-
-    def __path(self):
-
-        if not os.path.exists(self.storage):
-            os.makedirs(self.storage)
+        src.utilities.directories.Directories().create(self.storage)
 
     def __write(self, blob: pd.DataFrame, stem: str):
         """
@@ -116,9 +116,9 @@ class Estimates:
             tests.loc[tests.shape[0], :] = diagnostics.tests
 
             # GRU Modelling
-            gru, diagnostics = self.__gru(width=width, window=window)
-            validations.loc[validations.shape[0], :] = diagnostics.validations
-            tests.loc[tests.shape[0], :] = diagnostics.tests
+            # gru, diagnostics = self.__gru(width=width, window=window)
+            # validations.loc[validations.shape[0], :] = diagnostics.validations
+            # tests.loc[tests.shape[0], :] = diagnostics.tests
 
         self.__write(blob=validations, stem='validations')
         self.__write(blob=tests, stem='tests')

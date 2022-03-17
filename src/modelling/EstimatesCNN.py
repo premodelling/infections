@@ -6,8 +6,9 @@ import tensorflow as tf
 
 import src.modelling.ModellingSteps
 import src.modelling.WindowGenerator
+import src.utilities.directories
 
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
 class EstimatesCNN:
@@ -34,8 +35,7 @@ class EstimatesCNN:
 
     def __path(self):
 
-        if not os.path.exists(self.storage):
-            os.makedirs(self.storage)
+        src.utilities.directories.Directories().create(text=self.storage)
 
     def __write(self, blob: pd.DataFrame, width: int):
         """
