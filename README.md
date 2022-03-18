@@ -5,17 +5,44 @@
 * [Aim](#aim)
 * [Research Question](#research-question)
 * [Objectives](#objectives)
-* [Official Report](#official-report)  
-* [Jupyter Interfaces](#jupyter-interfaces)
-* [Data](#data)
-* [Project Steps](#project-steps)
-* [Repository Contents](#contents)
+* [The Programs](#the-programs)
+* [Project Steps](#project-steps) 
+* [Data](#the-data)
+
 
 <br>
 <br>
 
 ### SCC460 Group Project
 
+This is the *group project* code repository of a Lancaster University Medical School *Health Data Science* 
+team.  The project's host is Lancashire Teaching Hospitals NHS Foundation Trust, and hence the project's
+aim and objectives - further below - are in line with their requirements.  
+
+Additionally, an important aim of the Trust, which led to an implicit project objective, is to **develop 
+best practices w.r.t. data science solutions development within a collaborative Cloud Environment**.  It 
+is an aim focused on the continuous development & delivery of data science based/driven insights and 
+solutions; by a variety of experts & data professionals, for a variety of health teams.  Its key 
+underlying features include &rarr; automated, reproducible, repeatable, and trackable
+
+* Ingestion of multi-formatted data from a variety of trackable data sources, each with a data schema.
+* Data cleaning, <a href='' title='Does the NHS Trust code exist?'>validation</a>, and 
+  <a href='Is each NHS Trust code formatted as a three etter code?' title='verification'>verification</a>
+* Data structuring and integration.
+* Modelling & evaluation.
+* Syntheses of results.
+* Interactive graphs and/or interactive reports.
+
+Supported by version control technology, and informed 
+by [DataOps](https://medium.com/data-ops/what-is-dataops-ten-most-common-questions-ffc09c09c921) practices.  To 
+this end, our programs & programming do reflect many aspects of DataOps and software engineering best 
+practices; due to time constraints some steps have been skipped.
+
+You may read the [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf); it has 
+a small post-submission correction &xrarr; the captions
+of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling/trusts/commit/09d076836641524f005c831576dbf893dac8c0e5).
+
+<br>
 <br>
 
 #### Aim
@@ -39,69 +66,38 @@
 <br>
 <br>
 
-#### Official Report
+#### The Programs
 
-The [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf) with a small correction &xrarr; the captions 
-of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling/trusts/commit/09d076836641524f005c831576dbf893dac8c0e5). 
-
-<br>
-<br>
-
-#### Jupyter Interfaces
-
-The project's data processing & modelling steps are explorable via
-
-* [preliminary.ipynb](preliminary.ipynb) <br>
-  Read Only Viewer [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/preliminary.ipynb)
-
-* [modelling.ipynb](modelling.ipynb) <br>
-  Read Only Viewer [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/modelling.ipynb)
-
-
-<br>
-<br>
-
-
-#### Data
-
-The project relies on
-
-* [coronavirus.data.gov.uk](https://coronavirus.data.gov.uk)
-* Public Health England's [NHS Acute Hospital Trust Catchment Populations & Patient Flows](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
-* The Office for National Statistics' [Middle Super Output Area Population Estimates](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates)
-* The Open Geography Portal's middle super output area (MSOA) & lower tier local authority (LTLA) [mappings](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD))
+The project's programs are Python programs, and they rely on the packages 
+listed in [requirements.txt](./requirements.txt) / [dependency graph](https://github.com/premodelling/infections/network/dependencies).  Refer 
+to the [development notes](./development) for more about the Python code & development environment.  Additionally, the overarching repository 
+structure is
 
 <br>
 
-##### Estimated NHS Trust Level Measures
-
-The table below outlines a set of Estimated NHS Trust Level data.  The project estimated transformation weights based on **(a)** the LTLA 
-measures, **(b)** and the above-listed patients, populations, and geographic data sets, and **(c)** Public Health England's 
-[NHS Trust Catchment estimation](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9) approach.
-
-<br>
-
-variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | description<br>(per day)
- :--- | :--- | :--- | :---
-``date`` |  |  |
-``covidOccupiedBeds`` | | &#10003; | The \# of beds occupied by coronavirus disease<br> patients.
-``covidOccupiedMVBeds`` | | &#10003; | The \# of mechanical ventilation beds occupied by <br> coronavirus disease patients
-``estimatedNewAdmissions`` | | &#10003; | The day's/date's estimated new admissions, estimated<br>by an NHS England entity.
-``EDC0-4``, ``EDC5-9``, ``EDC10-14``, ...<br> ``EDC80-84``, ``EDC85-89``, ``EDC90+``  | &#10003; | | The estimated \# of daily cases (EDC) by age group.
-``dailyCases`` | &#10003; | | The \# of estimated daily cases.
-``newDeaths28DaysByDeathDate`` | &#10003; | | The \# of estimated daily deaths, whereby each death<br>occurred *within 28 days of a first positive*<br>*laboratory-confirmed test*. <sup>2</sup>
-``dailyFirstDoseByVaccinationDate`` | &#10003; | | The daily estimated \# of first vaccinations<br> by vaccination date.
-``dailySecondDoseByVaccinationDate`` | &#10003; | | The daily estimated \# of second vaccinations<br> by vaccination date.
-``dailyThirdInjectionByVaccinationDate`` | &#10003; | | The daily estimated \# of third vaccinations<br> by vaccination date.
-``EDV12-15``, ``EDV16-17``, ``EDV18-24``,<br> ``EDV25-29``, ``EDV30-34``, ``EDV35-39``, ...,<br> ``EDV80-84``, ``EDV85-89``, ``EDV90+``  | &#10003; | | The estimated \# of daily vaccinations (EDV)<br>by age group; second vaccinations.
-
-<sup>1</sup> Project estimates based on the government's lower tier local authority (LTLA) level COVID-19 measures, and Public Health England
-patients flow data; yearly flow patterns from middle super output area (MSOA) entities to NHS Trusts.
+directory | contents
+:--- | :---
+[data](data) | The project's raw data.  Each directory <br>consists of the raw data and links to the source, or API links.
+[src](src) | The project's code; including notes.
+[warehouse](warehouse) | The data structuring & integration, analysis,<br> modelling, and evaluations **outputs**.
+[docs](docs) | [papers](docs/papers), [book chapters](docs/texts), [project documents](docs/project)
+[notebooks](notebooks) | Explorations and modelling notebooks.
 
 <br>
 <br>
 
 #### Project Steps
+
+*Figure 1* outlines the project's steps.  A number of Python programs underlie these steps.  The programs can be run 
+via two, interface styled, Jupyter Lab notebooks that are responsible for different groups of steps &rarr;
+
+* [preliminary.ipynb](preliminary.ipynb): focused on the structuring, integrating, and features engineering steps of the project <br>
+  Read Only Viewer [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/preliminary.ipynb)
+
+* [modelling.ipynb](modelling.ipynb): focused on the modelling & evaluation steps of the project <br>
+  Read Only Viewer [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/premodelling/infections/blob/develop/modelling.ipynb)
+
+Each notebook has brief introductory notes.
 
 <br>
 <p style="margin-left:30%; margin-right:1%;">
@@ -121,32 +117,78 @@ MSOA &lrarr; LTLA geographic codes mappings: [Open Geography Portal (geoportal)]
 annual intake of patients from one or more MSOA areas to an NHS Trust: **(a)** [NHS Trust Catchments Estimation](https://app.box.com/s/qh8gzpzeo1firv1ezfxx2e6c4tgtrudl), **(b)**
 [visualisations of](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
 >
-> Please refer to the methods section for a description of (a) the patient flow weights, and (b) the
+> Please refer to the [project report](https://github.com/premodelling/trusts/raw/master/trusts.pdf) for a description of (a) the patient flow weights, and (b) the
 > estimation of NHS trust level measures via flow weights and LTLA level measures.
 
 <br>
 <br>
 
-#### Contents
 
-* [data](data) <br>
-  <span style="color:#D3D3D3;">The project's raw data.  Each directory consists of the raw data and links to the source, or API links.</span>
+#### The Data
 
-* [development](development) <br>
-  <span style="color:#D3D3D3;">The Python development environment notes.</span>
+The project relies on
 
-* [docs](docs) <br>
-  [papers](docs/papers), [book chapters](docs/texts), [project documents](docs/project)
+* [coronavirus.data.gov.uk](https://coronavirus.data.gov.uk)
+* Public Health England's [NHS Acute Hospital Trust Catchment Populations & Patient Flows](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9)
+* The Office for National Statistics' [Middle Super Output Area (MSOA) Population Estimates](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates)
+* The Open Geography Portal's middle super output area (MSOA) & lower tier local authority (LTLA) [mappings](https://geoportal.statistics.gov.uk/search?collection=Dataset&sort=name&tags=all(LUP_MSOA_WD_LAD))
 
-* [notebooks](notebooks) <br>
-  Explorations and modelling notebooks.
+<br>
 
-* [src](src) <br>
-  <span style="color:#D3D3D3;">The project's code; including notes.</span>
+A key challenge of the project was the varying granularity of the [coronavirus.data.gov.uk](https://coronavirus.data.gov.uk) data. In brief, the project required 
+SAR-CoV-2 / coronavirus 19 disease measures of NHS Trust Level granularity; for NHS Trust Level forecasting.  However, many measures are not available at 
+this granularity, the richest set of measures exist at the lower tier local authority (LTLA) level.   Additionally, the measures are not available at 
+a granularity from whence we can directly aggregate to NHS Trust Level.  To address this problem the project estimated **LTLA &rarr; NHS Trust Level** 
+transformation weights 
 
-* [warehouse](warehouse) <br>
-  <span style="color:#D3D3D3;">The data structuring & integration, analysis, modelling, and evaluations outputs.</span>
-  
+* Via the patients, populations, and geographic data sets of *Figure 1*; especially the [MSOA &rarr; NHS Trust patient flow history data](https://app.box.com/s/qh8gzpzeo1firv1ezfxx2e6c4tgtrudl)
+* Influenced by Public Health England's [NHS Catchment estimation approach](https://app.powerbi.com/view?r=eyJrIjoiODZmNGQ0YzItZDAwZi00MzFiLWE4NzAtMzVmNTUwMThmMTVlIiwidCI6ImVlNGUxNDk5LTRhMzUtNGIyZS1hZDQ3LTVmM2NmOWRlODY2NiIsImMiOjh9).
+
+The MSOA &rarr; NHS Trust patient flow history data is critical because each MSOA geographic area is a member of a 
+single LTLA geographic area.  Hence, an indirect variable for estimating  **LTLA &rarr; NHS Trust Level**
+transformation weights.  
+
+<br>
+
+The table below lists the project's Estimated NHS Trust Level variables; each based on estimated 
+transformation weights.  The data files of the variables, per NHS Trust, are available at
+
+* [warehouse/design/raw](./warehouse/design/raw)
+
+Each file's name is the NHS Trust code.  The data is explorable 
+via [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the
+explorable options are
+
+* Hospital Activity & Estimated Cases
+* Estimated Vaccination & Case Measures
+* Estimated Trust Level Cases by Age Group
+
+<br>
+
+Finally, the **date range of the data** depends on the settings the ``def dates()`` function in [config.py](./config.py). Note, 
+the end date is 5 days behind the current date because the measures updates are asynchronous.
+
+<br>
+<br>
+<br>
+
+variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | description<br>(per day)
+ :--- | :--- | :--- | :---
+``date`` |  |  |
+``covidOccupiedBeds`` | | &#10003; | The \# of beds occupied by coronavirus disease<br> patients.
+``covidOccupiedMVBeds`` | | &#10003; | The \# of mechanical ventilation beds occupied by <br> coronavirus disease patients
+``estimatedNewAdmissions`` | | &#10003; | The day's/date's estimated new admissions, estimated<br>by an NHS England entity.
+``EDC0-4``, ``EDC5-9``, ``EDC10-14``, ...<br> ``EDC80-84``, ``EDC85-89``, ``EDC90+``  | &#10003; | | The estimated \# of daily cases (EDC) by age group.
+``dailyCases`` | &#10003; | | The \# of estimated daily cases.
+``newDeaths28DaysByDeathDate`` | &#10003; | | The \# of estimated daily deaths, whereby each death<br>occurred *within 28 days of a first positive*<br>*laboratory-confirmed test*. <sup>2</sup>
+``dailyFirstDoseByVaccinationDate`` | &#10003; | | The daily estimated \# of first vaccinations<br> by vaccination date.
+``dailySecondDoseByVaccinationDate`` | &#10003; | | The daily estimated \# of second vaccinations<br> by vaccination date.
+``dailyThirdInjectionByVaccinationDate`` | &#10003; | | The daily estimated \# of third vaccinations<br> by vaccination date.
+``EDV12-15``, ``EDV16-17``, ``EDV18-24``,<br> ``EDV25-29``, ``EDV30-34``, ``EDV35-39``, ...,<br> ``EDV80-84``, ``EDV85-89``, ``EDV90+``  | &#10003; | | The estimated \# of daily vaccinations (EDV)<br>by age group; second vaccinations.
+
+<sup>1</sup> The project estimates are transformations from lower tier local authority (LTLA) level measures, based on 
+estimated **LTLA &rarr; NHS Trust Level** transformation weights.
+
 <br>
 <br>
 <br>
