@@ -168,6 +168,7 @@ the end date is 5 days behind the current date because the measures updates are 
 
 <br>
 <br>
+<br>
 
 variable | Estimated<br>NHS Trust<br>Level <sup>1</sup> | NHS Trust<br>Level | description<br>(per day)
  :--- | :--- | :--- | :---
