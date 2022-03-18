@@ -70,7 +70,8 @@ of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling
 
 The project's programs are Python programs, and they rely on the packages 
 listed in [requirements.txt](./requirements.txt) / [dependency graph](https://github.com/premodelling/infections/network/dependencies).  Refer 
-to the [development notes](./development) for more about the Python code & development environment.  Additionally:
+to the [development notes](./development) for more about the Python code & development environment.  Additionally, the overarching repository 
+structure is
 
 
 directory | contents
