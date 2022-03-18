@@ -17,7 +17,7 @@
 
 This is the *group project* code repository of a Lancaster University Medical School *Health Data Science* 
 team.  The project's host is Lancashire Teaching Hospitals NHS Foundation Trust, and hence the project's
-aim and objectives - below - are in line with their requirements.  
+aim and objectives - further below - are in line with their requirements.  
 
 Additionally, an important aim of the Trust, which led to an implicit project objective, is to **develop 
 best practices w.r.t. data science solutions development within a collaborative Cloud Environment**.  It 
@@ -35,8 +35,8 @@ underlying features include &rarr; automated, reproducible, repeatable, and trac
 
 Supported by version control technology, and informed 
 by [DataOps](https://medium.com/data-ops/what-is-dataops-ten-most-common-questions-ffc09c09c921) practices.  To 
-this end, our programs & programming consider DataOps and software engineering best practices; albeit time 
-constraints mean some steps have been skipped.
+this end, our programs & programming do reflect many aspects of DataOps and software engineering best 
+practices; due to time constraints some steps have been skipped.
 
 You may read the [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf); it has 
 a small post-submission correction &xrarr; the captions
