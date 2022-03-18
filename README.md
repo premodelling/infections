@@ -164,7 +164,7 @@ explorable options are
 * Estimated Vaccination & Case Measures
 * Estimated Trust Level Cases by Age Group
 
-Finally, the date range of the data depends on the settings the ``def dates()`` function in [config.py](./config.py). Note, 
+Finally, the **date range of the data** depends on the settings the ``def dates()`` function in [config.py](./config.py). Note, 
 the end date is 5 days behind the current date because the measures updates are asynchronous.
 
 <br>
