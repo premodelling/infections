@@ -73,6 +73,7 @@ listed in [requirements.txt](./requirements.txt) / [dependency graph](https://gi
 to the [development notes](./development) for more about the Python code & development environment.  Additionally, the overarching repository 
 structure is
 
+<br>
 
 directory | contents
 :--- | :---
