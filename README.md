@@ -146,6 +146,8 @@ The MSOA &rarr; NHS Trust patient flow history data is critical because each MSO
 single LTLA geographic area.  Hence, an indirect variable for estimating  **LTLA &rarr; NHS Trust Level**
 transformation weights.  
 
+<br>
+
 The table below lists the project's Estimated NHS Trust Level variables; each based on estimated 
 transformation weights.  The data files of the variables, per NHS Trust, are available at
 
@@ -158,6 +160,8 @@ explorable options are
 * Hospital Activity & Estimated Cases
 * Estimated Vaccination & Case Measures
 * Estimated Trust Level Cases by Age Group
+
+<br>
 
 Finally, the **date range of the data** depends on the settings the ``def dates()`` function in [config.py](./config.py). Note, 
 the end date is 5 days behind the current date because the measures updates are asynchronous.
