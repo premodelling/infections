@@ -5,10 +5,9 @@
 * [Aim](#aim)
 * [Research Question](#research-question)
 * [Objectives](#objectives)
-* [Code](#code-development)
-* [Project Steps](#project-steps)  
-* [Official Report](#official-report)  
-* [Data](#data)
+* [The Programs](#the-programs)
+* [Project Steps](#project-steps) 
+* [Data](#the-data)
 
 
 <br>
@@ -36,9 +35,14 @@ underlying features include &rarr; automated, reproducible, repeatable, and trac
 
 Supported by version control technology, and informed 
 by [DataOps](https://medium.com/data-ops/what-is-dataops-ten-most-common-questions-ffc09c09c921) practices.  To 
-this end, our programs & programming are informed by DataOps and software engineering best practices; albeit time 
+this end, our programs & programming consider DataOps and software engineering best practices; albeit time 
 constraints mean some steps have been skipped.
 
+You may read the [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf); it has 
+a small post-submission correction &xrarr; the captions
+of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling/trusts/commit/09d076836641524f005c831576dbf893dac8c0e5).
+
+<br>
 <br>
 
 #### Aim
@@ -66,7 +70,7 @@ constraints mean some steps have been skipped.
 
 The project's programs are Python programs, and they rely on the packages 
 listed in [requirements.txt](./requirements.txt) / [dependency graph](https://github.com/premodelling/infections/network/dependencies).  Refer 
-to the [development notes](./development/) for more about the Python code & development environment.  Additionally:
+to the [development notes](./development) for more about the Python code & development environment.  Additionally:
 
 
 directory | contents
@@ -113,15 +117,6 @@ annual intake of patients from one or more MSOA areas to an NHS Trust: **(a)** [
 >
 > Please refer to the [project report](https://github.com/premodelling/trusts/raw/master/trusts.pdf) for a description of (a) the patient flow weights, and (b) the
 > estimation of NHS trust level measures via flow weights and LTLA level measures.
-
-<br>
-<br>
-
-
-#### Official Report
-
-The [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf) with a small correction &xrarr; the captions 
-of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling/trusts/commit/09d076836641524f005c831576dbf893dac8c0e5). 
 
 <br>
 <br>
