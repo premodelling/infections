@@ -38,7 +38,7 @@ by [DataOps](https://medium.com/data-ops/what-is-dataops-ten-most-common-questio
 this end, our programs & programming do reflect many aspects of DataOps and software engineering best 
 practices; due to time constraints some steps have been skipped.
 
-You may read the [report submitted for grading](https://github.com/premodelling/trusts/raw/master/trusts.pdf); it has 
+You may read the [report submitted for grading](https://github.com/premodelling/trusts/blob/master/trusts.pdf); it has 
 a small post-submission correction &xrarr; the captions
 of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling/trusts/commit/09d076836641524f005c831576dbf893dac8c0e5).
 
