@@ -127,7 +127,6 @@ of *figures 4, 5, & 6* [have been added/updated](https://github.com/premodelling
 <br>
 
 
-
 #### The Data
 
 The project relies on
@@ -150,8 +149,23 @@ transformation weights
 
 The MSOA &rarr; NHS Trust patient flow history data is critical because each MSOA geographic area is a member of a 
 single LTLA geographic area.  Hence, an indirect variable for estimating  **LTLA &rarr; NHS Trust Level**
-transformation weights.  The table below list the project's Estimated NHS Trust Level variables; each based on estimated 
-transformation weights.
+transformation weights.  
+
+The table below lists the project's Estimated NHS Trust Level variables; each based on estimated 
+transformation weights.  The data files of the variables, per NHS Trust, are available at
+
+* [warehouse/design/raw](./warehouse/design/raw)
+
+Each file's name is the NHS Trust code.  The data is explorable 
+via [Tableau Public](https://public.tableau.com/app/profile/greyhypotheses) graphs; the
+explorable options are
+
+* Hospital Activity & Estimated Cases
+* Estimated Vaccination & Case Measures
+* Estimated Trust Level Cases by Age Group
+
+Finally, the date range of the data depends on the settings the ``def dates()`` function in [config.py](./config.py). Note, 
+the end date is 5 days behind the current date because the measures updates are asynchronous.
 
 <br>
 
