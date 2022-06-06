@@ -29,7 +29,7 @@ Hence
     conda install -c anaconda python==3.7.11
     
     # tensorflow
-    pip install tensorflow==2.7.0
+    pip install tensorflow==2.9.1
     
     conda install -c anaconda pandas # installs: numpy, etc.    
     conda install -c anaconda seaborn # installs: matplotlib, scipy, etc. 
