@@ -13,5 +13,5 @@ openpyxl==3.0.9
 ## Pip adds the following, which are installed by the preceding packages:
 numpy==1.22.3
 matplotlib==3.5.1
-scipy==1.7.3
-requests==2.27.1
+scipy
+requests
